@@ -1,5 +1,94 @@
-html {
-    margin: 0;
-    padding: 0;
-    background-color: #FFF8E1;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
+
+:root {
+  --background: #fff8e1;
+  --primary: #fbd244;
+  --secondary: #7b341d;
+  --dark: #000000;
+  --light: #f0f0f0;
+}
+
+body {
+  background: var(--background);
+  color: var(--dark);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: none;
+  z-index: 999;
+}
+
+nav .navbar-nav {
+  display: flex;
+  gap: 33px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 38px;
+  margin-right: -45%;
+  border: 1px solid rgba(255, 255, 255, 0.153);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+nav .navbar-nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 550;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  z-index: 999;
+}
+
+nav .navbar-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--secondary);
+  border-radius: 5px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav .navbar-nav a:hover::after {
+  transform: translateX(-50%) scaleX(0.5);
+}
+
+nav .navbar-extra a {
+  display: none;
+}
+
+nav .logo img {
+  width: 80px;
+  height: auto;
+  margin: 10px 20px;
+}
+
+
