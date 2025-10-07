@@ -20,6 +20,7 @@
 body {
   background: var(--background);
   color: var(--dark);
+  overflow-x: hidden;
 }
 
 nav {
@@ -91,4 +92,91 @@ nav .logo img {
   margin: 10px 20px;
 }
 
+#beranda {
+  background-image: url("/properties/hero_section_BG.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
 
+.beranda .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 0 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.beranda .content .whatis {
+  flex: 1;
+  max-width: 550px;
+}
+
+.beranda .content .whatis h2 {
+  font-size: 48px;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.beranda .content .whatis p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+  color: var(--dark);
+  text-align: justify;
+}
+
+.beranda .content .whatis .cta {
+  display: flex;
+  gap: 20px;
+}
+
+.beranda .content .whatis .cta .btn {
+  display: inline-block;
+  padding: 15px 45px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.beranda .content .whatis .cta .btn.first {
+  background: white;
+  color: var(--dark);
+  border: 2px solid var(--dark);
+}
+
+.beranda .content .whatis .cta .btn.second {
+  background: var(--secondary);
+  color: white;
+  border: 2px solid var(--secondary);
+}
+
+.beranda .content .whatis .cta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.beranda .content .photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beranda .content .photo img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 15px;
+  border: solid 0.5px var(--dark);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
