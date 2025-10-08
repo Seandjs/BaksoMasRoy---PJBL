@@ -23,12 +23,15 @@ body {
   color: var(--dark);
   overflow-x: hidden;
 }
-
+.logo {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20%;
+}
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 20px;
+  padding: 20px 20px;
   position: fixed;
   top: 0;
   left: 0;
@@ -44,7 +47,7 @@ nav .navbar-nav {
   padding-left: 20px;
   padding-top: 12px;
   padding-bottom: 12px;
-  margin-right: -57%; ;
+  margin-right: -57%;
   border: 1px solid rgba(255, 255, 255, 0.153);
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(14px);
@@ -106,7 +109,7 @@ nav .logo img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 80px;
   padding: 0 80px;
   max-width: 1400px;
   margin: 0 auto;
@@ -187,7 +190,8 @@ nav .logo img {
   text-align: center;
 }
 
-.tentang h2, .produk h2 {
+.tentang h2,
+.produk h2 {
   font-size: 42px;
   margin-bottom: 30px;
   font-weight: 700;
@@ -269,8 +273,73 @@ nav .logo img {
   box-sizing: border-box;
   overflow: hidden;
 }
+.condiatascon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  align-items: center;
+  justify-content: center;
+}
+.container-produk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+.container-produk .produk {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.foto-produk {
+  padding: 0;
+  width: 57%;
+  justify-content: center;
+  align-items: center;
+}
+.foto-produk img {
+  width: 90%;
+  border-radius: 10px;
+}
+.kategori-produk h4 {
+  color: #888;
+  font-size: 12px;
+  margin: 0px 15px;
+}
+.nama-produk h3 {
+  font-size: 23px;
+  margin: 0px 15px;
+}
+.deskripsi-produk p {
+  font-size: 13px;
+  color: #555;
+  margin: 0 15px 10px;
+}
+.harga-produk h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 15px 10px;
+}
+.containharga {
+  display: flex;
+  justify-content: space-between;
+}
+.cta-produk {
+  margin: 0 15px 15px;
+}
 
+.cta-produk a {
+  color: #007aff;
+  font-weight: 500;
+  text-decoration: none;
+}
 
+.cta-produk a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   nav {
