@@ -16,7 +16,7 @@
   --secondary: #7b341d;
   --dark: #000000;
   --light: #f0f0f0;
-  --blue: #1A237E;
+  --blue: #1a237e;
 }
 
 body {
@@ -198,7 +198,8 @@ nav .logo img {
 }
 
 .tentang h2,
-.produk h2, .lokasi-outlet h2 {
+.produk h2,
+.lokasi-outlet h2 {
   font-size: 42px;
   margin-bottom: 30px;
   font-weight: 700;
@@ -348,7 +349,7 @@ nav .logo img {
 }
 
 .cta-produk a {
-  color: var(--blue );
+  color: var(--blue);
   font-style: italic;
   font-weight: 500;
   text-decoration: none;
@@ -357,10 +358,15 @@ nav .logo img {
 .cta-produk a:hover {
   text-decoration: underline;
 }
+.lokasi-outlet h2 {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
 .lokasi-outlet .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -375,11 +381,11 @@ nav .logo img {
 }
 .lokasi-outlet .map iframe {
   width: 100%;
-  width: 600px;
-  height: 400px;
+  width: 1300px;
+  height: 500px;
   border: 0;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .info-lokasi {
   display: none;
@@ -387,6 +393,46 @@ nav .logo img {
 }
 .info-lokasi.active {
   display: block;
+}
+.container-info-lokasi {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  border: solid 0.5px var(--dark);
+  margin-top: 15px;
+}
+.container-info-lokasi h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-size: 21px;
+}
+.container-info-lokasi h4 {
+  margin: 5px 10px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--dark);
+}
+.container-info-lokasi .info-lokasi active {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 100px;
+}
+.cta-open-in-google-map a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--dark);
+  background: var(--primary);
+  border: 0.5px solid var(--dark);
+  padding: 15px 45px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 768px) {
   nav {
