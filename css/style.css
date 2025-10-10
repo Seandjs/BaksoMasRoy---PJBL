@@ -24,6 +24,7 @@ body {
   color: var(--dark);
   overflow-x: hidden;
 }
+
 .logo {
   border: 1px solid rgba(255, 255, 255, 0.153);
   background: rgba(255, 255, 255, 0.07);
@@ -201,7 +202,7 @@ nav .logo img {
 .produk h2,
 .lokasi-outlet h2 {
   font-size: 42px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-weight: 700;
   text-align: center;
 }
@@ -353,75 +354,97 @@ nav .logo img {
   font-style: italic;
   font-weight: 500;
   text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
 
 .cta-produk a:hover {
   text-decoration: underline;
 }
+
 .lokasi-outlet h2 {
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
+
 .lokasi-outlet .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   max-width: 1300px;
   margin: 0 auto;
   flex-wrap: wrap;
+  gap: 20px;
 }
-.lokasi-outlet .container .maps {
+
+.lokasi-outlet .container .map {
   flex: 1;
+  margin-top: 15px;
   min-width: 300px;
   margin-right: 20px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
   border: solid 0.5px black;
+  height: 350px;
 }
+
 .lokasi-outlet .map iframe {
   width: 100%;
-  width: 1300px;
+  max-width: 1300px;
   height: 500px;
   border: 0;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .info-lokasi {
   display: none;
   transition: 0.3s ease;
 }
+
 .info-lokasi.active {
   display: block;
 }
+
 .container-info-lokasi {
+  position: relative;
+  flex: 1;
   background: #f0f0f0;
   padding: 20px;
+  height: 350px;
   border-radius: 15px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
   border: solid 0.5px var(--dark);
   margin-top: 15px;
 }
+
 .container-info-lokasi h3 {
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 19px;
   margin-left: 10px;
-  font-size: 21px;
+  font-size: 27.5px;
 }
+
 .container-info-lokasi h4 {
   margin: 5px 10px;
-  font-size: 15px;
-  line-height: 2;
+  font-size: 20px;
+  margin-bottom: 24px;
   color: var(--dark);
+  max-width: 425px;
+  font-weight: 300;
 }
-.container-info-lokasi .info-lokasi active {
-  display: flex;
+
+.container-info-lokasi .info-lokasi .active {
+  flex: 1;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   max-width: 100px;
 }
+
 .cta-open-in-google-map a {
+  position: absolute;
+  bottom: 20px;
   display: inline-block;
   text-decoration: none;
   color: var(--dark);
@@ -434,6 +457,35 @@ nav .logo img {
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+.cta-open-in-google-map a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.next-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  margin-right: 10px;
+}
+
+.next-button button {
+  background: none;
+  cursor: pointer;
+  border: none;
+  color: var(--primary);
+  font-size: 57px;
+  transition: 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.next-button button:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   nav {
     padding: 15px 30px;
@@ -458,8 +510,4 @@ nav .logo img {
   .beranda .content .whatis h2 {
     font-size: 36px;
   }
-}
-
-#ulasan {
-  display: none;
 }
