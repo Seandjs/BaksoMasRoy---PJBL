@@ -199,17 +199,18 @@ nav .logo img {
 }
 
 .tentang h2,
-.produk h2,
+.produk-section h2,
 .lokasi-outlet h2 {
   font-size: 42px;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 40px;
   font-weight: 700;
   text-align: center;
 }
 
 .tentang > p {
   max-width: 1200px;
-  margin: 0 auto 39px;
+  margin: 0 auto 50px;
   font-size: 16px;
   line-height: 1.8;
   color: var(--dark);
@@ -282,20 +283,39 @@ nav .logo img {
   box-sizing: border-box;
   overflow: hidden;
 }
+
+/* SECTION PRODUK - DIPERBAIKI */
+.produk-section {
+  padding: 80px 60px;
+  background: var(--background);
+}
+
+.produk-section h2 {
+  color: var(--dark);
+  text-shadow: none;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
 .pembungkusluar {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1400px;
+  margin: 0 auto;
 }
-.pembungkusluar .produk {
-  width: 350px;
-  perspective: 1000px; /*ini yang bwat efek tiga de*/
+
+.pembungkusluar .produk-item {
+  width: 280px;
+  height: 440px;
+  perspective: 1000px;
   cursor: pointer;
 }
+
 .pembungkusluar .container {
   width: 100%;
+  height: 100%;
   position: relative;
   transition: transform 0.1s ease;
   transform-style: preserve-3d;
@@ -303,23 +323,29 @@ nav .logo img {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 }
+
 .pembungkusluar .foto-produk {
-  height: 250px;
+  height: 200px;
   width: 100%;
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
+
 .pembungkusluar .foto-produk img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-.pembungkusluar .produk:hover .foto-produk img {
+
+.pembungkusluar .produk-item:hover .foto-produk img {
   transform: scale(1.1);
 }
+
 .shimmer {
   position: absolute;
   top: 0;
@@ -337,143 +363,92 @@ nav .logo img {
   pointer-events: none;
   z-index: 2;
 }
-.pembungkusluar .produk:hover .shimmer {
+
+.pembungkusluar .produk-item:hover .shimmer {
   transform: translateX(100%);
 }
+
 .pembungkusluar .judul {
-  padding: 20px 25px 10px 25px;
+  padding: 15px 20px 8px 20px;
 }
+
 .pembungkusluar .judul h4 {
   display: inline-block;
-  color: gray;
-  padding: 6px 16px;
+  color: #8b5a00;
+  padding: 5px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   background: linear-gradient(135deg, #fbd244 0%, #f5dd86 100%);
 }
+
 .pembungkusluar .nama {
-  padding: 10px 25px 5px 25px;
+  padding: 8px 20px 4px 20px;
 }
+
 .pembungkusluar .nama h3 {
-  font-size: 24px;
+  font-size: 20px;
   color: #000000;
   font-weight: 700;
 }
+
 .pembungkusluar .deskripsi {
-  padding: 5px 25px 20px 25px;
+  padding: 4px 20px 15px 20px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
 }
+
 .pembungkusluar .deskripsi p {
-  font-size: 14px;
+  font-size: 12px;
   color: #718096;
   line-height: 1.6;
 }
+
 .pembungkusluar .hargapesan {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 25px;
+  padding: 15px 20px;
   border-top: 1px solid #e2e8f0;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(102, 126, 234, 0.05)
-  );
+  background: linear-gradient(to bottom, transparent, rgba(251, 210, 68, 0.1));
+  margin-top: auto;
 }
+
 .pembungkusluar .harga-produk h3 {
-  font-size: 24px;
-  color: #000000;
+  font-size: 20px;
+  color: var(--secondary);
   font-weight: 700;
 }
+
 .pembungkusluar .cta-produk a {
   text-decoration: none;
-  color: #000000;
-}
-.pembungkusluar .cta-produk a:hover {
-}
-/* .condiatascon {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-content: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.container-produk {
-  display: block;
-  padding: 0;
-}
-
-.container-produk .produk {
-  width: 300px;
-  background-color: var(--light);
-  border-radius: 15px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
-  border: solid 0.5px var(--dark);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.foto-produk {
-  padding: 0;
-  width: 57%;
-  justify-content: center;
-  align-items: center;
-}
-.foto-produk img {
-  width: 90%;
-  margin-bottom: 10px;
+  color: white;
+  padding: 8px 16px;
+  background: var(--secondary);
   border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-.kategori-produk h4 {
-  color: #888;
-  font-size: 12px;
-  margin: 0px 15px;
-}
-.nama-produk h3 {
-  font-size: 23px;
-  margin: 0px 15px;
-}
-.deskripsi-produk p {
-  font-size: 13px;
-  color: #555;
-  margin: 0 15px 10px;
-}
-.harga-produk h3 {
-  font-size: 15px;
   font-weight: 600;
-  margin: 0 15px 10px;
-}
-.containharga {
-  display: flex;
-  justify-content: space-between;
-}
-.cta-produk {
-  margin: 0 15px 15px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 1px solid var(--dark);
 }
 
-.cta-produk a {
-  color: var(--blue);
-  font-style: italic;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s ease-in-out;
+.pembungkusluar .cta-produk a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(123, 52, 29, 0.4);
+  background: #5a2716;
 }
 
-.cta-produk a:hover {
-  text-decoration: underline;
-} */
+.lokasi-outlet {
+  padding: 80px 60px;
+}
 
 .lokasi-outlet h2 {
-  margin-top: 50px;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .lokasi-outlet .container {
@@ -544,14 +519,6 @@ nav .logo img {
   font-weight: 300;
 }
 
-.container-info-lokasi .info-lokasi .active {
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 100px;
-}
-
 .cta-open-in-google-map a {
   position: absolute;
   bottom: 20px;
@@ -589,7 +556,6 @@ nav .logo img {
   color: var(--primary);
   font-size: 57px;
   transition: 0.3s ease-in-out;
-  transform: scale(1);
 }
 
 .next-button button:hover {
@@ -597,14 +563,12 @@ nav .logo img {
 }
 
 #ulasan {
-  margin-top: 50px;
+  padding: 80px 60px;
   background-image: url("/properties/footer_section_BG.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
   overflow-x: hidden;
-  left: 0;
-  right: 0;
 }
 
 .ulasan {
@@ -612,7 +576,6 @@ nav .logo img {
   justify-content: center;
   align-items: flex-start;
   gap: 60px;
-  padding: 50px 80px;
   flex-wrap: wrap;
 }
 
@@ -624,7 +587,8 @@ nav .logo img {
 
 .ulasan .form-ulasan h2 {
   font-size: 42px;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 40px;
   font-weight: 700;
   text-align: center;
 }
@@ -667,11 +631,6 @@ nav .logo img {
   opacity: 0.57;
 }
 
-.ulasan .form-ulasan form input:focus,
-.ulasan .form-ulasan form textarea:focus {
-  border: solid 0.5px var(--dark);
-}
-
 .ulasan .form-ulasan form button {
   max-width: 185px;
   padding: 15px 45px;
@@ -692,19 +651,18 @@ nav .logo img {
 }
 
 .navigasi-info-dan-medsos {
-  /* background-color: #fcd53f; */ /* nanti saja */
-  padding: 0; /* agar sejajar dengan form */
-  font-family: "Poppins", sans-serif;
+  padding: 0;
+  font-family: "Inter", sans-serif;
   color: #000;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  border-top: none; /* hilangkan garis atas */
+  border-top: none;
   flex: 1;
   min-width: 300px;
+  margin-top: 60px;
 }
 
-/* Navigasi dan Info Cabang */
 .navigasi,
 .info {
   flex: 1;
@@ -714,17 +672,19 @@ nav .logo img {
 
 .navigasi h3,
 .info h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .navigasi-link a,
 .info-link a {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-decoration: none;
   color: #4a4a4a;
-  font-size: 15px;
+  font-size: 16px;
   transition: color 0.2s ease;
 }
 
@@ -733,15 +693,16 @@ nav .logo img {
   color: #000;
 }
 
-/* Bagian Media Sosial */
 .medsos {
   flex-basis: 100%;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .medsos h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .medsos-link a {
@@ -751,46 +712,44 @@ nav .logo img {
   text-decoration: none;
   transition: transform 0.2s ease;
 }
+
+.medsos-link a:hover {
+  transform: scale(1.1);
+}
+
 .betsos {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 80%;
-  margin-top: -15px;
-  margin-bottom: 30px;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
+
 .betmut {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 80%;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 0;
 }
+
 footer {
   margin-top: 0;
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  padding: 20px 480px;
+  padding: 20px 80px;
   font-size: 18px;
   justify-content: space-between;
-}
-.cta-button {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  color: white;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.cta-button:hover {
-  background: white;
-  color: #667eea;
-  transform: translateY(-2px);
+footer p {
+  max-width: 1100px;
+  padding-bottom: 35px;
 }
 
-/* Audio Control Styles */
 .audio-control {
   position: fixed;
   bottom: 30px;
@@ -825,7 +784,6 @@ footer {
   border-color: rgba(255, 0, 0, 0.5);
 }
 
-/* Volume Control Panel */
 .volume-panel {
   position: absolute;
   bottom: 70px;
@@ -858,7 +816,6 @@ footer {
   cursor: pointer;
 }
 
-/* Custom Slider Styles */
 .volume-slider::-webkit-slider-track {
   width: 6px;
   height: 120px;
@@ -882,25 +839,6 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Firefox */
-.volume-slider::-moz-range-track {
-  width: 6px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-  border: none;
-}
-
-.volume-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
 .volume-text {
   color: white;
   font-size: 0.8rem;
@@ -909,13 +847,10 @@ footer {
   font-weight: 500;
 }
 
-/* Hidden Audio Element */
 #backgroundAudio {
   display: none;
 }
-.medsos-link a:hover {
-  transform: scale(1.1);
-}
+
 @media (max-width: 768px) {
   nav {
     padding: 15px 30px;
@@ -939,5 +874,17 @@ footer {
 
   .beranda .content .whatis h2 {
     font-size: 36px;
+  }
+
+  .pembungkusluar .produk-item {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  footer {
+    padding: 20px 30px;
+    font-size: 14px;
+    justify-content: center;
+    text-align: center;
   }
 }

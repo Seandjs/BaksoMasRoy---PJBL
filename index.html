@@ -1,576 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bakso Masroy</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bakso Masroy</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-  <link rel="icon" type="image/png" href="/properties/logo.png" />
-</head>
-
-<body>
-  <nav>
-    <div class="logo">
-      <a href="">
-        <img src="properties/logo.png" alt="" />
-      </a>
-    </div>
-    <div class="navbar-nav">
-      <a href="#beranda">Beranda</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#produk">Produk</a>
-      <a href="#ulasan">Ulasan</a>
-    </div>
-    <div class="navbar-extra">
-      <a href="#"><i class="fa-solid fa-bars"></i></a>
-    </div>
-  </nav>
-
-
-  <section class="beranda" id="beranda">
-    <div class="content">
-      <div class="whatis">
-        <h2>Bakso Masroy</h2>
-        <p>
-          Bakso Mas Roy hadir sebagai ikon kuliner khas Surabaya yang tak
-          hanya menggoda selera, tetapi juga membawa misi besar. Dengan cita
-          rasa autentik, bahan pilihan, dan pelayanan ramah, kami ingin
-          membawa pengalaman makan bakso ke level yang lebih tinggi. Kami
-          percaya bahwa makanan enak bisa menjadi jalan untuk menyatukan
-          orang, membuka peluang kerja, dan memperkenalkan budaya kuliner
-          Indonesia ke seluruh penjuru negeri. Dari Surabaya untuk Indonesia –
-          nikmati bakso yang dibuat dengan sepenuh hati.
-        </p>
-        <div class="cta">
-          <a href="#" class="btn first">Online</a>
-          <a href="#" class="btn second">Offline</a>
-        </div>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="">
+          <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+        </a>
       </div>
-      <div class="photo">
-        <img src="properties/baksoamsroy.jpg" alt="" />
+      <div class="navbar-nav">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#produk">Produk</a>
+        <a href="#ulasan">Ulasan</a>
       </div>
-    </div>
-  </section>
+      <div class="navbar-extra">
+        <a href="#"><i class="fa-solid fa-bars"></i></a>
+      </div>
+    </nav>
 
-  <audio id="backgroundAudio" loop preload="auto" autoplay>
-    <source
-      src="properties/Pusma Shakira feat Royhan Ni Amillah - EGO WONG TUO (Official Music Video)  Kudu Iso Kuat Balungane - Pusma Shakira.mp3"
-      type="audio/mpeg">
-  </audio>
-
-  <div class="audio-control">
-    <div class="volume-panel" id="volumePanel">
-      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" orient="vertical">
-      <div class="volume-text" id="volumeText">50%</div>
-    </div>
-    <button class="mute-button" id="muteButton" onclick="toggleMute()">
-      🔊
-    </button>
-  </div>
-
-  <section class="tentang" id="tentang">
-    <h2>Tentang Bakso Mas Roy </h2>
-    <p>
-      Bakso Mas Roy adalah salah satu destinasi kuliner populer di Surabaya
-      yang dikenal karena kualitas baksonya yang padat daging tanpa campuran
-      tepung serta kuahnya yang gurih dan khas. bakso ini menyajikan konsep
-      unik yaitu menu terpisah, memungkinkan pelanggan memilih sendiri
-      kombinasi bakso, tetelan iga, dan gorengan sesuai selera. Bakso yang
-      disajikan memiliki tekstur padat alami dari daging asli tanpa pengental
-      tambahan, menjadikannya favorit banyak orang. Kuahnya yang gurih
-      menambah kenikmatan saat disantap, apalagi bila ditambah gorengan yang
-      renyah dan tetelan yang empuk. Konsep tanpa paket membuat pengalaman
-      makan jadi fleksibel dan disesuaikan dengan keinginan pelanggan.
-      Popularitas Bakso Mas Roy makin meningkat karena sering tampil di
-      berbagai event kuliner, seperti festival makanan dan liputan media
-      seperti Jawa Pos. Dengan suasana yang ramai, cita rasa yang kuat, serta
-      sistem pemesanan yang fleksibel, Bakso Mas Roy menjadi pilihan utama
-      bagi para pencinta bakso di Surabaya.
-    </p>
-    <div class="container-content">
+    <section class="beranda" id="beranda">
       <div class="content">
-        <div class="year">
-          <h3>2023</h3>
-        </div>
-        <div class="body">
+        <div class="whatis">
+          <h2>Bakso Masroy</h2>
           <p>
-            Awal Popularitas: Bakso Mas Roy mulai dikenal luas lewat konten
-            viral di TikTok yang menarik dan interaktif. Cabang pertama diduga
-            berada di Merr, Surabaya Barat, lalu berkembang ke Dukuh Kupang
-            Surabaya dan Sidoarjo.
+            Bakso Mas Roy hadir sebagai ikon kuliner khas Surabaya yang tak
+            hanya menggoda selera, tetapi juga membawa misi besar. Dengan cita
+            rasa autentik, bahan pilihan, dan pelayanan ramah, kami ingin
+            membawa pengalaman makan bakso ke level yang lebih tinggi. Kami
+            percaya bahwa makanan enak bisa menjadi jalan untuk menyatukan
+            orang, membuka peluang kerja, dan memperkenalkan budaya kuliner
+            Indonesia ke seluruh penjuru negeri. Dari Surabaya untuk Indonesia –
+            nikmati bakso yang dibuat dengan sepenuh hati.
           </p>
+          <div class="cta">
+            <a href="#" class="btn first">Online</a>
+            <a href="#" class="btn second">Offline</a>
+          </div>
+        </div>
+        <div class="photo">
+          <img src="properties/baksoamsroy.jpg" alt="Bakso MasRoy" />
         </div>
       </div>
-      <div class="content">
-        <div class="year">
-          <h3>2024</h3>
-        </div>
-        <div class="body">
-          <p>
-            Ekspansi dan Digitalisasi: Bakso Mas Roy membuka cabang baru di
-            Sawotratap Aloha, Sidoarjo pada September 2024 sebagai bukti
-            pertumbuhan bisnis. Pada awal 2024, strategi pemasaran digital dan
-            pengembangan aplikasi penjualan online mulai ada untuk mendukung
-            layanan modern.
-          </p>
-        </div>
-      </div>
-      <div class="content">
-        <div class="year">
-          <h3>2025</h3>
-        </div>
-        <div class="body">
-          <p>
-            Pada awal 2025, Bakso Mas Roy mendapat sorotan dari media besar
-            seperti Jawa Pos sebagai kuliner yang paling diburu. Dikenal
-            dengan rasa otentik, bakso jumbo, dan kuah gurih khas, Bakso Mas
-            Roy terus menarik pelanggan lewat inovasi varian produk yang
-            menjaga daya tariknya.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="produk" id="produk">
-    <h2>Produk Bakso MasRoy</h2>
-    <div class="pembungkusluar">
+    <audio id="backgroundAudio" loop preload="auto">
+      <source
+        src="properties/Pusma Shakira feat Royhan Ni Amillah - EGO WONG TUO (Official Music Video)  Kudu Iso Kuat Balungane - Pusma Shakira.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
 
-      <div class="produk">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="BaksoCampur">
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi">
-            <p>Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.</p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
+    <div class="audio-control">
+      <div class="volume-panel" id="volumePanel">
+        <input
+          type="range"
+          class="volume-slider"
+          id="volumeSlider"
+          min="0"
+          max="100"
+          value="50"
+          orient="vertical"
+        />
+        <div class="volume-text" id="volumeText">50%</div>
       </div>
-
-      <div class="produk">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="BaksoCampur">
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi">
-            <p>Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.</p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="produk">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="BaksoCampur">
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi">
-            <p>Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.</p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const products = document.querySelectorAll('.produk');
-
-    products.forEach(produk => {
-      const produkInner = produk.querySelector('.container');
-
-      produk.addEventListener('mousemove', (e) => {
-        const rect = produk.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 15;
-        const rotateY = (centerX - x) / 15;
-
-        produkInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-      });
-
-      produk.addEventListener('mouseleave', () => {
-        produkInner.style.transform = 'rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-      });
-    });
-  </script>
-  <!-- <section class="produk" id="produk">
-    <h2>Produk Bakso Mas Roy</h2>
-    <div class="condiatascon">
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-produk">
-        <div class="produk">
-          <div img class="foto-produk">
-            <img src="properties/BaksoCampur.png" alt="baksocampur" />
-          </div>
-          <div class="kategori-produk">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama-produk">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi-produk">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="containharga">
-            <div class="harga-produk">
-              <h3>Rp 20.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <section class="lokasi-outlet" id="lokasi-outlet">
-    <h2>Lokasi Outlet</h2>
-    <div class="container">
-      <div class="map">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1MhFemuzFrjyVtKJKO8R3VcViOnZDxaI&ehbc=2E312F&noprof=1"
-          width="640" height="480"></iframe>
-      </div>
-      <div class="container-info-lokasi">
-        <div class="info-lokasi active">
-          <h3>BAKSO MAS ROY - Cabang Merr</h3>
-          <h4>
-            Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
-            Jawa Timur 60117
-          </h4>
-          <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
-          <h4>No.Telp : +62 856-0489-7822</h4>
-          <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/x6wf3K8zpSjZVBRu8">Open In Google Maps</a>
-          </div>
-        </div>
-        <div class="info-lokasi">
-          <h3>BAKSO MAS ROY - Cabang Dukuh Kupang</h3>
-          <h4>
-            Jl. Raya Dukuh Kupang No.149, RT.6/RW.8, Pakis, Kec. Sawahan,
-            Surabaya, Jawa Timur 60189
-          </h4>
-          <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
-          <h4>No.Telp : +62 878-4114-6205</h4>
-          <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/6Whd1UxzRAMgRCUM9">Open In Google Maps</a>
-          </div>
-        </div>
-        <div class="info-lokasi">
-          <h3>BAKSO MAS ROY - Cabang Aloha</h3>
-          <h4>
-            Dusun Pager, Sawotratap, Kec. Gedangan, Kabupaten Sidoarjo, Jawa
-            Timur
-          </h4>
-          <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
-          <h4>No.Telp : +62 895-2491-3184</h4>
-          <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/WLgunXKdJyxB1mdw9">Open In Google Maps</a>
-          </div>
-        </div>
-        <div class="next-button">
-          <button id="nextOutlet">
-            <i class="bi bi-caret-right-fill"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ulasan" id="ulasan">
-    <div class="form-ulasan">
-      <h2>Ulasan</h2>
-      <form action="">
-        <input type="text" placeholder="Nama" />
-        <input type="email" placeholder="E-mail" />
-        <textarea name="" id="" cols="30" rows="10" placeholder="Tulis Ulasan Anda"></textarea>
-        <button type="submit">Kirim</button>
-      </form>
+      <button class="mute-button" id="muteButton">🔊</button>
     </div>
 
-    <div class="navigasi-info-dan-medsos">
-      <div class="navigasi">
-        <h3>Bakso Mas Roy</h3>
-        <div class="navigasi-link">
-          <a href="#">Beranda</a>
-          <a href="#tentang">Tentang</a>
-          <a href="#produk">Produk</a>
-          <a href="#ulasan">Ulasan</a>
+    <section class="tentang" id="tentang">
+      <h2>Tentang Bakso Mas Roy</h2>
+      <p>
+        Bakso Mas Roy adalah salah satu destinasi kuliner populer di Surabaya
+        yang dikenal karena kualitas baksonya yang padat daging tanpa campuran
+        tepung serta kuahnya yang gurih dan khas. bakso ini menyajikan konsep
+        unik yaitu menu terpisah, memungkinkan pelanggan memilih sendiri
+        kombinasi bakso, tetelan iga, dan gorengan sesuai selera. Bakso yang
+        disajikan memiliki tekstur padat alami dari daging asli tanpa pengental
+        tambahan, menjadikannya favorit banyak orang. Kuahnya yang gurih
+        menambah kenikmatan saat disantap, apalagi bila ditambah gorengan yang
+        renyah dan tetelan yang empuk. Konsep tanpa paket membuat pengalaman
+        makan jadi fleksibel dan disesuaikan dengan keinginan pelanggan.
+        Popularitas Bakso Mas Roy makin meningkat karena sering tampil di
+        berbagai event kuliner, seperti festival makanan dan liputan media
+        seperti Jawa Pos. Dengan suasana yang ramai, cita rasa yang kuat, serta
+        sistem pemesanan yang fleksibel, Bakso Mas Roy menjadi pilihan utama
+        bagi para pencinta bakso di Surabaya.
+      </p>
+      <div class="container-content">
+        <div class="content">
+          <div class="year">
+            <h3>2023</h3>
+          </div>
+          <div class="body">
+            <p>
+              Awal Popularitas: Bakso Mas Roy mulai dikenal luas lewat konten
+              viral di TikTok yang menarik dan interaktif. Cabang pertama diduga
+              berada di Merr, Surabaya Barat, lalu berkembang ke Dukuh Kupang
+              Surabaya dan Sidoarjo.
+            </p>
+          </div>
+        </div>
+        <div class="content">
+          <div class="year">
+            <h3>2024</h3>
+          </div>
+          <div class="body">
+            <p>
+              Ekspansi dan Digitalisasi: Bakso Mas Roy membuka cabang baru di
+              Sawotratap Aloha, Sidoarjo pada September 2024 sebagai bukti
+              pertumbuhan bisnis. Pada awal 2024, strategi pemasaran digital dan
+              pengembangan aplikasi penjualan online mulai ada untuk mendukung
+              layanan modern.
+            </p>
+          </div>
+        </div>
+        <div class="content">
+          <div class="year">
+            <h3>2025</h3>
+          </div>
+          <div class="body">
+            <p>
+              Pada awal 2025, Bakso Mas Roy mendapat sorotan dari media besar
+              seperti Jawa Pos sebagai kuliner yang paling diburu. Dikenal
+              dengan rasa otentik, bakso jumbo, dan kuah gurih khas, Bakso Mas
+              Roy terus menarik pelanggan lewat inovasi varian produk yang
+              menjaga daya tariknya.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="info">
-        <h3>Cabang</h3>
-        <div class="info-link">
-          <a href="#">Merr - Surabaya</a>
-          <a href="#">Dukuh Kupang - Surabaya</a>
-          <a href="#">Sawotratap Aloha - Sidoarjo</a>
-        </div>
-      </div>
-      <div class="medsos">
-        <hr class="betsos">
-        <h2>Media Sosial :</h2>
-        <div class="medsos-link">
-          <a href="https://www.instagram.com/baksomasroy/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href=""><i class="fa-regular fa-headphones"></i></a>
-          <a href="https://www.tiktok.com/@baksomasroy?lang=en" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://www.youtube.com/@Baksomasroy-p1s" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-    <hr class="betmut">
-  </section>
-  <footer>
-    <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
-    <p>Privacy Policy</p>
-    <p>Terms Of Services</p>
-  </footer>
-  <script src="js/script.js"></script>
-</body>
+    </section>
 
+    <section class="produk-section" id="produk">
+      <h2>Produk Bakso Mas Roy</h2>
+      <div class="pembungkusluar">
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="properties/BaksoCampur.png" alt="Bakso Campur" />
+            </div>
+            <div class="judul">
+              <h4>Makanan</h4>
+            </div>
+            <div class="nama">
+              <h3>Bakso Campur</h3>
+            </div>
+            <div class="deskripsi">
+              <p>
+                Bakso campur yang diisi dengan pentol kasar, pentol kotak,
+                pentol halus, dan tahu.
+              </p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>Rp 31.000</h3>
+              </div>
+              <div class="cta-produk">
+                <a href="#pesan">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="properties/BaksoCampur.png" alt="Bakso Urat" />
+            </div>
+            <div class="judul">
+              <h4>Makanan</h4>
+            </div>
+            <div class="nama">
+              <h3>Bakso Pentol</h3>
+            </div>
+            <div class="deskripsi">
+              <p>
+                Bakso yang diisi dengan pentol kasar, pentol kotak, dan pentol
+                halus.
+              </p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>Rp 31.000</h3>
+              </div>
+              <div class="cta-produk">
+                <a href="#pesan">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="properties/BaksoCampur.png" alt="Mie Ayam Bakso" />
+            </div>
+            <div class="judul">
+              <h4>Makanan</h4>
+            </div>
+            <div class="nama">
+              <h3>Gorengan</h3>
+            </div>
+            <div class="deskripsi">
+              <p>
+                Gorengan satu porsi isi 5 dengan kulit pangsit homemade isi
+                sayuran daging cincang membuat terasa kenyal
+              </p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>Rp 18.000</h3>
+              </div>
+              <div class="cta-produk">
+                <a href="#pesan">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="properties/BaksoCampur.png" alt="Mie Ayam Bakso" />
+            </div>
+            <div class="judul">
+              <h4>Makanan</h4>
+            </div>
+            <div class="nama">
+              <h3>Lontong</h3>
+            </div>
+            <div class="deskripsi">
+              <p>
+                Lontong terbuat dari beras yang dibungkus dalam daun pisang.
+              </p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>Rp 18.000</h3>
+              </div>
+              <div class="cta-produk">
+                <a href="#pesan">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lokasi-outlet" id="lokasi-outlet">
+      <h2>Lokasi Outlet</h2>
+      <div class="container">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/d/u/0/embed?mid=1MhFemuzFrjyVtKJKO8R3VcViOnZDxaI&ehbc=2E312F&noprof=1"
+            width="640"
+            height="480"
+          ></iframe>
+        </div>
+        <div class="container-info-lokasi">
+          <div class="info-lokasi active">
+            <h3>BAKSO MAS ROY - Cabang Merr</h3>
+            <h4>
+              Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
+              Jawa Timur 60117
+            </h4>
+            <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
+            <h4>No.Telp : +62 856-0489-7822</h4>
+            <div class="cta-open-in-google-map">
+              <a href="https://maps.app.goo.gl/x6wf3K8zpSjZVBRu8"
+                >Open In Google Maps</a
+              >
+            </div>
+          </div>
+          <div class="info-lokasi">
+            <h3>BAKSO MAS ROY - Cabang Dukuh Kupang</h3>
+            <h4>
+              Jl. Raya Dukuh Kupang No.149, RT.6/RW.8, Pakis, Kec. Sawahan,
+              Surabaya, Jawa Timur 60189
+            </h4>
+            <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
+            <h4>No.Telp : +62 878-4114-6205</h4>
+            <div class="cta-open-in-google-map">
+              <a href="https://maps.app.goo.gl/6Whd1UxzRAMgRCUM9"
+                >Open In Google Maps</a
+              >
+            </div>
+          </div>
+          <div class="info-lokasi">
+            <h3>BAKSO MAS ROY - Cabang Aloha</h3>
+            <h4>
+              Dusun Pager, Sawotratap, Kec. Gedangan, Kabupaten Sidoarjo, Jawa
+              Timur
+            </h4>
+            <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
+            <h4>No.Telp : +62 895-2491-3184</h4>
+            <div class="cta-open-in-google-map">
+              <a href="https://maps.app.goo.gl/WLgunXKdJyxB1mdw9"
+                >Open In Google Maps</a
+              >
+            </div>
+          </div>
+          <div class="next-button">
+            <button id="nextOutlet">
+              <i class="bi bi-caret-right-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ulasan" id="ulasan">
+      <div class="form-ulasan">
+        <h2>Ulasan</h2>
+        <form action="">
+          <input type="text" placeholder="Nama" />
+          <input type="email" placeholder="E-mail" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Tulis Ulasan Anda"
+          ></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+
+      <div class="navigasi-info-dan-medsos">
+        <div class="navigasi">
+          <h3>Bakso Mas Roy</h3>
+          <div class="navigasi-link">
+            <a href="#">Beranda</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#produk">Produk</a>
+            <a href="#ulasan">Ulasan</a>
+          </div>
+        </div>
+        <div class="info">
+          <h3>Cabang</h3>
+          <div class="info-link">
+            <a href="#">Merr - Surabaya</a>
+            <a href="#">Dukuh Kupang - Surabaya</a>
+            <a href="#">Sawotratap Aloha - Sidoarjo</a>
+          </div>
+        </div>
+        <div class="medsos">
+          <hr class="betsos" />
+          <h2>Media Sosial :</h2>
+          <div class="medsos-link">
+            <a href="https://www.instagram.com/baksomasroy/" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a
+              href="https://www.tiktok.com/@baksomasroy?lang=en"
+              target="_blank"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+            <a href="https://www.youtube.com/@Baksomasroy-p1s" target="_blank"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <hr class="betmut" />
+    </section>
+
+    <footer>
+      <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
+      <p>Privacy Policy</p>
+      <p>Terms Of Services</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>
