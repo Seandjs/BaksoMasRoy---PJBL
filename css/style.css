@@ -282,8 +282,118 @@ nav .logo img {
   box-sizing: border-box;
   overflow: hidden;
 }
-
-.condiatascon {
+.pembungkusluar {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1400px;
+}
+.pembungkusluar .produk {
+  width: 350px;
+  perspective: 1000px; /*ini yang bwat efek tiga de*/
+  cursor: pointer;
+}
+.pembungkusluar .container {
+  width: 100%;
+  position: relative;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.pembungkusluar .foto-produk {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.pembungkusluar .foto-produk img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.pembungkusluar .produk:hover .foto-produk img {
+  transform: scale(1.1);
+}
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.pembungkusluar .produk:hover .shimmer {
+  transform: translateX(100%);
+}
+.pembungkusluar .judul {
+  padding: 20px 25px 10px 25px;
+}
+.pembungkusluar .judul h4 {
+  display: inline-block;
+  color: gray;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fbd244 0%, #f5dd86 100%);
+}
+.pembungkusluar .nama {
+  padding: 10px 25px 5px 25px;
+}
+.pembungkusluar .nama h3 {
+  font-size: 24px;
+  color: #000000;
+  font-weight: 700;
+}
+.pembungkusluar .deskripsi {
+  padding: 5px 25px 20px 25px;
+}
+.pembungkusluar .deskripsi p {
+  font-size: 14px;
+  color: #718096;
+  line-height: 1.6;
+}
+.pembungkusluar .hargapesan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-top: 1px solid #e2e8f0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(102, 126, 234, 0.05)
+  );
+}
+.pembungkusluar .harga-produk h3 {
+  font-size: 24px;
+  color: #000000;
+  font-weight: 700;
+}
+.pembungkusluar .cta-produk a {
+  text-decoration: none;
+  color: #000000;
+}
+.pembungkusluar .cta-produk a:hover {
+}
+/* .condiatascon {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -359,7 +469,7 @@ nav .logo img {
 
 .cta-produk a:hover {
   text-decoration: underline;
-}
+} */
 
 .lokasi-outlet h2 {
   margin-top: 50px;
@@ -488,20 +598,28 @@ nav .logo img {
 
 #ulasan {
   margin-top: 50px;
+  background-image: url("/properties/footer_section_BG.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  overflow-x: hidden;
+  left: 0;
+  right: 0;
 }
 
 .ulasan {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   gap: 60px;
-  padding: 60px 80px;
+  padding: 50px 80px;
   flex-wrap: wrap;
 }
 
 .ulasan .form-ulasan {
   flex: 1;
-  min-width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .ulasan .form-ulasan h2 {
@@ -516,8 +634,8 @@ nav .logo img {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  align-items: flex-start; /* rata kiri */
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .ulasan .form-ulasan form input {
@@ -565,7 +683,7 @@ nav .logo img {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  margin-left: 0; /* rata kiri tombol */
+  margin: 0 auto;
 }
 
 .ulasan .form-ulasan form button:hover {
@@ -633,12 +751,171 @@ nav .logo img {
   text-decoration: none;
   transition: transform 0.2s ease;
 }
+.betsos {
+  border: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.3);
+  width: 80%;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+.betmut {
+  border: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.3);
+  width: 80%;
+}
+footer {
+  margin-top: 0;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  padding: 20px 480px;
+  font-size: 18px;
+  justify-content: space-between;
+}
+.cta-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
 
+.cta-button:hover {
+  background: white;
+  color: #667eea;
+  transform: translateY(-2px);
+}
+
+/* Audio Control Styles */
+.audio-control {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+}
+
+.mute-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.mute-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.mute-button.muted {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.5);
+}
+
+/* Volume Control Panel */
+.volume-panel {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 20px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  min-width: 50px;
+}
+
+.volume-panel.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.volume-slider {
+  -webkit-appearance: slider-vertical;
+  width: 30px;
+  height: 120px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Custom Slider Styles */
+.volume-slider::-webkit-slider-track {
+  width: 6px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Firefox */
+.volume-slider::-moz-range-track {
+  width: 6px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  border: none;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.volume-text {
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Hidden Audio Element */
+#backgroundAudio {
+  display: none;
+}
 .medsos-link a:hover {
   transform: scale(1.1);
 }
-
-
 @media (max-width: 768px) {
   nav {
     padding: 15px 30px;
