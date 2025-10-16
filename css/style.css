@@ -720,9 +720,9 @@ nav .logo img {
 .betsos {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 100%;
-  margin-top: 0;
-  margin-bottom: 40px;
+  width: 82%;
+  margin-top: px;
+  margin-bottom: 30px;
 }
 
 .betmut {
@@ -840,7 +840,7 @@ footer p {
 }
 
 .volume-text {
-  color: white;
+  color: black;
   font-size: 0.8rem;
   text-align: center;
   margin-top: 10px;
@@ -887,4 +887,5 @@ footer p {
     justify-content: center;
     text-align: center;
   }
+  
 }
