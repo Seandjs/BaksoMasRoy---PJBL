@@ -152,10 +152,10 @@ nav .navbar-extra a:hover {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.153);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -544,7 +544,7 @@ nav .logo img {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
   width: 90%;
-  margin: 40px auto 0 auto; /* auto kiri-kanan = center */
+  margin: 40px auto 0 auto;
   text-align: center;
   position: relative;
 }
@@ -568,4 +568,274 @@ footer {
   background-size: 100% 100%;
   background-position: center;
   overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  
+}
+
+@media (max-width: 768px) {
+  #beranda {
+    background-size: auto 100%;
+    background-position: center top;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: auto;
+  }
+
+  nav {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    padding: 8px 10px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  #menu {
+    display: flex;
+  }
+
+  nav .navbar-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 200px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+    padding: 80px 30px 30px 30px;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    transition: right 0.4s ease;
+    z-index: 9999;
+    transform: none;
+    left: auto;
+  }
+
+  nav .navbar-nav.active {
+    right: 0%;
+  }
+
+  nav .navbar-nav a {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: var(--dark);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  nav .navbar-nav a:hover {
+    color: var(--light);
+    background: var(--secondary);
+    transform: translateX(5px);
+  }
+
+  nav .navbar-nav a::after {
+    display: none;
+  }
+
+  nav .navbar-nav::before {
+    content: "✕";
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    color: var(--dark);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  nav .navbar-nav::before:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+  }
+
+  nav .navbar-extra {
+    gap: 10px;
+  }
+
+  nav .navbar-extra a {
+    padding: 12px 12px;
+    font-size: 18px;
+  }
+
+  .user-dropdown {
+    right: 48px;
+    min-width: 160px;
+  }
+
+  .user-dropdown::before {
+    right: 15px;
+  }
+
+  #info-menu {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .info-menu .cta-back-to-menu {
+    margin-left: 30px;
+    padding-top: 20px;
+    margin-top: 30px;
+  }
+
+  .info-menu .cta-back-to-menu a {
+    font-size: 16px;
+  }
+
+  .container-info-menu {
+    padding: 0 30px;
+    margin-top: 20px;
+    gap: 30px;
+  }
+
+  .info-menu-image img {
+    max-width: 280px;
+  }
+
+  .info-menu-text h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  .info-menu-text p {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .info-menu-text h2 {
+    font-size: 24px;
+  }
+
+  .cta {
+    flex-direction: ROW;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .cta-pesan-sekarang a,
+  .cta-tambah-ke-keranjang a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 40px;
+    font-size: 10px;
+    margin-top: 20px;
+  }
+
+  .cta-tambah-ke-keranjang a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 10px;
+    margin-top: 20px;
+  }
+
+  .menu-lainya {
+    padding: 50px 30px;
+  }
+
+  .menu-lainya h2 {
+    font-size: 28px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+
+  .pembungkusluar {
+    gap: 20px;
+  }
+
+  .pembungkusluar .produk-item {
+    width: calc(50% - 10px);
+    max-width: 200px;
+    height: auto;
+  }
+
+  .pembungkusluar .foto-produk {
+    height: 140px;
+  }
+
+  .pembungkusluar .judul h4 {
+    font-size: 7px;
+    padding: 3px 8px;
+  }
+
+  .pembungkusluar .nama h3 {
+    font-size: 13px;
+  }
+
+  .pembungkusluar .deskripsi p {
+    font-size: 8px;
+  }
+
+  .pembungkusluar .harga-produk h3 {
+    font-size: 14px;
+  }
+
+  .pembungkusluar .cta-produk a {
+    padding: 5px 10px;
+    font-size: 8px;
+  }
+
+  footer {
+    padding: 50px 30px;
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .navigasi-info-dan-medsos {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .navigasi h3,
+  .info h3,
+  .medsos h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .navigasi-link a,
+  .info-link a {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .medsos-link a {
+    font-size: 22px;
+    margin-right: 12px;
+  }
+
+  .betmut {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .copyright {
+    padding: 20px 30px;
+    font-size: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    margin-bottom: -50px;
+  }
 }

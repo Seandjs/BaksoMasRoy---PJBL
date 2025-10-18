@@ -148,14 +148,18 @@ nav .navbar-extra a:hover {
   display: none;
 }
 
+.navbar-nav.active {
+  display: flex !important;
+}
+
 .user-dropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.153);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -215,7 +219,7 @@ nav .navbar-extra a:hover {
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 8px solid rgba(255, 255, 255, 0.299);
 }
 
 nav .logo img {
@@ -242,6 +246,7 @@ nav .logo img {
   padding: 0 80px;
   max-width: 1400px;
   margin: 0 auto;
+  margin-top: 5%;
 }
 
 .beranda .content .whatis {
@@ -781,7 +786,7 @@ nav .logo img {
   border-top: none;
   flex: 1;
   min-width: 300px;
-  margin-top: 60px;
+  margin-top: 12px;
 }
 
 .navigasi,
@@ -859,16 +864,17 @@ footer {
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 10%;
   font-size: 18px;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-footer p {
+footer p,
+footer a {
   max-width: 1100px;
-  padding-bottom: 35px;
+  margin-top: -5%;
 }
 
 .audio-control {
@@ -972,40 +978,635 @@ footer p {
   display: none;
 }
 
-@media (max-width: 768px) {
-  nav {
-    padding: 15px 30px;
-  }
-
-  nav .navbar-nav {
-    display: none;
-  }
-
-  nav .navbar-extra a {
-    display: block;
-    color: var(--dark);
-    font-size: 24px;
+@media (max-width: 1024px) {
+  #beranda {
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
 
   .beranda .content {
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
+    gap: 50px;
+    padding: 0 50px;
   }
 
   .beranda .content .whatis h2 {
+    font-size: 40px;
+  }
+
+  .beranda .content .whatis p {
+    font-size: 15px;
+  }
+
+  .tentang h2,
+  .produk-section h2,
+  .lokasi-outlet h2,
+  .ulasan .form-ulasan h2 {
     font-size: 36px;
   }
 
-  .pembungkusluar .produk-item {
-    width: 100%;
-    max-width: 280px;
+  .container-content {
+    gap: 20px;
+    padding: 40px 10px;
+  }
+
+  .container-content .content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .navigasi-info-dan-medsos {
+    gap: 200px;
   }
 
   footer {
-    padding: 20px 30px;
-    font-size: 14px;
+    padding: 20px 50px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  #beranda {
+    background-size: auto 100%;
+    background-position: center top;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: auto;
+  }
+
+  nav {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    padding: 8px 10px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  #menu {
+    display: flex;
+  }
+
+  nav .navbar-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 200px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+    padding: 80px 30px 30px 30px;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    transition: right 0.4s ease;
+    z-index: 9999;
+    transform: none;
+    left: auto;
+  }
+
+  nav .navbar-nav.active {
+    right: 0%;
+  }
+
+  nav .navbar-nav a {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: var(--dark);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  nav .navbar-nav a:hover {
+    color: var(--light);
+    background: var(--secondary);
+    transform: translateX(5px);
+  }
+
+  nav .navbar-nav a::after {
+    display: none;
+  }
+
+  nav .navbar-nav::before {
+    content: "✕";
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    color: var(--dark);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  nav .navbar-nav::before:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+  }
+
+  nav .navbar-extra {
+    gap: 10px;
+  }
+
+  nav .navbar-extra a {
+    padding: 12px 12px;
+    font-size: 18px;
+  }
+
+  .user-dropdown {
+    right: 48px;
+    min-width: 160px;
+  }
+
+  .user-dropdown::before {
+    right: 15px;
+  }
+
+  .beranda .content {
+    flex-direction: row;
+    gap: 25px;
+    padding: 0 30px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .beranda .content .whatis {
+    flex: 1;
+    max-width: none;
+  }
+
+  .beranda .content .whatis h2 {
+    font-size: 30px;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .beranda .content .whatis p {
+    font-size: 13px;
+    text-align: justify;
+    margin-bottom: 22px;
+    line-height: 1.6;
     text-align: center;
+    justify-content: center;
+  }
+
+  .beranda .content .whatis .cta {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .beranda .content .whatis .cta .btn {
+    padding: 11px 32px;
+    font-size: 14px;
+  }
+
+  .beranda .content .photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .beranda .content .photo img {
+    width: 100%;
+    max-width: 280px;
+    height: 380px;
+    object-fit: cover;
+  }
+
+  .tentang {
+    padding: 50px 20px;
+  }
+
+  .tentang h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .tentang > p {
+    font-size: 13px;
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+
+  .container-content {
+    flex-direction: column;
+    padding: 30px 75px;
+    gap: 25px;
+    margin: 30px 50px;
+  }
+
+  .container-content .content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .container-content .content .year {
+    width: 120px;
+  }
+
+  .produk-section {
+    padding: 50px 20px;
+  }
+
+  .produk-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .pembungkusluar {
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .pembungkusluar .produk-item {
+    width: calc(50% - 10px);
+    max-width: 180px;
+    height: auto;
+  }
+
+  .pembungkusluar .container {
+    width: 100%;
+  }
+
+  .pembungkusluar .foto-produk {
+    height: 140px;
+  }
+
+  .pembungkusluar .judul {
+    padding: 10px 12px 5px 12px;
+  }
+
+  .pembungkusluar .judul h4 {
+    font-size: 8px;
+    padding: 3px 8px;
+  }
+
+  .pembungkusluar .nama {
+    padding: 5px 12px 3px 12px;
+  }
+
+  .pembungkusluar .nama h3 {
+    font-size: 14px;
+  }
+
+  .pembungkusluar .deskripsi {
+    padding: 3px 12px 10px 12px;
+  }
+
+  .pembungkusluar .deskripsi p {
+    font-size: 9px;
+  }
+
+  .pembungkusluar .hargapesan {
+    padding: 10px 12px;
+  }
+
+  .pembungkusluar .harga-produk h3 {
+    font-size: 13px;
+  }
+
+  .pembungkusluar .cta-produk a {
+    padding: 6px 10px;
+    font-size: 8px;
+  }
+
+  .lokasi-outlet {
+    padding: 50px 20px;
+  }
+
+  .lokasi-outlet h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .lokasi-outlet .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .lokasi-outlet .container .map {
+    width: 100%;
+    margin-right: 0;
+    height: 250px;
+    margin-top: 0;
+  }
+
+  .lokasi-outlet .map iframe {
+    height: 250px;
+  }
+
+  .container-info-lokasi {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  .container-info-lokasi h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .container-info-lokasi h4 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .cta-open-in-google-map a {
+    padding: 10px 25px;
+    font-size: 13px;
+    position: relative;
+    bottom: auto;
+    margin-top: 15px;
+  }
+
+  .next-button button {
+    font-size: 40px;
+  }
+
+  #ulasan {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .ulasan {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ulasan .form-ulasan {
+    width: 100%;
+    margin-top: 57px;
+    max-width: 100%;
+  }
+
+  .ulasan .form-ulasan h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .ulasan .form-ulasan form {
+    width: 100%;
+    max-width: 100%;
+    background: var(--primary);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .ulasan .form-ulasan form input,
+  .ulasan .form-ulasan form textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .ulasan .form-ulasan form textarea {
+    min-height: 100px;
+  }
+
+  .ulasan .form-ulasan form button {
+    padding: 10px 35px;
+    font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .navigasi-info-dan-medsos {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .navigasi,
+  .info {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .navigasi h3,
+  .info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .navigasi-link a,
+  .info-link a {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .medsos {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .medsos h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .medsos-link a {
+    font-size: 24px;
+    margin-right: 20px;
+  }
+
+  .betsos {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .betmut {
+    margin-top: 30px;
+  }
+
+  /* FOOTER COPYRIGHT */
+  footer {
+    padding: 20px;
+    font-size: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  footer p,
+  footer a {
+    margin-top: 0;
+  }
+
+  .audio-control {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .mute-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .volume-panel {
+    bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  #beranda {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  #ulasan {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .beranda .content .whatis h2 {
+    font-size: 24px;
+  }
+
+  .beranda .content .whatis p {
+    font-size: 13px;
+  }
+
+  .beranda .content .whatis .cta {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .beranda .content .whatis .cta .btn {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .pembungkusluar .produk-item {
+    width: calc(50% - 10px);
+    max-width: 160px;
+  }
+
+  .container-info-lokasi {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  #beranda {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  #ulasan {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .beranda .content .whatis {
+    padding: 20px;
+  }
+
+  .beranda .content .whatis h2 {
+    font-size: 22px;
+  }
+
+  .beranda .content .whatis p {
+    font-size: 12px;
+  }
+
+  .beranda .content .whatis .cta .btn {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  .tentang h2,
+  .produk-section h2,
+  .lokasi-outlet h2,
+  .ulasan .form-ulasan h2 {
+    font-size: 24px;
+  }
+
+  .tentang > p {
+    font-size: 12px;
+  }
+
+  .container-content .content .year {
+    width: 100px;
+  }
+
+  .container-content .content .year h3 {
+    font-size: 18px;
+  }
+
+  .container-content .content .body p {
+    font-size: 9px;
+  }
+
+  .pembungkusluar .produk-item {
+    width: calc(50% - 10px);
+    max-width: 150px;
+  }
+
+  .ulasan .form-ulasan form {
+    padding: 20px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  #beranda {
+    background-size: 100% auto;
+    background-position: center top;
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  #ulasan {
+    background-size: 100% auto;
+    background-position: center top;
+  }
+
+  .beranda .content {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .beranda .content .whatis h2 {
+    font-size: 28px;
+  }
+
+  .beranda .content .whatis p {
+    font-size: 12px;
+  }
+
+  .tentang,
+  .produk-section,
+  .lokasi-outlet {
+    padding: 40px 30px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

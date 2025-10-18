@@ -18,7 +18,7 @@ nextButton.addEventListener("click", () => {
 
 showOutlet(currentIndex);
 
-// 3D PRODUCT EFFECT - FIXED
+// 3D PRODUCT EFFECT
 const produkItems = document.querySelectorAll(".produk-item");
 
 produkItems.forEach((item) => {
@@ -160,6 +160,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// USER DROPDOWN
 const userButton = document.getElementById("user");
 const userDropdown = document.getElementById("userDropdown");
 
@@ -178,5 +179,54 @@ if (userButton && userDropdown) {
 
   userDropdown.addEventListener("click", function (e) {
     e.stopPropagation();
+  });
+}
+
+// HAMBURGER MENU TOGGLE
+const hamburgerMenu = document.getElementById("menu");
+const navbarNav = document.getElementById("navbarNav");
+
+if (hamburgerMenu && navbarNav) {
+  hamburgerMenu.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    navbarNav.classList.toggle("active");
+
+    if (navbarNav.classList.contains("active")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target)) {
+      navbarNav.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  navbarNav.addEventListener("click", function (e) {
+    const rect = navbarNav.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    if (
+      clickX > rect.width - 65 &&
+      clickX < rect.width - 25 &&
+      clickY > 20 &&
+      clickY < 60
+    ) {
+      navbarNav.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  const navLinks = navbarNav.querySelectorAll("a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      navbarNav.classList.remove("active");
+      document.body.style.overflow = "auto";
+    });
   });
 }

@@ -21,29 +21,36 @@
           <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
         </a>
       </div>
-      <div class="navbar-nav">
+
+      <div class="navbar-nav" id="navbarNav">
         <a href="#beranda">Beranda</a>
         <a href="#tentang">Tentang</a>
         <a href="#produk">Produk</a>
         <a href="#ulasan">Ulasan</a>
       </div>
+
       <div class="navbar-extra">
-        <a href="#" id="menu" class="menu"><i class="fa-solid fa-bars"></i></a>
-        <a href="#" id="cart" class="menu"
-          ><i class="fa-solid fa-cart-shopping"></i
-        ></a>
-        <a href="#" id="user" class="user"><i class="fa-solid fa-user"></i></a>
+        <a href="#" id="cart" class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+        <a href="#" id="user" class="user">
+          <i class="fa-solid fa-user"></i>
+        </a>
 
         <div class="user-dropdown" id="userDropdown">
-          <a href="#login"
-            ><i class="fa-solid fa-right-to-bracket"></i> Log In</a
-          >
-          <a href="#signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+          <a href="#login">
+            <i class="fa-solid fa-right-to-bracket"></i> Log In
+          </a>
+          <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
         </div>
 
-        <a href="#" id="logout" class="logout"
-          ><i class="fa-solid fa-right-from-bracket"></i
-        ></a>
+        <a href="#" id="logout" class="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+
+        <a href="#" id="menu" class="menu">
+          <i class="fa-solid fa-bars"></i>
+        </a>
       </div>
     </nav>
 
@@ -261,6 +268,58 @@
 
       userDropdown.addEventListener("click", function (e) {
         e.stopPropagation();
+      });
+    }
+
+    // HAMBURGER MENU TOGGLE
+    const hamburgerMenu = document.getElementById("menu");
+    const navbarNav = document.getElementById("navbarNav");
+
+    if (hamburgerMenu && navbarNav) {
+      hamburgerMenu.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navbarNav.classList.toggle("active");
+
+        if (navbarNav.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          !hamburgerMenu.contains(e.target) &&
+          !navbarNav.contains(e.target)
+        ) {
+          navbarNav.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      navbarNav.addEventListener("click", function (e) {
+        const rect = navbarNav.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        if (
+          clickX > rect.width - 65 &&
+          clickX < rect.width - 25 &&
+          clickY > 20 &&
+          clickY < 60
+        ) {
+          navbarNav.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      const navLinks = navbarNav.querySelectorAll("a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          navbarNav.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
       });
     }
   </script>
