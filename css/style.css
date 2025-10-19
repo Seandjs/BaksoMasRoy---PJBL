@@ -846,20 +846,15 @@ nav .logo img {
 .betsos {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-<<<<<<< HEAD
-  width: 80%;
-  margin-top: -30px;
-=======
   width: 82%;
   margin-top: px;
->>>>>>> ff2404dda4e5f30edf790abf84a234ff78067cf0
   margin-bottom: 30px;
 }
 
 .betmut {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 81%;
+  width: 80%;
   margin-top: 40px;
   margin-bottom: 0;
 }
@@ -869,13 +864,8 @@ footer {
   background-color: var(--primary);
   display: flex;
   align-items: center;
-<<<<<<< HEAD
   padding: 20px 450px;
   font-size: 19px;
-=======
-  padding: 20px 10%;
-  font-size: 18px;
->>>>>>> ff2404dda4e5f30edf790abf84a234ff78067cf0
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0px;
@@ -1352,113 +1342,191 @@ footer a {
   }
 
   #ulasan {
-    background-size: auto 100%;
-    background-position: center top;
+    padding: 80px 60px;
+    background-image: url("/properties/footer_section_BG.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    overflow-x: hidden;
   }
 
   .ulasan {
-    flex-direction: column;
-    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
   }
 
   .ulasan .form-ulasan {
-    width: 100%;
-    margin-top: 57px;
-    max-width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .ulasan .form-ulasan h2 {
-    font-size: 28px;
-    margin-bottom: 25px;
+    font-size: 42px;
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
   }
 
   .ulasan .form-ulasan form {
-    width: 100%;
-    max-width: 100%;
-    background: var(--primary);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+    justify-content: center;
   }
 
-  .ulasan .form-ulasan form input,
-  .ulasan .form-ulasan form textarea {
-    width: 100%;
-    max-width: 100%;
-    font-size: 14px;
+  .ulasan .form-ulasan form input {
+    width: 480px;
+    max-height: 64px;
+    padding: 12px;
+    border: 0.5px solid var(--dark);
+    border-radius: 7px;
+    font-size: 20px;
+    background-color: var(--light);
+    resize: vertical;
   }
 
   .ulasan .form-ulasan form textarea {
+    max-height: 100px;
+    width: 480px;
     min-height: 100px;
+    background-color: var(--light);
+    padding: 12px;
+    border: 0.5px solid var(--dark);
+    border-radius: 7px;
+    font-size: 20px;
+    resize: vertical;
+  }
+
+  .ulasan .form-ulasan form input::placeholder,
+  .ulasan .form-ulasan form textarea::placeholder {
+    color: var(--dark);
+    opacity: 0.57;
   }
 
   .ulasan .form-ulasan form button {
-    padding: 10px 35px;
-    font-size: 16px;
-    max-width: 100%;
-    width: 100%;
+    max-width: 185px;
+    padding: 15px 45px;
+    font-size: 20px;
+    border-radius: 7px;
+    border: solid 0.5px var(--dark);
+    background: var(--secondary);
+    color: var(--light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+  }
+
+  .ulasan .form-ulasan form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
 
   .navigasi-info-dan-medsos {
-    flex-direction: column;
-    gap: 30px;
-    align-items: flex-start;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: none;
+    flex: 1;
+    min-width: 300px;
+    margin-top: 60px;
   }
 
   .navigasi,
   .info {
-    width: 100%;
-    margin-bottom: 15px;
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
   }
 
   .navigasi h3,
   .info h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
   }
 
   .navigasi-link a,
   .info-link a {
-    font-size: 14px;
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: #4a4a4a;
+    font-size: 16px;
+    transition: color 0.2s ease;
+  }
+
+  .navigasi-link a:hover,
+  .info-link a:hover {
+    color: #000;
   }
 
   .medsos {
-    width: 100%;
-    margin-top: 20px;
+    flex-basis: 100%;
+    margin-top: 40px;
   }
 
   .medsos h2 {
-    font-size: 18px;
-    margin-bottom: 12px;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
   }
 
   .medsos-link a {
-    font-size: 24px;
-    margin-right: 20px;
+    font-size: 28px;
+    color: #000;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .medsos-link a:hover {
+    transform: scale(1.1);
   }
 
   .betsos {
-    width: 100%;
-    margin-bottom: 20px;
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+    width: 80%;
+    margin-top: -30px;
+    margin-bottom: 30px;
   }
 
   .betmut {
-    margin-top: 30px;
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+    width: 81%;
+    margin-top: 40px;
+    margin-bottom: 0;
   }
 
-  /* FOOTER COPYRIGHT */
   footer {
-    padding: 20px;
-    font-size: 12px;
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    margin-top: -30px;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    padding: 20px 450px;
+    font-size: 19px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0px;
   }
 
-  footer p,
-  footer a {
-    margin-top: 0;
+  footer p {
+    max-width: 1100px;
+    padding-bottom: 35px;
   }
 
   .audio-control {
