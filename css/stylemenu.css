@@ -571,7 +571,6 @@ footer {
 }
 
 @media (max-width: 1024px) {
-  
 }
 
 @media (max-width: 768px) {
@@ -837,5 +836,14 @@ footer {
     text-align: center;
     gap: 10px;
     margin-bottom: -50px;
+  }
+}
+
+@keyframes friknU {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
