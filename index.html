@@ -39,9 +39,9 @@
 
         <div class="user-dropdown" id="userDropdown">
           <a href="#login">
-            <i class="fa-solid fa-right-to-bracket"></i> Log In
+            <i class="fa-solid fa-right-to-bracket"></i> Masuk
           </a>
-          <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+          <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Daftar </a>
         </div>
 
         <a href="#" id="logout" class="logout">
@@ -53,6 +53,128 @@
         </a>
       </div>
     </nav>
+
+    <div class="popup-overlay" id="popupSignup">
+      <div class="popup-content">
+        <span class="close-popup" id="closeSignup">&times;</span>
+        <h2>Daftar</h2>
+
+        <form>
+          <div class="email-wrapper">
+            <label for="email-daftar">E-mail</label>
+            <input
+              type="email"
+              id="email-daftar"
+              placeholder="contoh@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="username-wrapper">
+            <label for="username-daftar">Nama</label>
+            <input
+              type="text"
+              id="username-daftar"
+              placeholder="Contoh: Paijo"
+              required
+            />
+          </div>
+
+          <label for="sandi-daftar">Kata Sandi</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="sandi-daftar"
+              placeholder="******"
+              required
+              autocomplete="new-password"
+            />
+            <button
+              type="button"
+              id="toggle-sandi"
+              class="toggle-password"
+              aria-pressed="false"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+
+          <button type="submit" class="btn-daftar">Daftar</button>
+          <div class="atau">
+            <p>Atau Daftar Dengan</p>
+          </div>
+          <button type="button" class="btn-google">
+            <i class="fa-brands fa-google"></i> Google
+          </button>
+          <div class="ketentuan">
+            <p>
+              Dengan mendaftar, saya menyetujui
+              <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a
+                href="#"
+                >Kebijakan Privasi</a
+              >
+              Bakso MasRoy.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="popupLogin">
+      <div class="popup-content">
+        <span class="close-popup" id="closeLogin">&times;</span>
+        <h2>Masuk</h2>
+
+        <form>
+          <div class="username-wrapper">
+            <label for="username-daftar">Nama</label>
+            <input
+              type="text"
+              id="username-daftar"
+              placeholder="Contoh: Paijo"
+              required
+            />
+          </div>
+
+          <label for="sandi-daftar">Kata Sandi</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="sandi-daftar"
+              placeholder="******"
+              required
+              autocomplete="new-password"
+            />
+            <button
+              type="button"
+              id="toggle-sandi"
+              class="toggle-password"
+              aria-pressed="false"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+
+          <button type="submit" class="btn-daftar">Masuk</button>
+          <div class="atau">
+            <p>Atau Masuk Dengan</p>
+          </div>
+          <button type="button" class="btn-google">
+            <i class="fa-brands fa-google"></i> Google
+          </button>
+          <div class="ketentuan">
+            <p>
+              Dengan mendaftar, saya menyetujui
+              <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a
+                href="#"
+                >Kebijakan Privasi</a
+              >
+              Bakso MasRoy.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <section class="beranda" id="beranda">
       <div class="content">
@@ -275,6 +397,9 @@
           </div>
         </div>
       </div>
+      <div class="cta-lihat-lainya">
+        <a href="#">Lihat Lainnya</a>
+      </div>
     </section>
 
     <section class="lokasi-outlet" id="lokasi-outlet">
@@ -378,18 +503,20 @@
           <hr class="betsos" />
           <h2>Media Sosial :</h2>
           <div class="medsos-link">
-            <a href="https://www.instagram.com/baksomasroy/" target="_blank"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a
-              href="https://www.tiktok.com/@baksomasroy?lang=en"
-              target="_blank"
-              ><i class="fa-brands fa-tiktok"></i
-            ></a>
-            <a href="https://www.youtube.com/@Baksomasroy-p1s" target="_blank"
-              ><i class="fa-brands fa-youtube"></i
-            ></a>
+            <ul>
+              <li>
+                <a href="#"> <i class="fab fa-facebook-f icon"></i> </a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram icon"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-tiktok icon"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-youtube icon"></i></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

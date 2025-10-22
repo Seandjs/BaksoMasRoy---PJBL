@@ -230,3 +230,57 @@ if (hamburgerMenu && navbarNav) {
     });
   });
 }
+
+const signupBtn = document.querySelector('a[href="#signup"]');
+const popupSignup = document.getElementById("popupSignup");
+const closeSignup = document.getElementById("closeSignup");
+
+signupBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  popupSignup.style.display = "flex";
+});
+
+closeSignup.addEventListener("click", () => {
+  popupSignup.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === popupSignup) {
+    popupSignup.style.display = "none";
+  }
+});
+
+const loginBtn = document.querySelector('a[href="#login"]');
+const popupLogin = document.getElementById("popupLogin");
+const closeLogin = document.getElementById("closeLogin");
+
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  popupLogin.style.display = "flex";
+});
+
+closeLogin.addEventListener("click", () => {
+  popupLogin.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === popupLogin) {
+    popupLogin.style.display = "none";
+  }
+});
+
+const inputSandi = document.getElementById("sandi-daftar");
+const toggleBtn = document.getElementById("toggle-sandi");
+
+inputSandi.addEventListener("input", () => {
+  toggleBtn.style.display = inputSandi.value.length > 0 ? "block" : "none";
+});
+
+toggleBtn.addEventListener("click", () => {
+  const isHidden = inputSandi.type === "password";
+  inputSandi.type = isHidden ? "text" : "password";
+  toggleBtn.setAttribute("aria-pressed", isHidden);
+  toggleBtn.innerHTML = isHidden
+    ? '<i class="fa-regular fa-eye-slash"></i>'
+    : '<i class="fa-regular fa-eye"></i>';
+});
