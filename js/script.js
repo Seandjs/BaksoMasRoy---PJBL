@@ -160,14 +160,51 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// LANGUAGE DROPDOWN
+const languageButton = document.getElementById("language");
+const languageDropdown = document.getElementById("languageDropdown");
+
 // USER DROPDOWN
 const userButton = document.getElementById("user");
 const userDropdown = document.getElementById("userDropdown");
+
+if (languageButton && languageDropdown) {
+  languageButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // JIKA USER DROPDOWN SEDANG AKTIF → CLOSE DULU
+    if (userDropdown && userDropdown.classList.contains("active")) {
+      userDropdown.classList.remove("active");
+    }
+
+    languageDropdown.classList.toggle("active");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (
+      !languageButton.contains(e.target) &&
+      !languageDropdown.contains(e.target)
+    ) {
+      languageDropdown.classList.remove("active");
+    }
+  });
+
+  languageDropdown.addEventListener("click", function (e) {
+    e.stopPropagation();
+  });
+}
 
 if (userButton && userDropdown) {
   userButton.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
+
+    // JIKA LANGUAGE DROPDOWN SEDANG AKTIF → CLOSE DULU
+    if (languageDropdown && languageDropdown.classList.contains("active")) {
+      languageDropdown.classList.remove("active");
+    }
+
     userDropdown.classList.toggle("active");
   });
 
