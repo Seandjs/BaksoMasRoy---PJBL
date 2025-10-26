@@ -387,7 +387,45 @@ nav .logo img {
   border: solid 0.5px var(--dark);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+ .offon-cta {
+        display: inline-flex;
+        gap: 4px;
+    }
 
+    .offon-cta .btn {
+        border: none;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 14px 40px;
+        transition: all 0.3s ease;
+        transform: skewX(-10deg);
+    }
+
+    .offon-cta .btn span {
+        display: inline-block;
+        transform: skewX(10deg);
+    }
+
+    .offon-cta .btn-left {
+        background: var(--secondary);
+    }
+
+    .offon-cta .btn-right {
+        background: #d35f39;
+    }
+
+    .offon-cta .btn:hover {
+        filter: brightness(1.2);
+        transform: skewX(-10deg) translateY(-3px);
+    }
+
+    .offon-cta .btn.active {
+        box-shadow: 0 8px 25px rgba(255, 153, 51, 0.4);
+    }
 .tentang {
   padding: 80px 60px;
   background: var(--background);
@@ -636,33 +674,49 @@ nav .logo img {
   box-shadow: 0 10px 20px rgba(123, 52, 29, 0.4);
   background: #5a2716;
 }
-
-.cta-lihat-lainya {
-  display: flex;
+.lihat-lainnya {
+    display: flex;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 60px;
   margin-bottom: 50px;
   position: relative;
-  border-radius: 20px;
   justify-content: center;
 }
-
-.cta-lihat-lainya a {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  padding: 20px 30px 20px 30px;
-  background-color: var(--primary);
-  border-radius: 25px;
-  text-decoration: none;
-  color: var(--dark);
-  border: solid 0.5px var(--dark);
-  transition: all 0.3s ease-in-out;
+.btn-lain {
+  width: 220px;
+  height: 50px;
+  padding: 12px 28px;
+  border: 2px solid var(--secondary);
+  background: transparent;
+  color: var(--secondary);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease;
 }
 
-.cta-lihat-lainya a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+.btn-lain::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--primary);
+  transition: height 0.4s ease;
+  z-index: -1;
+}
+
+.btn-lain:hover {
+  color: var(--secondary);
+}
+
+.btn-lain:hover::before {
+  height: 100%;
 }
 
 .lokasi-outlet {
@@ -703,7 +757,29 @@ nav .logo img {
 .info-lokasi.active {
   display: block;
 }
+.btn-goonel {
+ background: linear-gradient(90deg, #ff9800 50%, var(--primary)50%);
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.4s ease;
+ background-size: 200% 100%;
+ background-position: right;
+ border: none;
+ color: white;
+ padding: 16px 140px;
+}
+.btn-goonel:hover{
+ background-position: left;
+}
 
+.btn-goonel a:hover {
+  color: white;
+  transition: all 0.2s ease;
+}
+.btn-goonel a {
+  text-decoration: none;
+  color: var(--secondary);
+}
 .container-info-lokasi {
  position: relative;
  background-color: white;
@@ -745,32 +821,7 @@ nav .logo img {
 .cta-open-in-google-map {
   margin-top: 30px;
 }
-.cta-open-in-google-map a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  text-decoration: none;
-  color: var(--dark);
-  background: var(--primary);
-  padding: 15px 45px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
 
-.cta-open-in-google-map a:hover {
-  background-color: #ebba0a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.cta-open-in-google-map a:active {
-  transform: translateY(0);
-}
 .next-button {
   position: absolute;
   right: 45px;
