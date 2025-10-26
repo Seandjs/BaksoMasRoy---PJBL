@@ -480,7 +480,6 @@ nav .logo img {
   overflow: hidden;
 }
 
-/* SECTION PRODUK - DIPERBAIKI */
 .produk-section {
   padding: 80px 60px;
   background: var(--background);
@@ -667,7 +666,9 @@ nav .logo img {
 }
 
 .lokasi-outlet {
-  padding: 80px 60px;
+  margin: 0 auto;
+  max-width: 1400px;
+  margin-bottom: 80px;
 }
 
 .lokasi-outlet h2 {
@@ -676,39 +677,27 @@ nav .logo img {
 }
 
 .lokasi-outlet .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 1300px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  grid-template-columns: 1.3fr 1fr;
 }
 
 .lokasi-outlet .container .map {
-  flex: 1;
-  margin-top: 15px;
-  min-width: 300px;
-  margin-right: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
-  border: solid 0.5px black;
-  height: 350px;
+  position: relative;
+  min-height: 600px;
 }
 
 .lokasi-outlet .map iframe {
   width: 100%;
-  max-width: 1300px;
-  height: 500px;
-  border: 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  border: none;
 }
 
 .info-lokasi {
   display: none;
-  transition: 0.3s ease;
+  transition: fadeIn 0.5s ease-in-out;
 }
 
 .info-lokasi.active {
@@ -716,43 +705,57 @@ nav .logo img {
 }
 
 .container-info-lokasi {
-  position: relative;
-  flex: 1;
-  background: #f0f0f0;
-  padding: 20px;
-  height: 350px;
-  border-radius: 15px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
-  border: solid 0.5px var(--dark);
-  margin-top: 15px;
+ position: relative;
+ background-color: white;
+ padding: 50px 45px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ 
 }
-
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .container-info-lokasi h3 {
   margin-top: 5px;
-  margin-bottom: 19px;
-  margin-left: 10px;
-  font-size: 27.5px;
+  margin-bottom: 30px;
+  font-size: 1.9rem;
+  line-height: 1.3;
 }
 
 .container-info-lokasi h4 {
-  margin: 5px 10px;
-  font-size: 20px;
+
+  font-size: 1rem;
   margin-bottom: 24px;
   color: var(--dark);
   max-width: 425px;
   font-weight: 300;
 }
-
+.info-lokasi h4:first-of-type {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+.cta-open-in-google-map {
+  margin-top: 30px;
+}
 .cta-open-in-google-map a {
-  position: absolute;
-  bottom: 20px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
   text-decoration: none;
   color: var(--dark);
   background: var(--primary);
-  border: 0.5px solid var(--dark);
   padding: 15px 45px;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -760,31 +763,70 @@ nav .logo img {
 }
 
 .cta-open-in-google-map a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #ebba0a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+.cta-open-in-google-map a:active {
+  transform: translateY(0);
+}
 .next-button {
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  margin-right: 10px;
+  right: 45px;
+  bottom: 35px;
+}
+.prev-button {
+  position: absolute;
+  left: 45px;
+  bottom: 35px;
+  display: block;
+}
+.prev-button.show {
+  display: block !important;
 }
 
-.next-button button {
+.next-button button, .prev-button button {
   background: none;
+  display: block;
   cursor: pointer;
   border: none;
   color: var(--primary);
-  font-size: 57px;
   transition: 0.3s ease-in-out;
+  background: var(--secondary);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
 }
 
 .next-button button:hover {
   transform: scale(1.1);
 }
+
+
+
+
+.outlet-indicator {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--light);
+  border-radius: 50%;
+  cursor:pointer;
+  transition: all 0.3s ease;
+}
+.indicator-dot.active {
+  background: var(--primary);
+  width: 30px;
+  border-radius: 5px;
+}
+
+
 
 #ulasan {
   padding: 80px 60px;

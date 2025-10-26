@@ -1,22 +1,63 @@
-const outlets = document.querySelectorAll(".info-lokasi");
-const nextButton = document.getElementById("nextOutlet");
-let currentIndex = 0;
+      let currentOutlet = 0;
+        const outlets = document.querySelectorAll('.info-lokasi');
+        const indicators = document.querySelectorAll('.indicator-dot');
+        const nextButton = document.getElementById('nextOutlet');
+        const prevButton = document.getElementById('prevOutlet');
+        const mapFrame = document.getElementById('mapFrame');
 
-function showOutlet(index) {
-  outlets.forEach((el, i) => {
-    el.classList.remove("active");
-    if (i === index) {
-      el.classList.add("active");
+       function updateButtons() {
+          if (currentOutlet === 0) {
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'block';
+          } else if (currentOutlet === outlets.length - 1) {
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'none';
+          } else {
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'block';
+          }
+        }
+
+        function showOutlet(index) {
+            outlets.forEach((outlet, i) => {
+                outlet.classList.remove('active');
+                indicators[i].classList.remove('active');
+            });
+            
+            outlets[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+
+            const mapSrc = outlets[index].getAttribute('data-map');
+            if (mapSrc) {
+                mapFrame.src = mapSrc;
+            }
+            updateButtons();
+        }
+
+nextButton.addEventListener('click', () => {
+    if (currentOutlet < outlets.length - 1) { 
+        currentOutlet++;
+        showOutlet(currentOutlet);
     }
-  });
-}
-
-nextButton.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % outlets.length;
-  showOutlet(currentIndex);
 });
 
-showOutlet(currentIndex);
+
+prevButton.addEventListener('click', () => {
+    if (currentOutlet > 0) { 
+        currentOutlet--;
+        showOutlet(currentOutlet);
+    }
+});
+
+indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        currentOutlet = index;
+        showOutlet(currentOutlet);
+    });
+});
+
+updateButtons();
 
 // 3D PRODUCT EFFECT
 const produkItems = document.querySelectorAll(".produk-item");

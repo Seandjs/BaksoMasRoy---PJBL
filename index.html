@@ -374,13 +374,14 @@
   <section class="lokasi-outlet" id="lokasi-outlet">
     <h2>Lokasi Outlet</h2>
     <div class="container">
-      <div class="map">
+      <div class="map" style="width:850px; height:450px; overflow:hidden;">
         <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1MhFemuzFrjyVtKJKO8R3VcViOnZDxaI&ehbc=2E312F&noprof=1"
-          width="640" height="480"></iframe>
+          style="width:1000px; height:700px; margin-top:-60px; border:0;"></iframe>
       </div>
       <div class="container-info-lokasi">
-        <div class="info-lokasi active">
-          <h3>BAKSO MAS ROY - Cabang Merr</h3>
+        <div class="info-lokasi active"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.241!2d112.7509!3d-7.2574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTUnMjYuNiJTIDExMsKwNDUnMDMuMiJF!5e0!3m2!1sen!2sid!4v1234567890">
+          <h3>BAKSO MAS ROY -<br> Cabang Merr</h3>
           <h4>
             Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
             Jawa Timur 60117
@@ -388,11 +389,12 @@
           <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
           <h4>No.Telp : +62 856-0489-7822</h4>
           <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/x6wf3K8zpSjZVBRu8">Open In Google Maps</a>
+            <a href="https://maps.app.goo.gl/x6wf3K8zpSjZVBRu8" target="_blank">Open In Google Maps</a>
           </div>
         </div>
-        <div class="info-lokasi">
-          <h3>BAKSO MAS ROY - Cabang Dukuh Kupang</h3>
+        <div class="info-lokasi"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6!2d112.7194!3d-7.2478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTQnNTIuMSJTIDExMsKwNDMnMDkuOCJF!5e0!3m2!1sen!2sid!4v1234567891">
+          <h3>BAKSO MAS ROY -<br> Cabang Dukuh Kupang</h3>
           <h4>
             Jl. Raya Dukuh Kupang No.149, RT.6/RW.8, Pakis, Kec. Sawahan,
             Surabaya, Jawa Timur 60189
@@ -400,11 +402,12 @@
           <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
           <h4>No.Telp : +62 878-4114-6205</h4>
           <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/6Whd1UxzRAMgRCUM9">Open In Google Maps</a>
+            <a href="https://maps.app.goo.gl/6Whd1UxzRAMgRCUM9" target="_blank">Open In Google Maps</a>
           </div>
         </div>
-        <div class="info-lokasi">
-          <h3>BAKSO MAS ROY - Cabang Aloha</h3>
+        <div class="info-lokasi"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.8!2d112.7285!3d-7.3421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjAnMzEuNiJTIDExMsKwNDMnNDIuNiJF!5e0!3m2!1sen!2sid!4v1234567892">
+          <h3>BAKSO MAS ROY -<br> Cabang Aloha</h3>
           <h4>
             Dusun Pager, Sawotratap, Kec. Gedangan, Kabupaten Sidoarjo, Jawa
             Timur
@@ -412,13 +415,25 @@
           <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
           <h4>No.Telp : +62 895-2491-3184</h4>
           <div class="cta-open-in-google-map">
-            <a href="https://maps.app.goo.gl/WLgunXKdJyxB1mdw9">Open In Google Maps</a>
+            <a href="https://maps.app.goo.gl/WLgunXKdJyxB1mdw9" target="_blank">Open In Google Maps</a>
           </div>
         </div>
-        <div class="next-button">
-          <button id="nextOutlet">
-            <i class="bi bi-caret-right-fill"></i>
-          </button>
+        <div class="button-container">
+          <div class="prev-button">
+            <button id="prevOutlet">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+          <div class="outlet-indicator">
+            <span class="indicator-dot active" data-index="0"></span>
+            <span class="indicator-dot" data-index="1"></span>
+            <span class="indicator-dot" data-index="2"></span>
+          </div>
+          <div class="next-button ">
+            <button id="nextOutlet">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
