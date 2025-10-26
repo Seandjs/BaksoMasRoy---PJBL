@@ -1265,7 +1265,7 @@ footer a {
   font-weight: 800;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   #beranda {
     padding-top: 100px;
     padding-bottom: 60px;
@@ -1309,7 +1309,7 @@ footer a {
     padding: 20px 50px;
     font-size: 16px;
   }
-}
+} */
 
 @media (max-width: 768px) {
   #beranda {
@@ -1729,6 +1729,8 @@ footer a {
     margin-top: 30px;
   }
 
+
+
   /* FOOTER COPYRIGHT */
   footer {
     padding: 20px;
@@ -1759,6 +1761,91 @@ footer a {
   }
 }
 
+.temtang-section {
+  position: relative;
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 50px;
+}
+.center-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  transform: translateX(-50%);
+  transition: height 0.1s linear;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  opacity: 1;
+
+  margin-bottom: 150px;
+}
+
+.line-item.left {
+  flex-direction: row;
+}
+.line-item.right {
+  flex-direction: row-reverse;
+}
+.line-item .image {
+  width: 45%;
+  padding: 0 40px;
+}
+.line-item .image img {
+   width: 100%;
+   border-radius: 15px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+.line-item .cobox {
+  width: 50%; 
+}
+.line-item .cobox.right {
+  text-align: left;
+  padding-right: 140px;
+}
+.line-item .cobox.left {
+    text-align: left;
+  padding-left: 140px;
+
+}
+.line-item .tittle {
+  color: var(--secondary);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: -1px;
+  text-transform:uppercase
+}
+.line-item .year {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  margin-left: 2px;
+}
+.line-item .paragraf {
+  color: var(--dark);
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.6;
+}
+.line-item .center-dot {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--primary); 
+  border: 4px solid var(--background); 
+  border-radius: 50%;
+  transform: translateX(-50%) scale(1); 
+  transition: transform 0.4s ease;
+  z-index: 10;
+  box-shadow: 0 0 0 4px rgba(251, 210, 68, 0.3);
+} 
 /* @media (max-width: 480px) {
   #beranda {
     background-size: auto 100%;
