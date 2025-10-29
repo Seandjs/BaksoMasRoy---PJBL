@@ -1,3 +1,48 @@
+<?php 
+session_start();
+require 'functions.php';
+
+if (isset($_POST["register"])) { 
+
+  if (registrasi ($_POST) > 0) {
+    echo " <script>
+      alert('user baru berhasil ditambahkan!');
+    </script>";
+   } else {
+    echo mysqli_error($conn);
+   }
+}
+
+if (isset($_POST["login"])) { 
+    
+   $username = $_POST["username"];
+   $password = $_POST["password"];
+
+   $result = mysqli_query($conn,"SELECT * FROM user WHERE username ='$username'");
+
+   //cek usn
+   if (mysqli_num_rows($result) === 1) {
+   
+    //cek pw
+    $row = mysqli_fetch_assoc($result);
+    if (password_verify($password, $row["password"])) {
+      $_SESSION["login"] = true;
+      header("Location: index.php");
+      exit;
+    } 
+}
+   $error = true;
+
+
+   //keluwar
+
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -39,6 +84,21 @@
         <a href="#usa"> USA </a>
       </div>
 
+      <?php if (isset($_SESSION['login'])) : ?>
+      <a href="logout.php" id="logout" class="logout" style="display: inline;">
+        <i class="fa-solid fa-right-from-bracket"></i> 
+      </a>
+      <?php else : ?>
+      <a href="#" id="user" class="user">
+        <i class="fa-solid fa-user"></i>
+      </a>
+      <div class="user-dropdown" id="userDropdown">
+        <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+        <a href="#signup"><i class="fa-solid fa-user-plus"></i> Daftar</a>
+      </div>
+      <?php endif; ?>
+
+      <!-- 
       <a href="#" id="user" class="user">
         <i class="fa-solid fa-user"></i>
       </a>
@@ -49,10 +109,10 @@
         </a>
         <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Daftar </a>
       </div>
-
-      <a href="#" id="logout" class="logout">
+      -->
+      <!-- <a href="#" id="logout" class="logout">
         <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
+      </a> -->
 
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
@@ -65,26 +125,34 @@
       <span class="close-popup" id="closeSignup">&times;</span>
       <h2>Daftar</h2>
 
-      <form>
-        <div class="email-wrapper">
-          <label for="email-daftar">E-mail</label>
-          <input type="email" id="email-daftar" placeholder="contoh@gmail.com" required />
-        </div>
-
+      <form action="index.php" method="post">
         <div class="username-wrapper">
           <label for="username-daftar">Nama</label>
-          <input type="text" id="username-daftar" placeholder="Contoh: Paijo" required />
+          <input type="text" name="username" id="username" placeholder="Contoh: Tedjo" required />
+        </div>
+
+        <div class="email-wrapper">
+          <label for="email-daftar">Email</label>
+          <input type="email" name="email" id="email" placeholder="admin123@gmail.com" required />
         </div>
 
         <label for="sandi-daftar">Kata Sandi</label>
         <div class="password-wrapper">
-          <input type="password" id="sandi-daftar" placeholder="******" required autocomplete="new-password" />
+          <input type="password" name="password" id="password" placeholder="******" required />
           <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
             <i class="fa-regular fa-eye"></i>
           </button>
         </div>
 
-        <button type="submit" class="btn-daftar">Daftar</button>
+        <label for="sandi-daftar">Konfirmasi Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password2" id="password2" placeholder="******" required />
+          <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="register" class="btn-daftar">Daftar</button>
         <div class="atau">
           <p>Atau Daftar Dengan</p>
         </div>
@@ -106,22 +174,26 @@
     <div class="popup-content">
       <span class="close-popup" id="closeLogin">&times;</span>
       <h2>Masuk</h2>
+      <?php if (isset($error)) : ?>
+      <p>username / password salah!</p>
+      <?php endif; ?>
 
-      <form>
+      <form action="" method="post">
         <div class="username-wrapper">
-          <label for="username-daftar">Nama</label>
-          <input type="text" id="username-daftar" placeholder="Contoh: Paijo" required />
+          <label for="username">Nama</label>
+          <input type="text" name="username" id="username" placeholder="Contoh: Paijo" required />
         </div>
 
         <label for="sandi-daftar">Kata Sandi</label>
         <div class="password-wrapper">
-          <input type="password" id="sandi-daftar" placeholder="******" required autocomplete="new-password" />
+          <input type="password" name="password" id="password" placeholder="******" required
+            autocomplete="new-password" />
           <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
             <i class="fa-regular fa-eye"></i>
           </button>
         </div>
 
-        <button type="submit" class="btn-daftar">Masuk</button>
+        <button type="submit" name="login" class="btn-daftar">Masuk</button>
         <div class="atau">
           <p>Atau Masuk Dengan</p>
         </div>

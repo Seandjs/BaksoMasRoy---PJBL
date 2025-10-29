@@ -143,11 +143,9 @@ nav .navbar-extra a:hover {
 #menu {
   display: none;
 }
-
 #logout {
-  display: none;
+  display: inline;
 }
-
 .navbar-nav.active {
   display: flex !important;
 }
