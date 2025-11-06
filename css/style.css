@@ -297,7 +297,7 @@ nav .logo img {
 }
 
 #beranda {
-  background-image: url("/properties/hero_section_BG.png");
+  background-image: url("properties/hero_section_BG.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;

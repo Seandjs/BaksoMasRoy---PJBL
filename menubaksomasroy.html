@@ -1,326 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bakso Campur</title>
-    <link rel="stylesheet" href="css/stylemenu.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="logo">
-        <a href="">
-          <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakso Campur</title>
+  <link rel="stylesheet" href="css/stylemenu.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="">
+        <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+      </a>
+    </div>
+
+    <div class="navbar-nav" id="navbarNav">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#produk">Produk</a>
+      <a href="#ulasan">Ulasan</a>
+    </div>
+
+    <div class="navbar-extra">
+      <a href="#" id="cart" class="cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+      <a href="#" id="user" class="user">
+        <i class="fa-solid fa-user"></i>
+      </a>
+
+      <div class="user-dropdown" id="userDropdown">
+        <a href="#login">
+          <i class="fa-solid fa-right-to-bracket"></i> Log In
         </a>
+        <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
       </div>
 
-      <div class="navbar-nav" id="navbarNav">
-        <a href="#beranda">Beranda</a>
-        <a href="#tentang">Tentang</a>
-        <a href="#produk">Produk</a>
-        <a href="#ulasan">Ulasan</a>
+      <a href="#" id="logout" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+
+      <a href="#" id="menu" class="menu">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+  </nav>
+
+  <section id="info-menu" class="in fo-menu">
+    <div class="breadcrumb">
+      <a href="<?php echo 'index.php'; ?>">Beranda</a>
+      <span>›</span>
+      <span>Menu</span>
+    </div>
+    <div class="container-info-menu">
+      <div class="info-menu-image">
+        <img src="properties/BaksoCampur.png" alt="bakso masroy" />
       </div>
-
-      <div class="navbar-extra">
-        <a href="#" id="cart" class="cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-        <a href="#" id="user" class="user">
-          <i class="fa-solid fa-user"></i>
-        </a>
-
-        <div class="user-dropdown" id="userDropdown">
-          <a href="#login">
-            <i class="fa-solid fa-right-to-bracket"></i> Log In
-          </a>
-          <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+      <div class="info-menu-text">
+        <h1>Bakso Campur</h1>
+        <p>
+          Bakso Campur adalah sajian bakso dengan berbagai isian dalam satu
+          mangkuk. Di dalamnya terdapat pentol kasar yang kenyal, pentol kotak
+          dengan rasa gurih khas, pentol halus yang lembut, serta tahu yang
+          menyerap cita rasa kuah. Semua disajikan dalam kaldu sapi hangat
+          yang gurih dan harum. Kombinasi berbagai tekstur dan rasa membuat
+          bakso campur menjadi pilihan favorit bagi pecinta kuliner yang ingin
+          menikmati variasi bakso dalam satu hidangan.
+        </p>
+        <h2>Rp 15.000</h2>
+      </div>
+      <div class="cta">
+        <div class="cta-pesan-sekarang">
+          <a href="">Pesan Sekarang</a>
         </div>
-
-        <a href="#" id="logout" class="logout">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </a>
-
-        <a href="#" id="menu" class="menu">
-          <i class="fa-solid fa-bars"></i>
-        </a>
-      </div>
-    </nav>
-
-    <section id="info-menu" class="info-menu">
-      <div class="cta-back-to-menu">
-        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Menu</a>
-      </div>
-      <div class="container-info-menu">
-        <div class="info-menu-image">
-          <img src="properties/BaksoCampur.png" alt="bakso masroy" />
+        <div class="cta-tambah-ke-keranjang">
+          <a href="">Tambah ke Keranjang</a>
         </div>
-        <div class="info-menu-text">
-          <h1>Bakso Campur</h1>
-          <p>
-            Bakso Campur adalah sajian bakso dengan berbagai isian dalam satu
-            mangkuk. Di dalamnya terdapat pentol kasar yang kenyal, pentol kotak
-            dengan rasa gurih khas, pentol halus yang lembut, serta tahu yang
-            menyerap cita rasa kuah. Semua disajikan dalam kaldu sapi hangat
-            yang gurih dan harum. Kombinasi berbagai tekstur dan rasa membuat
-            bakso campur menjadi pilihan favorit bagi pecinta kuliner yang ingin
-            menikmati variasi bakso dalam satu hidangan.
-          </p>
-          <h2>Rp 15.000</h2>
-        </div>
-        <div class="cta">
-          <div class="cta-pesan-sekarang">
-            <a href="">Pesan Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu-lainya" class="menu-lainya">
+    <h2>Menu Lainnya</h2>
+    <div class="pembungkusluar">
+      <div class="produk-item">
+        <div class="container">
+          <div class="foto-produk">
+            <div class="shimmer"></div>
+            <img src="properties/BaksoCampur.png" alt="Bakso Pentol" />
           </div>
-          <div class="cta-tambah-ke-keranjang">
-            <a href="">Tambah ke Keranjang</a>
+          <div class="judul">
+            <h4>Makanan</h4>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="menu-lainya" class="menu-lainya">
-      <h2>Menu Lainnya</h2>
-      <div class="pembungkusluar">
-        <div class="produk-item">
-          <div class="container">
-            <div class="foto-produk">
-              <div class="shimmer"></div>
-              <img src="properties/BaksoCampur.png" alt="Bakso Pentol" />
-            </div>
-            <div class="judul">
-              <h4>Makanan</h4>
-            </div>
-            <div class="nama">
-              <h3>Bakso Pentol</h3>
-            </div>
-            <div class="deskripsi">
-              <p>
-                Bakso yang diisi dengan pentol kasar, pentol kotak, dan pentol
-                halus.
-              </p>
-            </div>
-            <div class="hargapesan">
-              <div class="harga-produk">
-                <h3>Rp 31.000</h3>
-              </div>
-              <div class="cta-produk">
-                <a href="#pesan">Pesan Sekarang</a>
-              </div>
-            </div>
+          <div class="nama">
+            <h3>Bakso Pentol</h3>
           </div>
-        </div>
-
-        <div class="produk-item">
-          <div class="container">
-            <div class="foto-produk">
-              <div class="shimmer"></div>
-              <img src="properties/BaksoCampur.png" alt="Gorengan" />
-            </div>
-            <div class="judul">
-              <h4>Makanan</h4>
-            </div>
-            <div class="nama">
-              <h3>Gorengan</h3>
-            </div>
-            <div class="deskripsi">
-              <p>
-                Gorengan satu porsi isi 5 dengan kulit pangsit homemade isi
-                sayuran daging cincang membuat terasa kenyal
-              </p>
-            </div>
-            <div class="hargapesan">
-              <div class="harga-produk">
-                <h3>Rp 18.000</h3>
-              </div>
-              <div class="cta-produk">
-                <a href="#pesan">Pesan Sekarang</a>
-              </div>
-            </div>
+          <div class="deskripsi">
+            <p>
+              Bakso yang diisi dengan pentol kasar, pentol kotak, dan pentol
+              halus.
+            </p>
           </div>
-        </div>
-
-        <div class="produk-item">
-          <div class="container">
-            <div class="foto-produk">
-              <div class="shimmer"></div>
-              <img src="properties/BaksoCampur.png" alt="Lontong" />
+          <div class="hargapesan">
+            <div class="harga-produk">
+              <h3>Rp 31.000</h3>
             </div>
-            <div class="judul">
-              <h4>Makanan</h4>
-            </div>
-            <div class="nama">
-              <h3>Lontong</h3>
-            </div>
-            <div class="deskripsi">
-              <p>
-                Lontong terbuat dari beras yang dibungkus dalam daun pisang.
-              </p>
-            </div>
-            <div class="hargapesan">
-              <div class="harga-produk">
-                <h3>Rp 18.000</h3>
-              </div>
-              <div class="cta-produk">
-                <a href="#pesan">Pesan Sekarang</a>
-              </div>
+            <div class="cta-produk">
+              <a href="#pesan">Pesan Sekarang</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <footer>
-      <div class="navigasi-info-dan-medsos">
-        <div class="navigasi">
-          <h3>Bakso Mas Roy</h3>
-          <div class="navigasi-link">
-            <a href="#">Beranda</a>
-            <a href="#">Tentang</a>
-            <a href="#">Produk</a>
-            <a href="#">Ulasan</a>
+      <div class="produk-item">
+        <div class="container">
+          <div class="foto-produk">
+            <div class="shimmer"></div>
+            <img src="properties/BaksoCampur.png" alt="Gorengan" />
           </div>
-        </div>
-        <div class="info">
-          <h3>Cabang</h3>
-          <div class="info-link">
-            <a href="#">Merr - Surabaya</a>
-            <a href="#">Dukuh Kupang - Surabaya</a>
-            <a href="#">Sawotratap Aloha - Sidoarjo</a>
+          <div class="judul">
+            <h4>Makanan</h4>
           </div>
-        </div>
-        <div class="medsos">
-          <h3>Media Sosial :</h3>
-          <div class="medsos-link">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <div class="nama">
+            <h3>Gorengan</h3>
+          </div>
+          <div class="deskripsi">
+            <p>
+              Gorengan satu porsi isi 5 dengan kulit pangsit homemade isi
+              sayuran daging cincang membuat terasa kenyal
+            </p>
+          </div>
+          <div class="hargapesan">
+            <div class="harga-produk">
+              <h3>Rp 18.000</h3>
+            </div>
+            <div class="cta-produk">
+              <a href="#pesan">Pesan Sekarang</a>
+            </div>
           </div>
         </div>
       </div>
-      <hr class="betmut" />
-      <div class="copyright">
-        <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
-        <p>Privacy Policy</p>
-        <p>Terms Of Services</p>
+
+      <div class="produk-item">
+        <div class="container">
+          <div class="foto-produk">
+            <div class="shimmer"></div>
+            <img src="properties/BaksoCampur.png" alt="Lontong" />
+          </div>
+          <div class="judul">
+            <h4>Makanan</h4>
+          </div>
+          <div class="nama">
+            <h3>Lontong</h3>
+          </div>
+          <div class="deskripsi">
+            <p>
+              Lontong terbuat dari beras yang dibungkus dalam daun pisang.
+            </p>
+          </div>
+          <div class="hargapesan">
+            <div class="harga-produk">
+              <h3>Rp 18.000</h3>
+            </div>
+            <div class="cta-produk">
+              <a href="#pesan">Pesan Sekarang</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
-  </body>
-  <script>
-    const produkItems = document.querySelectorAll(".produk-item");
+    </div>
+  </section>
 
-    produkItems.forEach((item) => {
-      const container = item.querySelector(".container");
-      let isHovering = false;
+  <footer>
+    <div class="navigasi-info-dan-medsos">
+      <div class="navigasi">
+        <h3>Bakso Mas Roy</h3>
+        <div class="navigasi-link">
+          <a href="#">Beranda</a>
+          <a href="#">Tentang</a>
+          <a href="#">Produk</a>
+          <a href="#">Ulasan</a>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Cabang</h3>
+        <div class="info-link">
+          <a href="#">Merr - Surabaya</a>
+          <a href="#">Dukuh Kupang - Surabaya</a>
+          <a href="#">Sawotratap Aloha - Sidoarjo</a>
+        </div>
+      </div>
+      <div class="medsos">
+        <h3>Media Sosial :</h3>
+        <div class="medsos-link">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr class="betmut" />
+    <div class="copyright">
+      <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
+      <p>Privacy Policy</p>
+      <p>Terms Of Services</p>
+    </div>
+  </footer>
+</body>
+<script>
+  const produkItems = document.querySelectorAll(".produk-item");
 
-      item.addEventListener("mouseenter", () => {
-        isHovering = true;
-      });
+  produkItems.forEach((item) => {
+    const container = item.querySelector(".container");
+    let isHovering = false;
 
-      item.addEventListener("mousemove", (e) => {
-        if (!isHovering) return;
-
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-
-        container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-
-      item.addEventListener("mouseleave", () => {
-        isHovering = false;
-        container.style.transform = "rotateX(0) rotateY(0)";
-      });
+    item.addEventListener("mouseenter", () => {
+      isHovering = true;
     });
 
-    const userButton = document.getElementById("user");
-    const userDropdown = document.getElementById("userDropdown");
+    item.addEventListener("mousemove", (e) => {
+      if (!isHovering) return;
 
-    if (userButton && userDropdown) {
-      userButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        userDropdown.classList.toggle("active");
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+
+      container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    item.addEventListener("mouseleave", () => {
+      isHovering = false;
+      container.style.transform = "rotateX(0) rotateY(0)";
+    });
+  });
+
+  const userButton = document.getElementById("user");
+  const userDropdown = document.getElementById("userDropdown");
+
+  if (userButton && userDropdown) {
+    userButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      userDropdown.classList.toggle("active");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        !userButton.contains(e.target) &&
+        !userDropdown.contains(e.target)
+      ) {
+        userDropdown.classList.remove("active");
+      }
+    });
+
+    userDropdown.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+  }
+
+  // HAMBURGER MENU TOGGLE
+  const hamburgerMenu = document.getElementById("menu");
+  const navbarNav = document.getElementById("navbarNav");
+
+  if (hamburgerMenu && navbarNav) {
+    hamburgerMenu.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      navbarNav.classList.toggle("active");
+
+      if (navbarNav.classList.contains("active")) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        !hamburgerMenu.contains(e.target) &&
+        !navbarNav.contains(e.target)
+      ) {
+        navbarNav.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    navbarNav.addEventListener("click", function (e) {
+      const rect = navbarNav.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      if (
+        clickX > rect.width - 65 &&
+        clickX < rect.width - 25 &&
+        clickY > 20 &&
+        clickY < 60
+      ) {
+        navbarNav.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    const navLinks = navbarNav.querySelectorAll("a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        navbarNav.classList.remove("active");
+        document.body.style.overflow = "auto";
       });
+    });
+  }
+</script>
 
-      document.addEventListener("click", function (e) {
-        if (
-          !userButton.contains(e.target) &&
-          !userDropdown.contains(e.target)
-        ) {
-          userDropdown.classList.remove("active");
-        }
-      });
-
-      userDropdown.addEventListener("click", function (e) {
-        e.stopPropagation();
-      });
-    }
-
-    // HAMBURGER MENU TOGGLE
-    const hamburgerMenu = document.getElementById("menu");
-    const navbarNav = document.getElementById("navbarNav");
-
-    if (hamburgerMenu && navbarNav) {
-      hamburgerMenu.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        navbarNav.classList.toggle("active");
-
-        if (navbarNav.classList.contains("active")) {
-          document.body.style.overflow = "hidden";
-        } else {
-          document.body.style.overflow = "auto";
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (
-          !hamburgerMenu.contains(e.target) &&
-          !navbarNav.contains(e.target)
-        ) {
-          navbarNav.classList.remove("active");
-          document.body.style.overflow = "auto";
-        }
-      });
-
-      navbarNav.addEventListener("click", function (e) {
-        const rect = navbarNav.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
-
-        if (
-          clickX > rect.width - 65 &&
-          clickX < rect.width - 25 &&
-          clickY > 20 &&
-          clickY < 60
-        ) {
-          navbarNav.classList.remove("active");
-          document.body.style.overflow = "auto";
-        }
-      });
-
-      const navLinks = navbarNav.querySelectorAll("a");
-      navLinks.forEach((link) => {
-        link.addEventListener("click", function () {
-          navbarNav.classList.remove("active");
-          document.body.style.overflow = "auto";
-        });
-      });
-    }
-  </script>
 </html>

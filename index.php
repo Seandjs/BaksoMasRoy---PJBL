@@ -1,40 +1,39 @@
-<?php 
+<?php
 session_start();
 require 'functions.php';
 
-if (isset($_POST["register"])) { 
+if (isset($_POST["register"])) {
 
-  if (registrasi ($_POST) > 0) {
+  if (registrasi($_POST) > 0) {
     echo " <script>
       alert('user baru berhasil ditambahkan!');
     </script>";
-   } else {
+  } else {
     echo mysqli_error($conn);
-   }
+  }
 }
 
-if (isset($_POST["login"])) { 
-    
-   $username = $_POST["username"];
-   $password = $_POST["password"];
+if (isset($_POST["login"])) {
 
-   $result = mysqli_query($conn,"SELECT * FROM user WHERE username ='$username'");
+  $username = $_POST["username"];
+  $password = $_POST["password"];
 
-   //cek usn
-   if (mysqli_num_rows($result) === 1) {
-   
+  $result = mysqli_query($conn, "SELECT * FROM user WHERE username ='$username'");
+
+  //cek usn
+  if (mysqli_num_rows($result) === 1) {
+
     //cek pw
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row["password"])) {
       $_SESSION["login"] = true;
       header("Location: index.php");
       exit;
-    } 
-}
-   $error = true;
+    }
+  }
+  $error = true;
 
 
-   //keluwar
 
 }
 ?>
@@ -84,35 +83,19 @@ if (isset($_POST["login"])) {
         <a href="#usa"> USA </a>
       </div>
 
-      <?php if (isset($_SESSION['login'])) : ?>
-      <a href="logout.php" id="logout" class="logout" style="display: inline;">
-        <i class="fa-solid fa-right-from-bracket"></i> 
-      </a>
-      <?php else : ?>
-      <a href="#" id="user" class="user">
-        <i class="fa-solid fa-user"></i>
-      </a>
-      <div class="user-dropdown" id="userDropdown">
-        <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
-        <a href="#signup"><i class="fa-solid fa-user-plus"></i> Daftar</a>
-      </div>
-      <?php endif; ?>
-
-      <!-- 
-      <a href="#" id="user" class="user">
-        <i class="fa-solid fa-user"></i>
-      </a>
-
-      <div class="user-dropdown" id="userDropdown">
-        <a href="#login">
-          <i class="fa-solid fa-right-to-bracket"></i> Masuk
+      <?php if (isset($_SESSION['login'])): ?>
+        <a href="logout.php" id="logout" class="logout" style="display: inline;">
+          <i class="fa-solid fa-right-from-bracket"></i>
         </a>
-        <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Daftar </a>
-      </div>
-      -->
-      <!-- <a href="#" id="logout" class="logout">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </a> -->
+      <?php else: ?>
+        <a href="#" id="user" class="user">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+          <a href="#signup"><i class="fa-solid fa-user-plus"></i> Daftar</a>
+        </div>
+      <?php endif; ?>
 
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
@@ -174,8 +157,8 @@ if (isset($_POST["login"])) {
     <div class="popup-content">
       <span class="close-popup" id="closeLogin">&times;</span>
       <h2>Masuk</h2>
-      <?php if (isset($error)) : ?>
-      <p>username / password salah!</p>
+      <?php if (isset($error)): ?>
+        <p>username / password salah!</p>
       <?php endif; ?>
 
       <form action="" method="post">
@@ -329,123 +312,49 @@ if (isset($_POST["login"])) {
   <section class="produk-section" id="produk">
     <h2>Produk Bakso Mas Roy</h2>
     <div class="pembungkusluar">
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="Bakso Campur" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Campur</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Bakso campur yang diisi dengan pentol kasar, pentol kotak,
-              pentol halus, dan tahu.
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 31.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="menubaksomasroy.html">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="Bakso Urat" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Pentol</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Bakso yang diisi dengan pentol kasar, pentol kotak, dan pentol
-              halus.
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 31.000</h3>
+      <?php
+      $result = mysqli_query($conn, "SELECT * FROM produk");
+      while ($row = mysqli_fetch_assoc($result)):
+        ?>
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="<?= $row['image'] ?> " alt="<?= $row['nama'] ?>" />
             </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
+            <div class="judul">
+              <h4>
+                <?= $row['kategori'] ?>
+              </h4>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="Mie Ayam Bakso" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Gorengan</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Gorengan satu porsi isi 5 dengan kulit pangsit homemade isi
-              sayuran daging cincang membuat terasa kenyal
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 18.000</h3>
+            <div class="nama">
+              <h3>
+                <?= $row['nama'] ?>
+              </h3>
             </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
+            <div class="deskripsi">
+              <p>
+                <?= $row['deskripsi'] ?>
+              </p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>Rp
+                  <?= number_format($row['harga'], 0, ',', '.') ?>
+                </h3>
+              </div>
+              <div class="cta-produk">
+                <a href="menubaksomasroy.html
+                ">Pesan Sekarang</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="properties/BaksoCampur.png" alt="Mie Ayam Bakso" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Lontong</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Lontong terbuat dari beras yang dibungkus dalam daun pisang.
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 18.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php endwhile; ?>
     </div>
     <div class="lihat-lainnya">
-      <a href="#">
+      <a href="listmenu.html">
         <button class="btn-lain">
           Lihat Lainnya
         </button>
