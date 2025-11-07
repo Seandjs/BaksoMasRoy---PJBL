@@ -32,15 +32,37 @@ if (isset($_POST["login"])) {
     }
   }
   $error = true;
-
-
-
 }
+
+//ulasan
+$ulasan = mysqli_query($conn, "SELECT * FROM ulasan");
+
+if (isset($_POST["submit"])) {
+  $nama = htmlspecialchars($_POST["username"]);
+  $email = htmlspecialchars($_POST["email"]);
+  $isiUlasan = htmlspecialchars($_POST["ulasan"]);
+
+  $query = "INSERT INTO ulasan (username, email, ulasan, status) 
+              VALUES ('$nama', '$email', '$isiUlasan', 'unread')";
+  mysqli_query($conn, $query);
+
+  header("Location: " . $_SERVER['PHP_SELF'] . "?ulasan=success");
+  exit;
+}
+
 ?>
 
+<?php if (isset($_GET['ulasan']) && $_GET['ulasan'] == 'success'): ?>
+  <script>
+    alert('Ulasan berhasil dikirim!');
 
-
-
+    // Hapus ?ulasan=success dari URL tanpa reload
+    if (window.history.replaceState) {
+      const cleanUrl = window.location.href.split("?")[0];
+      window.history.replaceState(null, null, cleanUrl);
+    }
+  </script>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -58,7 +80,7 @@ if (isset($_POST["login"])) {
   <nav>
     <div class="logo">
       <a href="">
-        <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+        <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
       </a>
     </div>
 
@@ -220,14 +242,14 @@ if (isset($_POST["login"])) {
         </div>
       </div>
       <div class="photo">
-        <img src="properties/baksoamsroy.jpg" alt="Bakso MasRoy" />
+        <img src="css/properties/baksoamsroy.jpg" alt="Bakso MasRoy" />
       </div>
     </div>
   </section>
 
   <audio id="backgroundAudio" loop preload="auto">
     <source
-      src="properties/Pusma Shakira feat Royhan Ni Amillah - EGO WONG TUO (Official Music Video)  Kudu Iso Kuat Balungane - Pusma Shakira.mp3"
+      src="css/properties/Pusma Shakira feat Royhan Ni Amillah - EGO WONG TUO (Official Music Video)  Kudu Iso Kuat Balungane - Pusma Shakira.mp3"
       type="audio/mpeg" />
   </audio>
 
@@ -258,11 +280,10 @@ if (isset($_POST["login"])) {
           <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
         </div>
         <div class="cobox right">
-          <div class="tittle">Perjalanan dimulai </div>
+          <div class="tittle">Awal Popularitas </div>
           <div class="year">2023</div>
           <div class="paragraf">
-            Bakso Masroy didirikan oleh Masroy dengan resep turun temurun. Dimulai dari gerobak kecil di
-            pinggir jalan dengan tekad melayani pelanggan terbaik.
+            Bakso Mas Roy mulai dikenal luas lewat konten viral di TikTok yang menarik dan interaktif. Cabang pertama diduga berada di Merr, Surabaya Barat, lalu berkembang ke Dukuh Kupang Surabaya dan Sidoarjo.
           </div>
         </div>
         <div class="center-dot"></div>
@@ -273,11 +294,10 @@ if (isset($_POST["login"])) {
           <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
         </div>
         <div class="cobox left">
-          <div class="tittle">Perjalanan dimulai </div>
-          <div class="year">2025</div>
+          <div class="tittle">Ekspansi & Digitalisasi </div>
+          <div class="year">2024</div>
           <div class="paragraf">
-            Bakso Masroy didirikan oleh Masroy dengan resep turun temurun. Dimulai dari gerobak kecil di
-            pinggir jalan dengan tekad melayani pelanggan terbaik.
+            Bakso Mas Roy membuka cabang baru di Sawotratap Aloha, Sidoarjo pada September 2024 sebagai bukti pertumbuhan bisnis. Pada awal 2024, strategi pemasaran digital dan pengembangan aplikasi penjualan online mulai ada untuk mendukung layanan modern.
           </div>
         </div>
         <div class="center-dot"></div>
@@ -287,11 +307,10 @@ if (isset($_POST["login"])) {
           <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
         </div>
         <div class="cobox right">
-          <div class="tittle">Perjalanan dimulai </div>
-          <div class="year">2023</div>
+          <div class="tittle">Puncak Kepopuleran </div>
+          <div class="year">2025</div>
           <div class="paragraf">
-            Bakso Masroy didirikan oleh Masroy dengan resep turun temurun. Dimulai dari gerobak kecil di
-            pinggir jalan dengan tekad melayani pelanggan terbaik.
+            Bakso Mas Roy mendapat sorotan dari media besar seperti Jawa Pos sebagai kuliner yang paling diburu. Dikenal dengan rasa otentik, bakso jumbo, dan kuah gurih khas, Bakso Mas Roy terus menarik pelanggan lewat inovasi varian produk yang menjaga daya tariknya
           </div>
         </div>
         <div class="center-dot"></div>
@@ -316,7 +335,7 @@ if (isset($_POST["login"])) {
       <?php
       $result = mysqli_query($conn, "SELECT * FROM produk");
       while ($row = mysqli_fetch_assoc($result)):
-        ?>
+      ?>
         <div class="produk-item">
           <div class="container">
             <div class="foto-produk">
@@ -354,7 +373,7 @@ if (isset($_POST["login"])) {
       <?php endwhile; ?>
     </div>
     <div class="lihat-lainnya">
-      <a href="listmenu.html">
+      <a href="listmenu.php">
         <button class="btn-lain">
           Lihat Lainnya
         </button>
@@ -447,11 +466,11 @@ if (isset($_POST["login"])) {
   <section class="ulasan" id="ulasan">
     <div class="form-ulasan">
       <h2>Ulasan</h2>
-      <form action="">
-        <input type="text" placeholder="Nama" />
-        <input type="email" placeholder="E-mail" />
-        <textarea name="" id="" cols="30" rows="10" placeholder="Tulis Ulasan Anda"></textarea>
-        <button type="submit">Kirim</button>
+      <form action="index.php" method="post">
+        <input type="text" placeholder="Nama" name="username" required />
+        <input type="email" placeholder="E-mail" name="email" required />
+        <textarea cols="30" rows="10" placeholder="Tulis Ulasan Anda" name="ulasan" required></textarea>
+        <button type="submit" name="submit">Kirim</button>
       </form>
     </div>
 

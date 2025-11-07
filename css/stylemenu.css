@@ -225,7 +225,7 @@ nav .logo img {
 }
 
 #info-menu {
-  background-image: url("/properties/navbg.png");
+  background-image: url(properties/navbg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -578,7 +578,7 @@ nav .logo img {
 
 footer {
   padding: 80px;
-  background-image: url("/properties/footer_section_BG.png");
+  background-image: url(properties/footer_section_BG.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;

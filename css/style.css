@@ -297,7 +297,7 @@ nav .logo img {
 }
 
 #beranda {
-  background-image: url("properties/hero_section_BG.png");
+  background-image: url(properties/hero_section_BG.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -385,45 +385,46 @@ nav .logo img {
   border: solid 0.5px var(--dark);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
- .offon-cta {
-        display: inline-flex;
-        gap: 4px;
-    }
+.offon-cta {
+  display: inline-flex;
+  gap: 4px;
+}
 
-    .offon-cta .btn {
-        border: none;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        padding: 14px 40px;
-        transition: all 0.3s ease;
-        transform: skewX(-10deg);
-    }
+.offon-cta .btn {
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 40px;
+  transition: all 0.3s ease;
+  transform: skewX(-10deg);
+}
 
-    .offon-cta .btn span {
-        display: inline-block;
-        transform: skewX(10deg);
-    }
+.offon-cta .btn span {
+  display: inline-block;
+  transform: skewX(10deg);
+}
 
-    .offon-cta .btn-left {
-        background: var(--secondary);
-    }
+.offon-cta .btn-left {
+  background: var(--background);
+  color: var(--dark);
+}
 
-    .offon-cta .btn-right {
-        background: #d35f39;
-    }
+.offon-cta .btn-right {
+  background: var(--secondary);
+}
 
-    .offon-cta .btn:hover {
-        filter: brightness(1.2);
-        transform: skewX(-10deg) translateY(-3px);
-    }
+.offon-cta .btn:hover {
+  filter: brightness(1.2);
+  transform: skewX(-10deg) translateY(-3px);
+}
 
-    .offon-cta .btn.active {
-        box-shadow: 0 8px 25px rgba(255, 153, 51, 0.4);
-    }
+.offon-cta .btn.active {
+  box-shadow: 0 8px 25px rgba(255, 153, 51, 0.4);
+}
 .tentang {
   padding: 80px 60px;
   background: var(--background);
@@ -673,7 +674,7 @@ nav .logo img {
   background: #5a2716;
 }
 .lihat-lainnya {
-    display: flex;
+  display: flex;
   text-align: center;
   margin-top: 60px;
   margin-bottom: 50px;
@@ -698,7 +699,7 @@ nav .logo img {
 }
 
 .btn-lain::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -756,18 +757,18 @@ nav .logo img {
   display: block;
 }
 .btn-goonel {
- background: linear-gradient(90deg, #ff9800 50%, var(--primary)50%);
- border-radius: 50px;
- cursor: pointer;
- transition: all 0.4s ease;
- background-size: 200% 100%;
- background-position: right;
- border: none;
- color: white;
- padding: 16px 140px;
+  background: linear-gradient(90deg, #ff9800 50%, var(--primary) 50%);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  background-size: 200% 100%;
+  background-position: right;
+  border: none;
+  color: white;
+  padding: 16px 140px;
 }
-.btn-goonel:hover{
- background-position: left;
+.btn-goonel:hover {
+  background-position: left;
 }
 
 .btn-goonel a:hover {
@@ -779,15 +780,14 @@ nav .logo img {
   color: var(--secondary);
 }
 .container-info-lokasi {
- position: relative;
- background-color: white;
- padding: 50px 45px;
- display: flex;
- flex-direction: column;
- justify-content: space-between;
- 
+  position: relative;
+  background-color: white;
+  padding: 50px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-@keyframes fadeIn{
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateX(20px);
@@ -805,7 +805,6 @@ nav .logo img {
 }
 
 .container-info-lokasi h4 {
-
   font-size: 1rem;
   margin-bottom: 24px;
   color: var(--dark);
@@ -835,7 +834,8 @@ nav .logo img {
   display: block !important;
 }
 
-.next-button button, .prev-button button {
+.next-button button,
+.prev-button button {
   background: none;
   display: block;
   cursor: pointer;
@@ -852,9 +852,6 @@ nav .logo img {
   transform: scale(1.1);
 }
 
-
-
-
 .outlet-indicator {
   display: flex;
   gap: 8px;
@@ -866,7 +863,7 @@ nav .logo img {
   height: 10px;
   background: var(--light);
   border-radius: 50%;
-  cursor:pointer;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 .indicator-dot.active {
@@ -875,11 +872,9 @@ nav .logo img {
   border-radius: 5px;
 }
 
-
-
 #ulasan {
   padding: 80px 60px;
-  background-image: url("/properties/footer_section_BG.png");
+  background-image: url(properties/footer_section_BG.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -1820,8 +1815,6 @@ footer a {
     margin-top: 30px;
   }
 
-
-
   /* FOOTER COPYRIGHT */
   footer {
     padding: 20px;
@@ -1889,28 +1882,27 @@ footer a {
   padding: 0 40px;
 }
 .line-item .image img {
-   width: 100%;
-   border-radius: 15px;
-   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
 .line-item .cobox {
-  width: 50%; 
+  width: 50%;
 }
 .line-item .cobox.right {
   text-align: left;
   padding-right: 140px;
 }
 .line-item .cobox.left {
-    text-align: left;
+  text-align: left;
   padding-left: 140px;
-
 }
 .line-item .tittle {
   color: var(--secondary);
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: -1px;
-  text-transform:uppercase
+  text-transform: uppercase;
 }
 .line-item .year {
   font-size: 4rem;
@@ -1929,14 +1921,14 @@ footer a {
   left: 50%;
   width: 20px;
   height: 20px;
-  background: var(--primary); 
-  border: 4px solid var(--background); 
+  background: var(--primary);
+  border: 4px solid var(--background);
   border-radius: 50%;
-  transform: translateX(-50%) scale(1); 
+  transform: translateX(-50%) scale(1);
   transition: transform 0.4s ease;
   z-index: 10;
   box-shadow: 0 0 0 4px rgba(251, 210, 68, 0.3);
-} 
+}
 /* @media (max-width: 480px) {
   #beranda {
     background-size: auto 100%;

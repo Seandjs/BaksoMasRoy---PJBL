@@ -18,7 +18,7 @@ require 'functions.php';
   <nav>
     <div class="logo">
       <a href="">
-        <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+        <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
       </a>
     </div>
 
@@ -70,7 +70,7 @@ require 'functions.php';
       </div>
       <div class="container-slide-photos">
         <div class="slide-photos-item">
-          <img src="properties/outletmer.png" alt="" />
+          <img src="css/properties/outletmer.png" alt="" />
         </div>
       </div>
     </div>
@@ -199,11 +199,11 @@ require 'functions.php';
 </body>
 <script>
   const images = [
-    "properties/BaksoCampur.png",
-    "properties/logo.png",
-    "properties/outletmer.png",
-    "properties/BaksoCampur.png",
-    "properties/logo.png",
+    "css/properties/BaksoCampur.png",
+    "css/properties/logo.png",
+    "css/properties/outletmer.png",
+    "css/properties/BaksoCampur.png",
+    "css/properties/logo.png",
   ];
 
   let currentIndex = 0;

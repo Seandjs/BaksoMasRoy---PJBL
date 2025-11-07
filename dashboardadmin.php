@@ -33,6 +33,10 @@ if (isset($_POST["submit"])) {
   }
 }
 
+$ulasan = mysqli_query($conn, "SELECT * FROM ulasan 
+                               ORDER BY status='unread' DESC, id DESC");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -1342,7 +1346,7 @@ if (isset($_POST["submit"])) {
     <div class="sidebar-header">
       <div class="brand">
         <div class="brand-logo">
-          <img src="properties/logo.png" alt="logo" />
+          <img src="css/properties/logo.png" alt="logo" />
         </div>
         <div class="brand-name">
           <h2>Bakso Mas Roy</h2>
@@ -1394,7 +1398,7 @@ if (isset($_POST["submit"])) {
           <span>@admin</span>
         </div>
         <div class="admin-avatar">
-          <img src="properties/logo.png" alt="ava" />
+          <img src="css/properties/logo.png" alt="ava" />
         </div>
       </div>
     </header>
@@ -1492,7 +1496,7 @@ if (isset($_POST["submit"])) {
         <?php
         while ($row = mysqli_fetch_assoc($result)):
           $hargaFormatted = "Rp " . number_format($row["harga"], 0, ',', '.');
-          ?>
+        ?>
           <div class="produk-item">
             <div class="container">
               <div class="foto-produk">
@@ -1644,52 +1648,44 @@ if (isset($_POST["submit"])) {
         <h2>Ulasan Pelanggan</h2>
       </div>
       <div class="pesan-container">
-        <div class="pesan-card unread">
-          <div class="pesan-header-card">
-            <div class="pesan-sender">
-              <div class="sender-avatar">F</div>
-              <div class="sender-info">
-                <h4>fano</h4>
-                <p>fanogeymink@email.com</p>
-              </div>
-            </div>
-            <span class="pesan-time">2 jam yang lalu</span>
-          </div>
-          <div class="pesan-content">
-            <div class="pesan-text">Back end besok-besok, besok opoe</div>
-          </div>
-          <div class="pesan-actions">
-            <button class="btn-balas">
-              <i class="fa-solid fa-eye"></i> Tandai Dibaca</button><button class="btn-hapus-pesan">
-              <i class="fa-solid fa-trash"></i> Hapus
-            </button>
-          </div>
-        </div>
 
-        <div class="pesan-card unread">
-          <div class="pesan-header-card">
-            <div class="pesan-sender">
-              <div class="sender-avatar">SN</div>
-              <div class="sender-info">
-                <h4>Siti Nurhaliza</h4>
-                <p>siti.nurhaliza@email.com</p>
+        <?php while ($row = mysqli_fetch_assoc($ulasan)) : ?>
+          <div class="pesan-card <?= $row['status'] == 'unread' ? 'unread' : '' ?>">
+            <div class="pesan-header-card">
+              <div class="pesan-sender">
+                <div class="sender-avatar"><?= strtoupper(substr($row['username'], 0, 2)); ?></div>
+                <div class="sender-info">
+                  <h4><?= htmlspecialchars($row['username']); ?></h4>
+                  <p><?= htmlspecialchars($row['email']); ?></p>
+                </div>
               </div>
+              <span class="pesan-time">Baru saja</span>
             </div>
-            <span class="pesan-time">5 jam yang lalu</span>
-          </div>
-          <div class="pesan-content">
-            <div class="pesan-text">
-              Pertama kali nyoba Bakso Urat di sini dan langsung jatuh cinta!
-              Teksturnya pas banget...
+
+            <div class="pesan-content">
+              <div class="pesan-text"><?= htmlspecialchars_decode($row['ulasan']); ?></div>
+            </div>
+
+            <div class="pesan-actions">
+              <?php if ($row['status'] == 'unread'): ?>
+                <form action="tandai.php" method="POST" style="display:inline;">
+                  <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                  <button class="btn-balas" type="submit">
+                    <i class="fa-solid fa-eye"></i> Tandai Dibaca
+                  </button>
+                </form>
+              <?php endif; ?>
+
+              <form action="hapus_ulasan.php" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                <button class="btn-hapus-pesan" type="submit">
+                  <i class="fa-solid fa-trash"></i> Hapus
+                </button>
+              </form>
             </div>
           </div>
-          <div class="pesan-actions">
-            <button class="btn-balas">
-              <i class="fa-solid fa-eye"></i> Tandai Dibaca</button><button class="btn-hapus-pesan">
-              <i class="fa-solid fa-trash"></i> Hapus
-            </button>
-          </div>
-        </div>
+        <?php endwhile; ?>
+
       </div>
     </div>
   </div>
@@ -1739,7 +1735,6 @@ if (isset($_POST["submit"])) {
   </div>
 
   <script>
-
     // Element utama
     const body = document.body;
     const popup = document.getElementById("popupProduk");
@@ -1764,7 +1759,7 @@ if (isset($_POST["submit"])) {
     }
 
     // Format harga saat user mengetik
-    hargaInput.addEventListener("input", function (e) {
+    hargaInput.addEventListener("input", function(e) {
       const cursorPos = this.selectionStart;
       const oldLength = this.value.length;
 
@@ -1787,9 +1782,9 @@ if (isset($_POST["submit"])) {
 
       const imageInput = document.getElementById('image');
       if (mode === 'tambah') {
-        imageInput.required = true;   // wajib saat tambah produk
+        imageInput.required = true; // wajib saat tambah produk
       } else {
-        imageInput.required = false;  // opsional saat edit
+        imageInput.required = false; // opsional saat edit
       }
 
       // ubah judul dan tombol
@@ -1847,7 +1842,13 @@ if (isset($_POST["submit"])) {
         const deskripsi = card.querySelector(".deskripsi p")?.textContent?.trim() || "";
         const kategori = card.querySelector(".judul h4")?.textContent?.trim() || "";
 
-        openPopup("edit", { id, nama, harga: hargaText, deskripsi, kategori });
+        openPopup("edit", {
+          id,
+          nama,
+          harga: hargaText,
+          deskripsi,
+          kategori
+        });
       });
     });
 
@@ -1872,7 +1873,7 @@ if (isset($_POST["submit"])) {
     };
 
     navItems.forEach((item) => {
-      item.addEventListener("click", function () {
+      item.addEventListener("click", function() {
         const pageName = this.getAttribute("data-page");
         navItems.forEach((nav) => nav.classList.remove("active"));
         this.classList.add("active");
@@ -1910,7 +1911,6 @@ if (isset($_POST["submit"])) {
     function logout() {
       if (confirm("Yakin ingin logout?")) alert("Logout berhasil!");
     }
-
   </script>
 </body>
 

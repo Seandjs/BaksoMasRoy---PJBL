@@ -95,7 +95,7 @@ nav .logo img {
   margin: 10px 20px;
 }
 .backgon {
-  background-image: url("/properties/hero_section_BG.png");
+  background-image: url(properties/hero_section_BG.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -158,7 +158,7 @@ nav .logo img {
 }
 #ulasan {
   padding: 80px 60px;
-  background-image: url("/properties/footer_section_BG.png");
+  background-image: url(properties/footer_section_BG.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
