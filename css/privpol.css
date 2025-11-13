@@ -254,7 +254,7 @@ nav .logo img {
   border-top: none;
   flex: 1;
   min-width: 300px;
-  margin-top: 60px;
+  margin-top: 12px;
 }
 
 .navigasi,
@@ -292,55 +292,263 @@ nav .logo img {
   margin-top: 40px;
 }
 
-.medsos h2 {
-  font-size: 20px;
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 700;
+ul {
+  display: flex;
+  margin-top: 10px;
+  margin-left: -7px;
 }
 
-.medsos-link a {
-  font-size: 28px;
-  color: #000;
-  margin-right: 25px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+ul li {
+  list-style: none;
 }
 
-.medsos-link a:hover {
-  transform: scale(1.1);
+ul li a {
+  width: 56px;
+  height: 56px;
+  background-color: var(--light);
+  text-align: center;
+  line-height: 56px;
+  font-size: 24px;
+  margin: 0 7px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--light);
+  z-index: 1;
+}
+
+ul li a .icon {
+  position: relative;
+  color: #262626;
+  transition: 0.5s;
+  z-index: 3;
+}
+
+ul li a:hover .icon {
+  color: var(--light);
+  transform: rotateY(360deg);
+}
+
+ul li a:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  transition: 0.5s;
+  z-index: 2;
+}
+
+ul li a:hover:before {
+  top: 0;
 }
 
 .betsos {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 80%;
-  margin-top: -30px;
+  width: 82%;
+  margin-top: px;
   margin-bottom: 30px;
 }
 
 .betmut {
   border: none;
   border-top: 2px solid rgba(0, 0, 0, 0.3);
-  width: 81%;
+  width: 100%;
   margin-top: 40px;
   margin-bottom: 0;
 }
 
 footer {
-  margin-top: -30px;
+  margin-top: 0;
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  padding: 20px 450px;
-  font-size: 19px;
+  padding: 20px 10%;
+  font-size: 18px;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0px;
+  gap: 20px;
 }
 
 footer p,
 footer a {
   max-width: 1100px;
   margin-top: -5%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+    margin-right: 0;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 200px;
+    padding: 80px 30px 30px 30px;
+    transition: right 0.4s ease;
+  }
+
+  nav .navbar-nav.active {
+    right: 0;
+  }
+
+  nav .navbar-extra a {
+    display: flex;
+  }
+
+  .breadcrumb {
+    margin-left: 20px;
+    padding-left: 0.5rem;
+    font-size: 14px;
+  }
+
+  .isi {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .isi h2 {
+    font-size: 28px;
+    padding: 0.5rem;
+  }
+
+  .isi p {
+    font-size: 16px;
+    padding-left: 0.5rem;
+  }
+
+  .isi h3 {
+    font-size: 20px;
+    padding: 0.5rem;
+  }
+
+  .hubungi {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .hubungi h2 {
+    font-size: 24px;
+    padding: 0.5rem;
+  }
+
+  .hubungi p {
+    font-size: 16px;
+    padding-left: 0.5rem;
+  }
+
+  #ulasan {
+    background-size: auto 100%;
+    background-position: center top;
+  }
+
+  .ulasan {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ulasan .form-ulasan {
+    width: 100%;
+    margin-top: 57px;
+    max-width: 100%;
+  }
+
+  .ulasan .form-ulasan h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .ulasan .form-ulasan form {
+    width: 100%;
+    max-width: 100%;
+    background: var(--primary);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .ulasan .form-ulasan form input,
+  .ulasan .form-ulasan form textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .ulasan .form-ulasan form textarea {
+    min-height: 100px;
+  }
+
+  .ulasan .form-ulasan form button {
+    padding: 10px 35px;
+    font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .navigasi-info-dan-medsos {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .navigasi,
+  .info {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .navigasi h3,
+  .info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .navigasi-link a,
+  .info-link a {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .medsos {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .medsos h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .betsos {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .betmut {
+    margin-top: 30px;
+  }
+
+  footer {
+    padding: 20px;
+    font-size: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  footer p,
+  footer a {
+    margin-top: 0;
+  }
 }

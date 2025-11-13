@@ -1,3 +1,34 @@
+<?php
+session_start();
+require 'functions.php';
+
+// Handle ulasan submission
+if (isset($_POST["submit"])) {
+    $nama = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $isiUlasan = htmlspecialchars($_POST["ulasan"]);
+
+    $query = "INSERT INTO ulasan (username, email, ulasan, status) 
+              VALUES ('$nama', '$email', '$isiUlasan', 'unread')";
+    mysqli_query($conn, $query);
+
+    header("Location: " . $_SERVER['PHP_SELF'] . "?ulasan=success");
+    exit;
+}
+?>
+
+<?php if (isset($_GET['ulasan']) && $_GET['ulasan'] == 'success'): ?>
+    <script>
+        alert('Ulasan berhasil dikirim!');
+
+        // Hapus ?ulasan=success dari URL tanpa reload
+        if (window.history.replaceState) {
+            const cleanUrl = window.location.href.split("?")[0];
+            window.history.replaceState(null, null, cleanUrl);
+        }
+    </script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +36,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy-Policy</title>
-    <link rel="stylesheet" href="css/privpol.css">
+    <link rel="stylesheet" href="css/privpol.css" />
     <link rel="icon" type="image/png" href="css/properties/logo.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
@@ -14,14 +45,13 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="">
+            <a href="index.php">
                 <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
             </a>
         </div>
         <div class="navbar-nav">
-            <a href="#beranda">Kembali ke Beranda</a>
-            <a href="#beranda">Hubungi kami</a>
-        </div>
+            <a href="index.php#beranda">Kembali ke Beranda</a>
+            <a href="index.php#ulasan">Hubungi kami</a>
         </div>
         <div class="navbar-extra">
             <a href="#"><i class="fa-solid fa-bars"></i></a>
@@ -32,7 +62,7 @@
     </section>
 
     <div class="breadcrumb">
-        <a href="index.html">Beranda</a>
+        <a href="index.php">Beranda</a>
         <span>›</span>
         <span>Privacy Policy</span>
     </div>
@@ -98,17 +128,16 @@
             <strong>bakso.masroy@gmail.com</strong> atau Tekan tombol "Hubungi Kami" di bagian navigasi atas.
         </p>
         <p style="margin-top: 1rem; color: #999; font-size: 0.9rem;">Terakhir diperbarui: 19 Oktober 2025</p>
-        </div>
     </section>
 
     <section class="ulasan" id="ulasan">
         <div class="form-ulasan">
             <h2>Ulasan</h2>
-            <form action="">
-                <input type="text" placeholder="Nama" />
-                <input type="email" placeholder="E-mail" />
-                <textarea name="" id="" cols="30" rows="10" placeholder="Tulis Ulasan Anda"></textarea>
-                <button type="submit">Kirim</button>
+            <form action="index.php" method="post">
+                <input type="text" placeholder="Nama" name="username" required />
+                <input type="email" placeholder="E-mail" name="email" required />
+                <textarea cols="30" rows="10" placeholder="Tulis Ulasan Anda" name="ulasan" required></textarea>
+                <button type="submit" name="submit">Kirim</button>
             </form>
         </div>
 
@@ -134,13 +163,14 @@
                 <hr class="betsos" />
                 <h2>Media Sosial :</h2>
                 <div class="medsos-link">
-                    <a href="https://www.instagram.com/baksomasroy/" target="_blank"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.tiktok.com/@baksomasroy?lang=en" target="_blank"><i
-                            class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/@Baksomasroy-p1s" target="_blank"><i
-                            class="fa-brands fa-youtube"></i></a>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/baksomasroy/"><i class="fab fa-instagram icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@baksomasroy?lang=en"><i class="fa-brands fa-tiktok icon"></i></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -149,10 +179,11 @@
 
     <footer>
         <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
-        <a href="privacy-policy.html" style="text-decoration: none; color: #000">Privacy Policy</a>
+        <a href="privacy-policy.php" style="text-decoration: none; color: #000">Privacy Policy</a>
         <p>Terms Of Services</p>
     </footer>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

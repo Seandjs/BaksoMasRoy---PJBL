@@ -1,28 +1,48 @@
+<?php
+include 'functions.php';
+
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+$query = mysqli_query($conn, "SELECT * FROM produk WHERE id = $id");
+$produk = mysqli_fetch_assoc($query);
+
+if (!$produk) {
+  header('Location: index.php');
+  exit;
+}
+
+$query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT 3");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bakso Campur</title>
+  <title><?= $produk['nama'] ?> - Bakso Mas Roy</title>
   <link rel="stylesheet" href="css/stylemenu.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 
 <body>
   <nav>
     <div class="logo">
-      <a href="">
+      <a href="index.php">
         <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
       </a>
     </div>
 
     <div class="navbar-nav" id="navbarNav">
-      <a href="#beranda">Beranda</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#produk">Produk</a>
-      <a href="#ulasan">Ulasan</a>
+      <a href="index.php#beranda">Beranda</a>
+      <a href="index.php#tentang">Tentang</a>
+      <a href="index.php#produk">Produk</a>
+      <a href="index.php#ulasan">Ulasan</a>
     </div>
 
     <div class="navbar-extra">
@@ -50,35 +70,30 @@
     </div>
   </nav>
 
-  <section id="info-menu" class="in fo-menu">
+  <section id="info-menu" class="info-menu">
     <div class="breadcrumb">
-      <a href="<?php echo 'index.php'; ?>">Beranda</a>
+      <a href="index.php">Beranda</a>
       <span>›</span>
       <span>Menu</span>
     </div>
     <div class="container-info-menu">
       <div class="info-menu-image">
-        <img src="css/properties/BaksoCampur.png" alt="bakso masroy" />
+        <img src="<?= $produk['image'] ?>" alt="<?= $produk['nama'] ?>" />
       </div>
       <div class="info-menu-text">
-        <h1>Bakso Campur</h1>
-        <p>
-          Bakso Campur adalah sajian bakso dengan berbagai isian dalam satu
-          mangkuk. Di dalamnya terdapat pentol kasar yang kenyal, pentol kotak
-          dengan rasa gurih khas, pentol halus yang lembut, serta tahu yang
-          menyerap cita rasa kuah. Semua disajikan dalam kaldu sapi hangat
-          yang gurih dan harum. Kombinasi berbagai tekstur dan rasa membuat
-          bakso campur menjadi pilihan favorit bagi pecinta kuliner yang ingin
-          menikmati variasi bakso dalam satu hidangan.
-        </p>
-        <h2>Rp 15.000</h2>
+        <h1><?= $produk['nama'] ?></h1>
+        <p><?= $produk['deskripsi'] ?></p>
+        <h2>
+          Rp
+          <?= number_format($produk['harga'], 0, ',', '.') ?>
+        </h2>
       </div>
       <div class="cta">
         <div class="cta-pesan-sekarang">
-          <a href="">Pesan Sekarang</a>
+          <a href="checkout.php?id=<?= $produk['id'] ?>">Pesan Sekarang</a>
         </div>
         <div class="cta-tambah-ke-keranjang">
-          <a href="">Tambah ke Keranjang</a>
+          <a href="add_to_cart.php?id=<?= $produk['id'] ?>">Tambah ke Keranjang</a>
         </div>
       </div>
     </div>
@@ -87,91 +102,36 @@
   <section id="menu-lainya" class="menu-lainya">
     <h2>Menu Lainnya</h2>
     <div class="pembungkusluar">
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="css/properties/BaksoCampur.png" alt="Bakso Pentol" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Bakso Pentol</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Bakso yang diisi dengan pentol kasar, pentol kotak, dan pentol
-              halus.
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 31.000</h3>
+      <?php while ($row = mysqli_fetch_assoc($query_lainnya)): ?>
+        <div class="produk-item">
+          <div class="container">
+            <div class="foto-produk">
+              <div class="shimmer"></div>
+              <img src="<?= $row['image'] ?>" alt="<?= $row['nama'] ?>" />
             </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
+            <div class="judul">
+              <h4><?= $row['kategori'] ?></h4>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="css/properties/BaksoCampur.png" alt="Gorengan" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Gorengan</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Gorengan satu porsi isi 5 dengan kulit pangsit homemade isi
-              sayuran daging cincang membuat terasa kenyal
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 18.000</h3>
+            <div class="nama">
+              <h3><?= $row['nama'] ?></h3>
             </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
+            <div class="deskripsi">
+              <p><?= $row['deskripsi'] ?></p>
+            </div>
+            <div class="hargapesan">
+              <div class="harga-produk">
+                <h3>
+                  Rp
+                  <?= number_format($row['harga'], 0, ',', '.') ?>
+                </h3>
+              </div>
+              <div class="cta-produk">
+                <a href="menubaksomasroy.php?id=<?= $row['id'] ?>">Pesan Sekarang</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="produk-item">
-        <div class="container">
-          <div class="foto-produk">
-            <div class="shimmer"></div>
-            <img src="css/properties/BaksoCampur.png" alt="Lontong" />
-          </div>
-          <div class="judul">
-            <h4>Makanan</h4>
-          </div>
-          <div class="nama">
-            <h3>Lontong</h3>
-          </div>
-          <div class="deskripsi">
-            <p>
-              Lontong terbuat dari beras yang dibungkus dalam daun pisang.
-            </p>
-          </div>
-          <div class="hargapesan">
-            <div class="harga-produk">
-              <h3>Rp 18.000</h3>
-            </div>
-            <div class="cta-produk">
-              <a href="#pesan">Pesan Sekarang</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php endwhile; ?>
     </div>
   </section>
 
@@ -180,10 +140,10 @@
       <div class="navigasi">
         <h3>Bakso Mas Roy</h3>
         <div class="navigasi-link">
-          <a href="#">Beranda</a>
-          <a href="#">Tentang</a>
-          <a href="#">Produk</a>
-          <a href="#">Ulasan</a>
+          <a href="index.php#beranda">Beranda</a>
+          <a href="index.php#tentang">Tentang</a>
+          <a href="index.php#produk">Produk</a>
+          <a href="index.php#ulasan">Ulasan</a>
         </div>
       </div>
       <div class="info">
@@ -197,10 +157,14 @@
       <div class="medsos">
         <h3>Media Sosial :</h3>
         <div class="medsos-link">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/baksomasroy/"><i class="fab fa-instagram icon"></i></a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@baksomasroy?lang=en"><i class="fa-brands fa-tiktok icon"></i></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -249,13 +213,13 @@
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
+    userButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -264,7 +228,7 @@
       }
     });
 
-    userDropdown.addEventListener("click", function (e) {
+    userDropdown.addEventListener("click", function(e) {
       e.stopPropagation();
     });
   }
@@ -274,7 +238,7 @@
   const navbarNav = document.getElementById("navbarNav");
 
   if (hamburgerMenu && navbarNav) {
-    hamburgerMenu.addEventListener("click", function (e) {
+    hamburgerMenu.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       navbarNav.classList.toggle("active");
@@ -286,7 +250,7 @@
       }
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !hamburgerMenu.contains(e.target) &&
         !navbarNav.contains(e.target)
@@ -296,7 +260,7 @@
       }
     });
 
-    navbarNav.addEventListener("click", function (e) {
+    navbarNav.addEventListener("click", function(e) {
       const rect = navbarNav.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
@@ -314,7 +278,7 @@
 
     const navLinks = navbarNav.querySelectorAll("a");
     navLinks.forEach((link) => {
-      link.addEventListener("click", function () {
+      link.addEventListener("click", function() {
         navbarNav.classList.remove("active");
         document.body.style.overflow = "auto";
       });

@@ -1306,7 +1306,28 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       box-shadow: 0 6px 18px rgba(123, 52, 29, 0.36);
     }
 
-    /* Responsive */
+    /* Media Queries */
+    @media (max-width: 1024px) {
+      .stat-card-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+      }
+
+      .stat-card {
+        padding: 15px;
+        height: 130px;
+      }
+
+      .stat-info h3 {
+        font-size: 20px;
+      }
+
+      .stat-icon {
+        font-size: 30px;
+        width: 70px;
+      }
+    }
+
     @media (max-width: 768px) {
       .main-section {
         margin-left: 0;
@@ -1314,12 +1335,78 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       }
 
       .sidebar {
-        width: 0;
-        overflow: hidden;
+        position: fixed;
+        left: -260px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .header {
+        padding: 8px 15px;
+      }
+
+      .hamburger-menu {
+        display: block;
+      }
+
+      .admin-details p {
+        font-size: 12px;
+      }
+
+      .admin-details span {
+        font-size: 10px;
+      }
+
+      .admin-avatar {
+        width: 40px;
+        height: 40px;
+      }
+
+      .admin-avatar img {
+        width: 20px;
+      }
+
+      .stat-page h2,
+      .activity-card h2,
+      .product-header h2,
+      .pesanan-header h2,
+      .pesan-header h2 {
+        font-size: 24px;
+      }
+
+      .stat-card-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px 10px;
+      }
+
+      .stat-card {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .activity-log-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 15px;
+      }
+
+      .activity-item {
+        padding: 15px;
+        padding-left: 45px;
+      }
+
+      .activity-details p {
+        font-size: 12px;
       }
 
       .pembungkusluar {
         gap: 20px;
+        padding: 0 10px;
       }
 
       .pembungkusluar .produk-item {
@@ -1331,10 +1418,187 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
+        padding: 0 10px;
+      }
+
+      .btn-tambah {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .pesanan-container,
+      .pesan-container {
+        padding: 0 10px;
       }
 
       .pesanan-body {
         grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .pesanan-card,
+      .pesan-card {
+        padding: 20px;
+      }
+
+      .pesanan-actions {
+        flex-direction: column;
+      }
+
+      .btn-pesanan {
+        width: 100%;
+      }
+
+      .popup-content {
+        width: 90%;
+        max-width: 90%;
+        padding: 25px 20px;
+        margin: 0 20px;
+      }
+
+      .popup-content h2 {
+        font-size: 24px;
+      }
+
+      .pesan-header-card {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .pesan-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-balas,
+      .btn-hapus-pesan {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 8px 10px;
+      }
+
+      .admin-info {
+        gap: 8px;
+      }
+
+      .stat-page h2,
+      .activity-card h2,
+      .product-header h2,
+      .pesanan-header h2,
+      .pesan-header h2 {
+        font-size: 20px;
+      }
+
+      .stat-card {
+        height: 120px;
+        padding: 12px;
+      }
+
+      .stat-info p {
+        font-size: 12px;
+      }
+
+      .stat-info h3 {
+        font-size: 18px;
+      }
+
+      .stat-icon {
+        font-size: 24px;
+        width: 60px;
+        padding: 10px;
+      }
+
+      .trend {
+        font-size: 10px;
+      }
+
+      .pembungkusluar .produk-item {
+        max-width: 100%;
+      }
+
+      .pembungkusluar .judul h4 {
+        font-size: 9px;
+      }
+
+      .pembungkusluar .nama h3 {
+        font-size: 18px;
+      }
+
+      .pembungkusluar .deskripsi p {
+        font-size: 11px;
+      }
+
+      .pembungkusluar .harga-produk h3 {
+        font-size: 18px;
+      }
+
+      .pesanan-id {
+        font-size: 16px;
+      }
+
+      .pesanan-status {
+        font-size: 11px;
+        padding: 5px 12px;
+      }
+
+      .pesanan-info-item label {
+        font-size: 11px;
+      }
+
+      .pesanan-info-item span {
+        font-size: 13px;
+      }
+
+      .pesanan-total {
+        font-size: 18px;
+      }
+
+      .popup-content {
+        padding: 20px 15px;
+      }
+
+      .popup-content h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .popup-content label {
+        font-size: 13px;
+      }
+
+      .popup-content input,
+      .popup-content select,
+      .popup-content textarea {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .btn-submit {
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      .sender-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .sender-info h4 {
+        font-size: 14px;
+      }
+
+      .sender-info p {
+        font-size: 11px;
+      }
+
+      .pesan-text {
+        font-size: 13px;
       }
     }
   </style>
@@ -1565,7 +1829,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Pesanan</label><span>Bakso Campur x2, Es Teh Manis x2</span>
             </div>
             <div class="pesanan-info-item">
-              <label>Alamat</label><span>Dine in</span>
+              <label>Outlet</label><span>Cabang Sawotratap Aloha</span>
             </div>
             <div class="pesanan-info-item">
               <label>Tanggal Pesan</label><span>14 Januari 2025, 10:30</span>
@@ -1597,7 +1861,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Pesanan</label><span>Bakso Urat x1, Bakso Telur x1</span>
             </div>
             <div class="pesanan-info-item">
-              <label>Alamat</label><span>Jl. Pahlawan No. 45, Surabaya</span>
+              <label>Outlet</label><span>Cabang Merr</span>
             </div>
             <div class="pesanan-info-item">
               <label>Tanggal Pesan</label><span>13 Januari 2025, 14:15</span>
@@ -1629,7 +1893,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Pesanan</label><span>Bakso Jumbo x3, Mie Ayam Bakso x1</span>
             </div>
             <div class="pesanan-info-item">
-              <label>Alamat</label><span>Jl. Sudirman No. 78, Surabaya</span>
+              <label>Alamat</label><span>Cabang Dukuh Kupang</span>
             </div>
             <div class="pesanan-info-item">
               <label>Tanggal Pesan</label><span>12 Januari 2025, 18:45</span>
@@ -1733,185 +1997,237 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       </form>
     </div>
   </div>
-
-  <script>
-    // Element utama
-    const body = document.body;
-    const popup = document.getElementById("popupProduk");
-    const popupContent = document.getElementById("popupContent");
-    const popupTitle = document.getElementById("popupTitle");
-    const closePopupBtn = document.getElementById("closePopup");
-    const form = document.getElementById("formProduk");
-    const submitButton = document.getElementById("submit");
-    const btnTambah = document.querySelector(".btn-tambah");
-    const editButtons = document.querySelectorAll(".btn-edit");
-    const selectKategori = document.getElementById("kategori");
-    const hargaInput = document.getElementById("harga");
-
-    let currentMode = "tambah"; // default mode
-
-    /* ---------- Format angka jadi Rupiah ---------- */
-    function formatRupiah(angka) {
-      const numberString = angka.replace(/[^0-9]/g, '');
-      const number = parseInt(numberString);
-      if (isNaN(number)) return '';
-      return 'Rp ' + number.toLocaleString('id-ID');
-    }
-
-    // Format harga saat user mengetik
-    hargaInput.addEventListener("input", function(e) {
-      const cursorPos = this.selectionStart;
-      const oldLength = this.value.length;
-
-      const formatted = formatRupiah(this.value);
-      this.value = formatted;
-
-      const newLength = formatted.length;
-      const diff = newLength - oldLength;
-      this.setSelectionRange(cursorPos + diff, cursorPos + diff);
-    });
-
-    /* ---------- Buka popup (tambah / edit) ---------- */
-    function openPopup(mode = "tambah", data = null) {
-      currentMode = mode;
-      popup.classList.add("open");
-      popup.style.display = "block";
-      popup.setAttribute("aria-hidden", "false");
-      body.classList.add("modal-open");
-      body.style.overflow = "hidden";
-
-      const imageInput = document.getElementById('image');
-      if (mode === 'tambah') {
-        imageInput.required = true; // wajib saat tambah produk
-      } else {
-        imageInput.required = false; // opsional saat edit
-      }
-
-      // ubah judul dan tombol
-      popupTitle.textContent = mode === "edit" ? "Edit Produk" : "Tambah Produk";
-      form.action = mode === "edit" ? "update.php" : "dashboardadmin.php";
-      submitButton.name = mode === "edit" ? "update" : "submit";
-      submitButton.textContent = mode === "edit" ? "Perbarui Produk" : "Simpan Produk";
-
-      if (mode === "edit" && data) {
-        document.getElementById("produkId").value = data.id || "";
-        document.getElementById("nama").value = data.nama || "";
-        document.getElementById("kategori").value = data.kategori || "";
-        document.getElementById("deskripsi").value = data.deskripsi || "";
-        document.getElementById("harga").value = data.harga ? formatRupiah(data.harga.toString()) : "";
-      } else {
-        form.reset();
-        document.getElementById("produkId").value = "";
-      }
-    }
-
-    /* ---------- Tutup popup ---------- */
-    function closePopup() {
-      popup.classList.remove("open");
-      popup.style.display = "none";
-      popup.setAttribute("aria-hidden", "true");
-      body.classList.remove("modal-open");
-      body.style.overflow = "";
-      form.reset();
-
-      // Kembalikan ke mode tambah
-      popupTitle.textContent = "Tambah Produk";
-      form.action = "dashboardadmin.php";
-      submitButton.name = "submit";
-      submitButton.textContent = "Simpan Produk";
-    }
-
-    /* ---------- Event tombol tambah ---------- */
-    if (btnTambah) {
-      btnTambah.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openPopup("tambah", null);
-      });
-    }
-
-    /* ---------- Event tombol edit ---------- */
-    editButtons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const card = btn.closest(".produk-item");
-        if (!card) return;
-
-        const id = card.querySelector("button.btn-edit").getAttribute("onclick")?.match(/\d+/)?.[0] || "";
-        const nama = card.querySelector(".nama h3")?.textContent?.trim() || "";
-        const hargaText = card.querySelector(".harga-produk h3")?.textContent?.replace(/[^0-9]/g, '') || "";
-        const deskripsi = card.querySelector(".deskripsi p")?.textContent?.trim() || "";
-        const kategori = card.querySelector(".judul h4")?.textContent?.trim() || "";
-
-        openPopup("edit", {
-          id,
-          nama,
-          harga: hargaText,
-          deskripsi,
-          kategori
-        });
-      });
-    });
-
-    /* ---------- Event tutup popup ---------- */
-    closePopupBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      closePopup();
-    });
-    popup.addEventListener("click", (e) => {
-      if (e.target === popup) closePopup();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && popup.classList.contains("open")) closePopup();
-    });
-
-    const navItems = document.querySelectorAll(".nav-item[data-page]");
-    const pages = {
-      statistik: document.getElementById("page-statistik"),
-      produk: document.getElementById("page-produk"),
-      pesanan: document.getElementById("page-pesanan"),
-      pesan: document.getElementById("page-pesan"),
-    };
-
-    navItems.forEach((item) => {
-      item.addEventListener("click", function() {
-        const pageName = this.getAttribute("data-page");
-        navItems.forEach((nav) => nav.classList.remove("active"));
-        this.classList.add("active");
-
-        Object.values(pages).forEach((page) => page?.classList.add("hidden"));
-
-        if (pageName === "statistik") {
-          pages.statistik.classList.remove("hidden");
-          document.querySelector(".activity-card").classList.remove("hidden");
-        } else {
-          document.querySelector(".activity-card").classList.add("hidden");
-          pages[pageName]?.classList.remove("hidden");
-        }
-      });
-    });
-
-    /* ---------- Efek 3D kartu produk ---------- */
-    const produkItems = document.querySelectorAll(".produk-item");
-    produkItems.forEach((item) => {
-      const container = item.querySelector(".container");
-      item.addEventListener("mousemove", (e) => {
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = (y - rect.height / 2) / 10;
-        const rotateY = (rect.width / 2 - x) / 10;
-        container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-      item.addEventListener("mouseleave", () => {
-        container.style.transform = "rotateX(0) rotateY(0)";
-      });
-    });
-
-    /* ---------- Logout ---------- */
-    function logout() {
-      if (confirm("Yakin ingin logout?")) alert("Logout berhasil!");
-    }
-  </script>
 </body>
+<script>
+  // Element utama
+  const body = document.body;
+  const popup = document.getElementById("popupProduk");
+  const popupContent = document.getElementById("popupContent");
+  const popupTitle = document.getElementById("popupTitle");
+  const closePopupBtn = document.getElementById("closePopup");
+  const form = document.getElementById("formProduk");
+  const submitButton = document.getElementById("submit");
+  const btnTambah = document.querySelector(".btn-tambah");
+  const editButtons = document.querySelectorAll(".btn-edit");
+  const selectKategori = document.getElementById("kategori");
+  const hargaInput = document.getElementById("harga");
+
+  let currentMode = "tambah"; // default mode
+
+  /* ---------- Format angka jadi Rupiah ---------- */
+  function formatRupiah(angka) {
+    const numberString = angka.replace(/[^0-9]/g, '');
+    const number = parseInt(numberString);
+    if (isNaN(number)) return '';
+    return 'Rp ' + number.toLocaleString('id-ID');
+  }
+
+  // Format harga saat user mengetik
+  hargaInput.addEventListener("input", function(e) {
+    const cursorPos = this.selectionStart;
+    const oldLength = this.value.length;
+
+    const formatted = formatRupiah(this.value);
+    this.value = formatted;
+
+    const newLength = formatted.length;
+    const diff = newLength - oldLength;
+    this.setSelectionRange(cursorPos + diff, cursorPos + diff);
+  });
+
+  /* ---------- Buka popup (tambah / edit) ---------- */
+  function openPopup(mode = "tambah", data = null) {
+    currentMode = mode;
+    popup.classList.add("open");
+    popup.style.display = "block";
+    popup.setAttribute("aria-hidden", "false");
+    body.classList.add("modal-open");
+    body.style.overflow = "hidden";
+
+    const imageInput = document.getElementById('image');
+    if (mode === 'tambah') {
+      imageInput.required = true; // wajib saat tambah produk
+    } else {
+      imageInput.required = false; // opsional saat edit
+    }
+
+    // ubah judul dan tombol
+    popupTitle.textContent = mode === "edit" ? "Edit Produk" : "Tambah Produk";
+    form.action = mode === "edit" ? "update.php" : "dashboardadmin.php";
+    submitButton.name = mode === "edit" ? "update" : "submit";
+    submitButton.textContent = mode === "edit" ? "Perbarui Produk" : "Simpan Produk";
+
+    if (mode === "edit" && data) {
+      document.getElementById("produkId").value = data.id || "";
+      document.getElementById("nama").value = data.nama || "";
+      document.getElementById("kategori").value = data.kategori || "";
+      document.getElementById("deskripsi").value = data.deskripsi || "";
+      document.getElementById("harga").value = data.harga ? formatRupiah(data.harga.toString()) : "";
+    } else {
+      form.reset();
+      document.getElementById("produkId").value = "";
+    }
+  }
+
+  /* ---------- Tutup popup ---------- */
+  function closePopup() {
+    popup.classList.remove("open");
+    popup.style.display = "none";
+    popup.setAttribute("aria-hidden", "true");
+    body.classList.remove("modal-open");
+    body.style.overflow = "";
+    form.reset();
+
+    // Kembalikan ke mode tambah
+    popupTitle.textContent = "Tambah Produk";
+    form.action = "dashboardadmin.php";
+    submitButton.name = "submit";
+    submitButton.textContent = "Simpan Produk";
+  }
+
+  /* ---------- Event tombol tambah ---------- */
+  if (btnTambah) {
+    btnTambah.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openPopup("tambah", null);
+    });
+  }
+
+  /* ---------- Event tombol edit ---------- */
+  editButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const card = btn.closest(".produk-item");
+      if (!card) return;
+
+      const id = card.querySelector("button.btn-edit").getAttribute("onclick")?.match(/\d+/)?.[0] || "";
+      const nama = card.querySelector(".nama h3")?.textContent?.trim() || "";
+      const hargaText = card.querySelector(".harga-produk h3")?.textContent?.replace(/[^0-9]/g, '') || "";
+      const deskripsi = card.querySelector(".deskripsi p")?.textContent?.trim() || "";
+      const kategori = card.querySelector(".judul h4")?.textContent?.trim() || "";
+
+      openPopup("edit", {
+        id,
+        nama,
+        harga: hargaText,
+        deskripsi,
+        kategori
+      });
+    });
+  });
+
+  /* ---------- Event tutup popup ---------- */
+  closePopupBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closePopup();
+  });
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) closePopup();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popup.classList.contains("open")) closePopup();
+  });
+
+  /* ---------- Navigasi halaman ---------- */
+  const navItems = document.querySelectorAll(".nav-item[data-page]");
+  const pages = {
+    statistik: document.getElementById("page-statistik"),
+    produk: document.getElementById("page-produk"),
+    pesanan: document.getElementById("page-pesanan"),
+    pesan: document.getElementById("page-pesan"),
+  };
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", function() {
+      const pageName = this.getAttribute("data-page");
+
+      // Update active state
+      navItems.forEach((nav) => nav.classList.remove("active"));
+      this.classList.add("active");
+
+      // Hide all pages
+      Object.values(pages).forEach((page) => page?.classList.add("hidden"));
+
+      // Show selected page
+      if (pageName === "statistik") {
+        pages.statistik.classList.remove("hidden");
+        document.querySelector(".activity-card").classList.remove("hidden");
+      } else {
+        document.querySelector(".activity-card").classList.add("hidden");
+        pages[pageName]?.classList.remove("hidden");
+      }
+
+      // Tutup sidebar di mobile setelah klik menu
+      if (window.innerWidth <= 768) {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.remove("active");
+        document.removeEventListener("click", closeSidebarOnClickOutside);
+      }
+    });
+  });
+
+  /* ---------- Toggle Sidebar untuk Mobile ---------- */
+  const hamburgerMenu = document.querySelector(".hamburger-menu");
+  const sidebar = document.getElementById("sidebar");
+
+  if (hamburgerMenu) {
+    hamburgerMenu.addEventListener("click", function(e) {
+      e.stopPropagation();
+      sidebar.classList.toggle("active");
+
+      // Tutup sidebar saat klik di luar sidebar pada mobile
+      if (sidebar.classList.contains("active")) {
+        setTimeout(() => {
+          document.addEventListener("click", closeSidebarOnClickOutside);
+        }, 100);
+      } else {
+        document.removeEventListener("click", closeSidebarOnClickOutside);
+      }
+    });
+  }
+
+  function closeSidebarOnClickOutside(e) {
+    if (window.innerWidth <= 768) {
+      if (!sidebar.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+        sidebar.classList.remove("active");
+        document.removeEventListener("click", closeSidebarOnClickOutside);
+      }
+    }
+  }
+
+  /* ---------- Efek 3D kartu produk ---------- */
+  const produkItems = document.querySelectorAll(".produk-item");
+  produkItems.forEach((item) => {
+    const container = item.querySelector(".container");
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height / 2) / 10;
+      const rotateY = (rect.width / 2 - x) / 10;
+      container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    item.addEventListener("mouseleave", () => {
+      container.style.transform = "rotateX(0) rotateY(0)";
+    });
+  });
+
+  /* ---------- Logout ---------- */
+  function logout() {
+    if (confirm("Yakin ingin logout?")) alert("Logout berhasil!");
+  }
+
+  /* ---------- Fungsi Global untuk Edit (dipanggil dari onclick) ---------- */
+  window.openEditPopup = function(id, nama, kategori, deskripsi, image, harga) {
+    openPopup("edit", {
+      id: id,
+      nama: nama,
+      kategori: kategori,
+      deskripsi: deskripsi,
+      image: image,
+      harga: harga
+    });
+  };
+</script>
 
 </html>

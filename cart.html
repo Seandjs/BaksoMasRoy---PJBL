@@ -8,784 +8,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link rel="stylesheet" href="css/cart.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
   </head>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-      font-optical-sizing: auto;
-      font-style: normal;
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --background: #fff8e1;
-      --primary: #fbd244;
-      --secondary: #7b341d;
-      --dark: #000000;
-      --light: #f0f0f0;
-      --blue: #1a237e;
-      --icon-orange: #ff9800;
-      --icon-teal: #009688;
-      --icon-brown: #6d4c41;
-      --icon-orange-light: #ffb74d;
-      --icon-teal-light: #26a69a;
-      --icon-brown-light: #8d6e63;
-    }
-
-    body {
-      background: var(--background);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-
-    .logo {
-      border: 1px solid rgba(255, 255, 255, 0.153);
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
-      border-radius: 20px;
-      cursor: pointer;
-      order: 0;
-      padding: 2px 3px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      width: 45px;
-      height: auto;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 20px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: none;
-      z-index: 999;
-    }
-
-    nav .navbar-nav {
-      display: flex;
-      gap: 33px;
-      padding-right: 20px;
-      padding-left: 20px;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.153);
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      order: 1;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    nav .navbar-nav a {
-      position: relative;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 550;
-      transition: all 0.3s ease-in-out;
-      padding: 0.5rem 1rem;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-    }
-
-    nav .navbar-nav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 100%;
-      height: 2.5px;
-      background: var(--secondary);
-      border-radius: 5px;
-      transform: translateX(-50%) scaleX(0);
-      transform-origin: center;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    nav .navbar-nav a:hover::after {
-      transform: translateX(-50%) scaleX(0.5);
-    }
-
-    nav .navbar-extra {
-      display: flex;
-      gap: 15px;
-      order: 2;
-      align-items: center;
-      position: relative;
-    }
-
-    nav .navbar-extra a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 550;
-      font-size: 20px;
-      transition: all 0.3s ease-in-out;
-      padding: 20px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.153);
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    nav .navbar-extra a:hover {
-      background: rgba(255, 255, 255, 0.12);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #menu {
-      display: none;
-    }
-
-    #logout {
-      display: none;
-    }
-
-    .user-dropdown {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      border: 1px solid rgba(255, 255, 255, 0.153);
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      padding: 10px;
-      min-width: 180px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .user-dropdown.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .user-dropdown a {
-      display: flex !important;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px !important;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 550;
-      font-size: 16px !important;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      margin-bottom: 5px;
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    .user-dropdown a:last-child {
-      margin-bottom: 0;
-    }
-
-    .user-dropdown a i {
-      font-size: 18px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .user-dropdown a:hover {
-      background: rgba(255, 255, 255, 0.5) !important;
-      transform: translateX(5px) translateY(0) !important;
-      box-shadow: none !important;
-    }
-
-    .user-dropdown::before {
-      content: "";
-      position: absolute;
-      top: -8px;
-      right: 20px;
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 8px solid rgba(255, 255, 255, 0.95);
-    }
-
-    nav .logo img {
-      width: 40px;
-      height: auto;
-      margin: 10px 20px;
-    }
-
-    #cart-page {
-      background-image: url("/properties/navbg.png");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: center;
-      min-height: 100vh;
-      padding-top: 120px;
-      padding-bottom: 60px;
-    }
-
-    .cart-header {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      margin-bottom: 20px;
-      margin-top: 40px;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .cta-back-to-menu {
-      position: absolute;
-      left: 20px;
-      margin-bottom: 0;
-    }
-
-    .cta-back-to-menu a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .cta-back-to-menu a:hover {
-      color: var(--secondary);
-    }
-
-    .cart-title {
-      text-align: center;
-    }
-
-    .cart-title h1 {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--dark);
-      margin: 0;
-    }
-
-    .cart-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .cart-content {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .left-section {
-      width: 100%;
-    }
-
-    .left-content {
-      background: white;
-      box-shadow: 0 4px 20px rgba(123, 52, 29, 0.15);
-      border-radius: 20px;
-      padding: 30px;
-      border: 1px solid rgba(251, 210, 68, 0.2);
-    }
-
-    .user-address {
-      background: rgba(251, 210, 68, 0.1);
-      border-radius: 12px;
-      padding: 15px 20px;
-      margin-bottom: 25px;
-      position: relative;
-      border: 1px solid rgba(251, 210, 68, 0.3);
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-    }
-
-    .user-address p {
-      font-size: 14px;
-      color: var(--dark);
-      line-height: 1.6;
-      margin: 0;
-      padding-right: 60px;
-    }
-
-    .cta-edit-address {
-      position: absolute;
-      right: 15px;
-      z-index: 10;
-    }
-
-    .cta-edit-address button {
-      background: var(--primary);
-      border: 1px solid rgba(123, 52, 29, 0.2);
-      border-radius: 8px;
-      padding: 10px 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 40px;
-      min-height: 40px;
-    }
-
-    .cta-edit-address button:hover {
-      background: var(--secondary);
-      border-color: var(--secondary);
-    }
-
-    .cta-edit-address button a {
-      color: var(--dark);
-      text-decoration: none;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      line-height: 1;
-    }
-
-    .cta-edit-address button:hover a {
-      color: white;
-    }
-
-    .cart-items-container {
-      margin-top: 25px;
-      max-height: 500px;
-      overflow-y: auto;
-      padding-right: 5px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(251, 210, 68, 0.2);
-    }
-
-    .cart-items-container::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .cart-items-container::-webkit-scrollbar-track {
-      background: rgba(251, 210, 68, 0.1);
-      border-radius: 10px;
-    }
-
-    .cart-items-container::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .cart-items-container::-webkit-scrollbar-thumb:hover {
-      background: var(--secondary);
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 15px;
-      align-items: center;
-      background: white;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(251, 210, 68, 0.2);
-    }
-
-    .cart-item:hover {
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(251, 210, 68, 0.3);
-    }
-
-    .cart-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .item-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: rgba(251, 210, 68, 0.1);
-      border: 2px solid rgba(251, 210, 68, 0.3);
-    }
-
-    .item-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .item-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .item-detail .item-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    .item-detail .item-price {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--secondary);
-    }
-
-    .item-count {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(251, 210, 68, 0.1);
-      border-radius: 8px;
-      padding: 5px 8px;
-      border: 1px solid rgba(251, 210, 68, 0.3);
-    }
-
-    .quantity-btn {
-      background: var(--primary);
-      border: none;
-      border-radius: 6px;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--dark);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .quantity-btn:hover {
-      background: var(--secondary);
-      color: white;
-      transform: scale(1.1);
-    }
-
-    .quantity-btn:active {
-      transform: scale(0.95);
-    }
-
-    .quantity-display {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--dark);
-      min-width: 25px;
-      text-align: center;
-    }
-
-    .right-section {
-      position: sticky;
-      top: 120px;
-    }
-
-    .right-content {
-      background: white;
-      box-shadow: 0 4px 20px rgba(123, 52, 29, 0.15);
-      border-radius: 20px;
-      padding: 30px;
-      border: 1px solid rgba(251, 210, 68, 0.2);
-    }
-
-    .right-header h2 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid rgba(251, 210, 68, 0.3);
-    }
-
-    .item-summary {
-      margin-bottom: 25px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding-right: 5px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(251, 210, 68, 0.2);
-    }
-
-    .item-summary::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .item-summary::-webkit-scrollbar-track {
-      background: rgba(251, 210, 68, 0.1);
-      border-radius: 10px;
-    }
-
-    .item-summary::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .item-summary::-webkit-scrollbar-thumb:hover {
-      background: var(--secondary);
-    }
-
-    .items {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(251, 210, 68, 0.2);
-      margin-bottom: 10px;
-    }
-
-    .items:last-of-type {
-      border-bottom: none;
-    }
-
-    .items .item-name {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--dark);
-      flex: 1;
-    }
-
-    .items .item-count {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--secondary);
-      margin: 0 15px;
-      background: rgba(251, 210, 68, 0.2);
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .items .item-price {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--dark);
-      text-align: right;
-    }
-
-    .total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      margin-top: 15px;
-      background: linear-gradient(
-        135deg,
-        var(--primary) 0%,
-        rgba(251, 210, 68, 0.8) 100%
-      );
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(251, 210, 68, 0.3);
-    }
-
-    .total-header {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .total-price {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--secondary);
-    }
-
-    .metode-pembayaran {
-      margin-top: 25px;
-      padding-top: 25px;
-      border-top: 2px solid rgba(251, 210, 68, 0.3);
-    }
-
-    .metode-pembayaran-header h2 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 15px;
-    }
-
-    .metode-pembayaran-content {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-
-    .metode-pembayaran-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 15px 18px;
-      background: white;
-      border: 1px solid rgba(251, 210, 68, 0.3);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .metode-pembayaran-item:hover {
-      border-color: var(--primary);
-      background: rgba(251, 210, 68, 0.05);
-      box-shadow: 0 2px 8px rgba(251, 210, 68, 0.2);
-    }
-
-    .metode-pembayaran-item input[type="radio"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--secondary);
-      order: 2;
-    }
-
-    .metode-pembayaran-item label {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--dark);
-      cursor: pointer;
-      flex: 1;
-      order: 1;
-    }
-
-    .cta-buy-now {
-      margin-top: 25px;
-    }
-
-    .cta-buy-now button {
-      width: 100%;
-      padding: 16px 30px;
-      background: var(--secondary);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(123, 52, 29, 0.3);
-    }
-
-    .cta-buy-now button:hover {
-      background: #5c2716;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(123, 52, 29, 0.4);
-    }
-
-    .cta-buy-now button:active {
-      transform: translateY(0);
-    }
-
-    .navigasi-info-dan-medsos {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 360px;
-      flex-wrap: wrap;
-    }
-
-    .navigasi h3,
-    .info h3,
-    .medsos h3 {
-      font-size: 20px;
-      margin-bottom: 16px;
-      color: var(--dark);
-    }
-
-    .navigasi-link a,
-    .info-link a {
-      display: block;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: #4a4a4a;
-      font-size: 16px;
-      transition: color 0.2s ease;
-    }
-
-    .medsos-link a {
-      text-decoration: none;
-      color: var(--dark);
-      font-size: 24px;
-      opacity: 0.8;
-      margin-right: 16px;
-      transition: color 0.3s ease;
-    }
-
-    .betmut {
-      border: none;
-      border-top: 2px solid rgba(0, 0, 0, 0.3);
-      width: 90%;
-      margin: 40px auto 0 auto;
-      text-align: center;
-      position: relative;
-    }
-
-    .copyright {
-      margin-top: 0;
-      background-color: var(--primary);
-      display: flex;
-      align-items: center;
-      padding: 20px 80px;
-      font-size: 18px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    footer {
-      padding: 80px;
-      background-image: url("/properties/footer_section_BG.png");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: center;
-      overflow-x: hidden;
-    }
-  </style>
   <body>
     <nav>
       <div class="logo">
         <a href="">
-          <img src="properties/logo.png" alt="Logo Bakso MasRoy" />
+          <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
         </a>
       </div>
 
       <div class="navbar-nav" id="navbarNav">
-        <a href="#beranda">Beranda</a>
-        <a href="#tentang">Tentang</a>
-        <a href="#produk">Produk</a>
-        <a href="#ulasan">Ulasan</a>
+        <a href="index.php#beranda">Beranda</a>
+        <a href="index.php#tentang">Tentang</a>
+        <a href="index.php#produk">Produk</a>
+        <a href="index.php#ulasan">Ulasan</a>
       </div>
 
       <div class="navbar-extra">
@@ -828,21 +69,25 @@
           <div class="left-section">
             <div class="left-content">
               <div class="user-address">
-                <p>
-                  Jl. Jojoran Baru 4 No. 29, Kecamatan Mojo, Surabaya, Jawa
-                  Timur
-                </p>
-                <div class="cta-edit-address">
-                  <button>
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                  </button>
-                </div>
+                <label for="outlet-select">Pilih Cabang Outlet:</label>
+                <select id="outlet-select" name="outlet">
+                  <option value="">-- Pilih Cabang --</option>
+                  <option value="cabang1">
+                    Cabang Merr - Sukolilo, Surabaya
+                  </option>
+                  <option value="cabang2">
+                    Cabang Dukuh Kupang - Sawahan, Surabaya
+                  </option>
+                  <option value="cabang3">
+                    Cabang Sawotratap Aloha - Gedangan, Sidoarjo
+                  </option>
+                </select>
               </div>
 
               <div class="cart-items-container">
                 <div class="cart-item">
                   <div class="item-image">
-                    <img src="properties/BaksoCampur.png" alt="" />
+                    <img src="css/properties/BaksoCampur.png" alt="" />
                   </div>
                   <div class="item-detail">
                     <div class="item-name">Bakso Campur</div>
@@ -900,7 +145,7 @@
                 <div class="metode-pembayaran-content">
                   <div class="metode-pembayaran-item">
                     <input type="radio" name="metode-pembayaran" id="cod" />
-                    <label for="cod">Cash On Delivery</label>
+                    <label for="cod">Bayar Ditempat</label>
                   </div>
                   <div class="metode-pembayaran-item">
                     <input
@@ -927,10 +172,10 @@
         <div class="navigasi">
           <h3>Bakso Mas Roy</h3>
           <div class="navigasi-link">
-            <a href="#">Beranda</a>
-            <a href="#">Tentang</a>
-            <a href="#">Produk</a>
-            <a href="#">Ulasan</a>
+            <a href="index.php#beranda">Beranda</a>
+            <a href="index.php#tentang">Tentang</a>
+            <a href="index.php#produk">Produk</a>
+            <a href="index.php#ulasan">Ulasan</a>
           </div>
         </div>
         <div class="info">
@@ -944,10 +189,18 @@
         <div class="medsos">
           <h3>Media Sosial :</h3>
           <div class="medsos-link">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <ul>
+              <li>
+                <a href="https://www.instagram.com/baksomasroy/"
+                  ><i class="fab fa-instagram icon"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@baksomasroy?lang=en"
+                  ><i class="fa-brands fa-tiktok icon"></i
+                ></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

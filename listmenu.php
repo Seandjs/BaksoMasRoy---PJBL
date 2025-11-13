@@ -9,7 +9,7 @@ require 'functions.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakso Campur</title>
-  <link rel="stylesheet" href="css/stylelistmenu.css" />
+  <link rel="stylesheet" href="css/listmenu.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -23,10 +23,10 @@ require 'functions.php';
     </div>
 
     <div class="navbar-nav" id="navbarNav">
-      <a href="#beranda">Beranda</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#produk">Produk</a>
-      <a href="#ulasan">Ulasan</a>
+      <a href="index.php#beranda">Beranda</a>
+      <a href="index.php#tentang">Tentang</a>
+      <a href="index.php#produk">Produk</a>
+      <a href="index.php#ulasan">Ulasan</a>
     </div>
 
     <div class="navbar-extra">
@@ -62,10 +62,7 @@ require 'functions.php';
         </div>
         <div class="hero-p">
           <p>
-            Lorem ipsum dolor sit amet et delectusaccommodare his consul
-            copiosaelegendos at vix ad putent delectus delicata usu. Vidit
-            dissentiet eos cueum an brute copiosae hendrerit.
-          </p>
+            Saat ini, pemesanan hanya dapat dilakukan di outlet yang terdaftar. Kami belum menyediakan layanan pemesanan jarak jauh. </p>
         </div>
       </div>
       <div class="container-slide-photos">
@@ -89,7 +86,7 @@ require 'functions.php';
         <?php
         $makanan = mysqli_query($conn, "SELECT * FROM produk WHERE kategori='makanan'");
         while ($row = mysqli_fetch_array($makanan)):
-          ?>
+        ?>
           <div class="produk-item">
             <div class="container">
               <div class="foto-produk">
@@ -127,7 +124,7 @@ require 'functions.php';
         <?php
         $minuman = mysqli_query($conn, "SELECT * FROM produk WHERE kategori='minuman'");
         while ($row = mysqli_fetch_array($minuman)):
-          ?>
+        ?>
 
           <div class="produk-item">
             <div class="container">
@@ -155,8 +152,8 @@ require 'functions.php';
                 </div>
               </div>
             <?php endwhile; ?>
+            </div>
           </div>
-        </div>
       </div>
   </section>
 
@@ -165,10 +162,10 @@ require 'functions.php';
       <div class="navigasi">
         <h3>Bakso Mas Roy</h3>
         <div class="navigasi-link">
-          <a href="#">Beranda</a>
-          <a href="#">Tentang</a>
-          <a href="#">Produk</a>
-          <a href="#">Ulasan</a>
+          <a href="index.php#beranda">Beranda</a>
+          <a href="index.php#tentang">Tentang</a>
+          <a href="index.php#produk">Produk</a>
+          <a href="index.php#ulasan">Ulasan</a>
         </div>
       </div>
       <div class="info">
@@ -182,10 +179,14 @@ require 'functions.php';
       <div class="medsos">
         <h3>Media Sosial :</h3>
         <div class="medsos-link">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/baksomasroy/"><i class="fab fa-instagram icon"></i></a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@baksomasroy?lang=en"><i class="fa-brands fa-tiktok icon"></i></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -282,13 +283,13 @@ require 'functions.php';
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
+    userButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -297,7 +298,7 @@ require 'functions.php';
       }
     });
 
-    userDropdown.addEventListener("click", function (e) {
+    userDropdown.addEventListener("click", function(e) {
       e.stopPropagation();
     });
   }

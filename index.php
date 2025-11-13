@@ -364,8 +364,7 @@ if (isset($_POST["submit"])) {
                 </h3>
               </div>
               <div class="cta-produk">
-                <a href="menubaksomasroy.html
-                ">Pesan Sekarang</a>
+                <a href="menubaksomasroy.php?id=<?= $row['id'] ?>">Pesan Sekarang</a>
               </div>
             </div>
           </div>
@@ -498,16 +497,10 @@ if (isset($_POST["submit"])) {
         <div class="medsos-link">
           <ul>
             <li>
-              <a href="#"> <i class="fab fa-facebook-f icon"></i> </a>
+              <a href="https://www.instagram.com/baksomasroy/"><i class="fab fa-instagram icon"></i></a>
             </li>
             <li>
-              <a href="#"><i class="fab fa-instagram icon"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-brands fa-tiktok icon"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-brands fa-youtube icon"></i></a>
+              <a href="https://www.tiktok.com/@baksomasroy?lang=en"><i class="fa-brands fa-tiktok icon"></i></a>
             </li>
           </ul>
         </div>
@@ -518,8 +511,8 @@ if (isset($_POST["submit"])) {
 
   <footer>
     <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
-    <a href="privacy-policy.html" style="text-decoration: none; color: #000">Privacy Policy</a>
-    <p>Terms Of Services</p>
+    <a href="privacy-policy.php" style="text-decoration: none; color: #000">Privacy Policy</a>
+    <a href="term-of-services.php" style="text-decoration: none; color: #000">Terms Of Services</a>
   </footer>
 
   <script src="js/script.js"></script>
