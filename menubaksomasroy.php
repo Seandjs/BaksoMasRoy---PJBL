@@ -60,6 +60,98 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
 </head>
 
 <body>
+
+  <div class="popup-overlay" id="popupSignup">
+    <div class="popup-content">
+      <span class="close-popup" id="closeSignup">&times;</span>
+      <h2>Daftar</h2>
+
+      <form action="menubaksomasroy.php?id=<?= $produk['id'] ?>" method="post">
+        <div class="username-wrapper">
+          <label for="username-daftar">Nama</label>
+          <input type="text" name="username" id="username" placeholder="Contoh: Tedjo" required />
+        </div>
+
+        <div class="email-wrapper">
+          <label for="email-daftar">Email</label>
+          <input type="email" name="email" id="email" placeholder="admin123@gmail.com" required />
+        </div>
+
+        <label for="sandi-daftar">Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="******" required />
+          <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <label for="sandi-daftar">Konfirmasi Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password2" id="password2" placeholder="******" required />
+          <button type="button" id="toggle-sandi-2" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="register" class="btn-daftar">Daftar</button>
+        <div class="atau">
+          <p>Atau Daftar Dengan</p>
+        </div>
+        <button type="button" class="btn-google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <div class="ketentuan">
+          <p>
+            Dengan mendaftar, saya menyetujui
+            <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a href="#">Kebijakan Privasi</a>
+            Bakso MasRoy.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popupLogin">
+    <div class="popup-content">
+      <span class="close-popup" id="closeLogin">&times;</span>
+      <h2>Masuk</h2>
+      <?php if (isset($error)): ?>
+        <p>username / password salah!</p>
+      <?php endif; ?>
+
+      <form action="menubaksomasroy.php?id=<?= $produk['id'] ?>" method="post">
+        <div class="username-wrapper">
+          <label for="username-login">Nama</label>
+          <input type="text" name="username" id="username-login" placeholder="Contoh: Paijo" required />
+        </div>
+
+        <label for="sandi-login">Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password-login" placeholder="******" required
+            autocomplete="new-password" />
+          <button type="button" id="toggle-sandi-login" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="login" class="btn-daftar">Masuk</button>
+        <div class="atau">
+          <p>Atau Masuk Dengan</p>
+        </div>
+        <button type="button" class="btn-google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <div class="ketentuan">
+          <p>
+            Dengan mendaftar, saya menyetujui
+            <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a href="#">Kebijakan Privasi</a>
+            Bakso MasRoy.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <nav>
     <div class="logo">
       <a href="index.php">
@@ -243,13 +335,13 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
+    userButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -258,7 +350,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    userDropdown.addEventListener("click", function (e) {
+    userDropdown.addEventListener("click", function(e) {
       e.stopPropagation();
     });
   }
@@ -268,7 +360,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const navbarNav = document.getElementById("navbarNav");
 
   if (hamburgerMenu && navbarNav) {
-    hamburgerMenu.addEventListener("click", function (e) {
+    hamburgerMenu.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       navbarNav.classList.toggle("active");
@@ -280,7 +372,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !hamburgerMenu.contains(e.target) &&
         !navbarNav.contains(e.target)
@@ -290,7 +382,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    navbarNav.addEventListener("click", function (e) {
+    navbarNav.addEventListener("click", function(e) {
       const rect = navbarNav.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
@@ -308,20 +400,22 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
 
     const navLinks = navbarNav.querySelectorAll("a");
     navLinks.forEach((link) => {
-      link.addEventListener("click", function () {
+      link.addEventListener("click", function() {
         navbarNav.classList.remove("active");
         document.body.style.overflow = "auto";
       });
     });
   }
 
-  document.getElementById('addToCart').addEventListener('click', function () {
+  document.getElementById('addToCart').addEventListener('click', function() {
     const productId = this.dataset.id;
 
     fetch('add_cart.php', {
-      method: 'POST',
-      body: new URLSearchParams({ product_id: productId })
-    })
+        method: 'POST',
+        body: new URLSearchParams({
+          product_id: productId
+        })
+      })
       .then(res => res.json())
       .then(data => {
         if (data.status === 'not_login') {
@@ -341,6 +435,95 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
     setTimeout(() => {
       badge.classList.remove('bounce');
     }, 500);
+  }
+
+  // POP-UP SIGNUP
+  const signupBtn = document.querySelector('a[href="#signup"]');
+  const popupSignup = document.getElementById("popupSignup");
+  const closeSignup = document.getElementById("closeSignup");
+
+  if (signupBtn && popupSignup && closeSignup) {
+    signupBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      popupSignup.style.display = "flex";
+    });
+
+    closeSignup.addEventListener("click", () => {
+      popupSignup.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popupSignup) {
+        popupSignup.style.display = "none";
+      }
+    });
+  }
+
+  // POP-UP LOGIN
+  const loginBtn = document.querySelector('a[href="#login"]');
+  const popupLogin = document.getElementById("popupLogin");
+  const closeLogin = document.getElementById("closeLogin");
+
+  if (loginBtn && popupLogin && closeLogin) {
+    loginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      popupLogin.style.display = "flex";
+    });
+
+    closeLogin.addEventListener("click", () => {
+      popupLogin.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popupLogin) {
+        popupLogin.style.display = "none";
+      }
+    });
+  }
+
+  // TOGGLE PASSWORD VISIBILITY - REGISTER
+  const toggleSandi = document.getElementById("toggle-sandi");
+  const passwordInput = document.getElementById("password");
+
+  if (toggleSandi && passwordInput) {
+    toggleSandi.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      toggleSandi.setAttribute("aria-pressed", isHidden);
+      toggleSandi.innerHTML = isHidden ?
+        '<i class="fa-regular fa-eye-slash"></i>' :
+        '<i class="fa-regular fa-eye"></i>';
+    });
+  }
+
+  // TOGGLE PASSWORD VISIBILITY - CONFIRM PASSWORD
+  const toggleSandi2 = document.getElementById("toggle-sandi-2");
+  const password2Input = document.getElementById("password2");
+
+  if (toggleSandi2 && password2Input) {
+    toggleSandi2.addEventListener("click", () => {
+      const isHidden = password2Input.type === "password";
+      password2Input.type = isHidden ? "text" : "password";
+      toggleSandi2.setAttribute("aria-pressed", isHidden);
+      toggleSandi2.innerHTML = isHidden ?
+        '<i class="fa-regular fa-eye-slash"></i>' :
+        '<i class="fa-regular fa-eye"></i>';
+    });
+  }
+
+  // TOGGLE PASSWORD VISIBILITY - LOGIN
+  const toggleSandiLogin = document.getElementById("toggle-sandi-login");
+  const passwordLoginInput = document.getElementById("password-login");
+
+  if (toggleSandiLogin && passwordLoginInput) {
+    toggleSandiLogin.addEventListener("click", () => {
+      const isHidden = passwordLoginInput.type === "password";
+      passwordLoginInput.type = isHidden ? "text" : "password";
+      toggleSandiLogin.setAttribute("aria-pressed", isHidden);
+      toggleSandiLogin.innerHTML = isHidden ?
+        '<i class="fa-regular fa-eye-slash"></i>' :
+        '<i class="fa-regular fa-eye"></i>';
+    });
   }
 </script>
 

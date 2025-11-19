@@ -224,6 +224,165 @@ nav .logo img {
   margin: 10px 20px;
 }
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.popup-content {
+  background: var(--primary);
+  border: solid 0.5px var(--dark);
+  padding: 30px 40px 30px 40px;
+  border-radius: 16px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.popup-content label {
+  text-align: left;
+  display: block;
+  position: relative;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.popup-content form input {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--light);
+  border: solid 0.5px var(--dark);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.popup-content form input:focus {
+  background-color: var(--light);
+  border: solid 0.5px var(--dark);
+  outline: none;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+}
+
+.toggle-password i {
+  pointer-events: none;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.toggle-password i:hover {
+  opacity: 1;
+}
+
+.btn-daftar,
+.btn-google {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: var(--light);
+  border: solid 0.5px var(--dark);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  margin: 10px 0 10px 0;
+}
+
+.btn-daftar:hover,
+.btn-google:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.atau {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+  position: relative;
+  font-size: 14px;
+}
+
+.atau::before,
+.atau::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: #000;
+  opacity: 0.6;
+}
+
+.ketentuan {
+  font-size: 12px;
+  color: var(--dark);
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.ketentuan a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.username-wrapper,
+.email-wrapper {
+  margin-bottom: 10px;
+}
+
 #info-menu {
   background-image: url(properties/navbg.png);
   background-repeat: no-repeat;
@@ -525,13 +684,19 @@ nav .logo img {
 }
 
 .bounce {
-  animation: bounce .5s;
+  animation: bounce 0.5s;
 }
 
 @keyframes bounce {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.4); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .menu-lainya {

@@ -196,6 +196,11 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       font-weight: 500;
     }
 
+    .logout-btn a {
+      color: #d32f2f;
+      text-decoration: none;
+    }
+
     .logout-btn::before {
       content: "";
       position: absolute;
@@ -451,11 +456,10 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
     .activity-item {
       position: relative;
       padding: 20px;
-      padding-left: 50px;
       margin-bottom: 15px;
       background: white;
       border-radius: 10px;
-      border-left: 4px solid;
+      border-left: 4px solid var(--secondary);
       transition: all 0.3s ease;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
@@ -465,44 +469,28 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .activity-item.done {
-      border-color: var(--icon-teal);
-      background: linear-gradient(to right, rgba(0, 150, 136, 0.05), white);
+    .activity-details p {
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
-    .activity-item.sending {
-      border-color: var(--blue);
-      background: linear-gradient(to right, rgba(26, 35, 126, 0.05), white);
+    .activity-details p:first-child {
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 10px;
     }
 
-    .activity-item.process {
-      border-color: var(--icon-orange);
-      background: linear-gradient(to right, rgba(255, 152, 0, 0.05), white);
+    .activity-details p:last-child {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
     }
 
-    .activity-dot {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      animation: pulse 2s infinite;
-    }
-
-    .activity-dot.done {
-      background-color: var(--icon-teal);
-    }
-
-    .activity-dot.sending {
-      background-color: var(--blue);
-    }
-
-    .activity-dot.process {
-      background-color: var(--icon-orange);
+    .activity-details p span {
+      font-weight: 600;
+      color: var(--secondary);
     }
 
     @keyframes pulse {
@@ -801,19 +789,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       margin-bottom: 20px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      border-left: 4px solid;
-    }
-
-    .pesanan-card.process {
-      border-color: var(--icon-orange);
-    }
-
-    .pesanan-card.sending {
-      border-color: var(--blue);
-    }
-
-    .pesanan-card.done {
-      border-color: var(--icon-teal);
+      border-left: 4px solid var(--secondary);
     }
 
     .pesanan-card:hover {
@@ -834,26 +810,6 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       font-size: 18px;
       font-weight: 700;
       color: var(--dark);
-    }
-
-    .pesanan-status {
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      color: white;
-    }
-
-    .pesanan-status.process {
-      background: var(--icon-orange);
-    }
-
-    .pesanan-status.sending {
-      background: var(--blue);
-    }
-
-    .pesanan-status.done {
-      background: var(--icon-teal);
     }
 
     .pesanan-body {
@@ -887,44 +843,11 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       font-weight: 700;
     }
 
+    /* Tombol aksi DIHAPUS (btn-proses & btn-selesai) */
     .pesanan-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      display: none !important;
     }
 
-    .btn-pesanan {
-      flex: 1;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 1px solid var(--dark);
-    }
-
-    .btn-proses {
-      background: var(--blue);
-      color: white;
-    }
-
-    .btn-proses:hover {
-      background: #0d1642;
-      transform: translateY(-2px);
-    }
-
-    .btn-selesai {
-      background: var(--icon-teal);
-      color: white;
-    }
-
-    .btn-selesai:hover {
-      background: #00786f;
-      transform: translateY(-2px);
-    }
 
     /* PESAN PAGE */
     .pesan-page {
@@ -1711,42 +1634,31 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
     <div class="activity-card">
       <h2>Aktivitas Terkini</h2>
       <div class="activity-log-container">
-        <div class="activity-item done">
-          <div class="activity-dot done"></div>
+
+        <div class="activity-item">
           <div class="activity-details">
-            <p>
-              Pesanan atas nama <span>Paijo</span> -
-              <span>Bakso Campur 2x</span>
-            </p>
-            <p>Status: <span>Selesai</span></p>
+            <p>Pesanan atas nama <span>Paijo</span> - <span>Bakso Campur 2x</span></p>
             <p>Tanggal: <span>12 Januari 2025</span></p>
           </div>
         </div>
 
-        <div class="activity-item sending">
-          <div class="activity-dot sending"></div>
+        <div class="activity-item">
           <div class="activity-details">
-            <p>
-              Pesanan atas nama <span>Siti</span> - <span>Bakso Urat 1x</span>
-            </p>
-            <p>Status: <span>Dikirim</span></p>
+            <p>Pesanan atas nama <span>Siti</span> - <span>Bakso Urat 1x</span></p>
             <p>Tanggal: <span>13 Januari 2025</span></p>
           </div>
         </div>
 
-        <div class="activity-item process">
-          <div class="activity-dot process"></div>
+        <div class="activity-item">
           <div class="activity-details">
-            <p>
-              Pesanan atas nama <span>Ahmad</span> -
-              <span>Bakso Jumbo 3x</span>
-            </p>
-            <p>Status: <span>Diproses</span></p>
+            <p>Pesanan atas nama <span>Ahmad</span> - <span>Bakso Jumbo 3x</span></p>
             <p>Tanggal: <span>14 Januari 2025</span></p>
           </div>
         </div>
+
       </div>
     </div>
+
 
     <div class="product-page hidden" id="page-produk">
       <div class="product-header">
@@ -1812,12 +1724,14 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       <div class="pesanan-header">
         <h2>Kelola Pesanan</h2>
       </div>
+
       <div class="pesanan-container">
-        <div class="pesanan-card process">
+
+        <div class="pesanan-card">
           <div class="pesanan-header-card">
             <span class="pesanan-id">#ORD-001</span>
-            <span class="pesanan-status process">Diproses</span>
           </div>
+
           <div class="pesanan-body">
             <div class="pesanan-info-item">
               <label>Nama Pelanggan</label><span>Ahmad Wijaya</span>
@@ -1838,18 +1752,13 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Total Pembayaran</label><span class="pesanan-total">Rp 72.000</span>
             </div>
           </div>
-          <div class="pesanan-actions">
-            <button class="btn-pesanan btn-proses">
-              <i class="fa-solid fa-truck"></i> Kirim Pesanan
-            </button>
-          </div>
         </div>
 
-        <div class="pesanan-card sending">
+        <div class="pesanan-card">
           <div class="pesanan-header-card">
             <span class="pesanan-id">#ORD-002</span>
-            <span class="pesanan-status sending">Dikirim</span>
           </div>
+
           <div class="pesanan-body">
             <div class="pesanan-info-item">
               <label>Nama Pelanggan</label><span>Siti Nurhaliza</span>
@@ -1870,18 +1779,13 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Total Pembayaran</label><span class="pesanan-total">Rp 57.000</span>
             </div>
           </div>
-          <div class="pesanan-actions">
-            <button class="btn-pesanan btn-selesai">
-              <i class="fa-solid fa-check"></i> Selesaikan Pesanan
-            </button>
-          </div>
         </div>
 
-        <div class="pesanan-card done">
+        <div class="pesanan-card">
           <div class="pesanan-header-card">
             <span class="pesanan-id">#ORD-003</span>
-            <span class="pesanan-status done">Selesai</span>
           </div>
+
           <div class="pesanan-body">
             <div class="pesanan-info-item">
               <label>Nama Pelanggan</label><span>Budi Santoso</span>
@@ -1893,7 +1797,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
               <label>Pesanan</label><span>Bakso Jumbo x3, Mie Ayam Bakso x1</span>
             </div>
             <div class="pesanan-info-item">
-              <label>Alamat</label><span>Cabang Dukuh Kupang</span>
+              <label>Outlet</label><span>Cabang Dukuh Kupang</span>
             </div>
             <div class="pesanan-info-item">
               <label>Tanggal Pesan</label><span>12 Januari 2025, 18:45</span>
@@ -1903,8 +1807,10 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
             </div>
           </div>
         </div>
+
       </div>
     </div>
+
 
     <!-- PESAN (tetap) -->
     <div class="pesan-page hidden" id="page-pesan">
