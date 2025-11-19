@@ -283,7 +283,8 @@ if (isset($_POST["submit"])) {
           <div class="tittle">Awal Popularitas </div>
           <div class="year">2023</div>
           <div class="paragraf">
-            Bakso Mas Roy mulai dikenal luas lewat konten viral di TikTok yang menarik dan interaktif. Cabang pertama diduga berada di Merr, Surabaya Barat, lalu berkembang ke Dukuh Kupang Surabaya dan Sidoarjo.
+            Bakso Mas Roy mulai dikenal luas lewat konten viral di TikTok yang menarik dan interaktif. Cabang pertama
+            diduga berada di Merr, Surabaya Barat, lalu berkembang ke Dukuh Kupang Surabaya dan Sidoarjo.
           </div>
         </div>
         <div class="center-dot"></div>
@@ -297,7 +298,9 @@ if (isset($_POST["submit"])) {
           <div class="tittle">Ekspansi & Digitalisasi </div>
           <div class="year">2024</div>
           <div class="paragraf">
-            Bakso Mas Roy membuka cabang baru di Sawotratap Aloha, Sidoarjo pada September 2024 sebagai bukti pertumbuhan bisnis. Pada awal 2024, strategi pemasaran digital dan pengembangan aplikasi penjualan online mulai ada untuk mendukung layanan modern.
+            Bakso Mas Roy membuka cabang baru di Sawotratap Aloha, Sidoarjo pada September 2024 sebagai bukti
+            pertumbuhan bisnis. Pada awal 2024, strategi pemasaran digital dan pengembangan aplikasi penjualan online
+            mulai ada untuk mendukung layanan modern.
           </div>
         </div>
         <div class="center-dot"></div>
@@ -310,7 +313,9 @@ if (isset($_POST["submit"])) {
           <div class="tittle">Puncak Kepopuleran </div>
           <div class="year">2025</div>
           <div class="paragraf">
-            Bakso Mas Roy mendapat sorotan dari media besar seperti Jawa Pos sebagai kuliner yang paling diburu. Dikenal dengan rasa otentik, bakso jumbo, dan kuah gurih khas, Bakso Mas Roy terus menarik pelanggan lewat inovasi varian produk yang menjaga daya tariknya
+            Bakso Mas Roy mendapat sorotan dari media besar seperti Jawa Pos sebagai kuliner yang paling diburu. Dikenal
+            dengan rasa otentik, bakso jumbo, dan kuah gurih khas, Bakso Mas Roy terus menarik pelanggan lewat inovasi
+            varian produk yang menjaga daya tariknya
           </div>
         </div>
         <div class="center-dot"></div>
@@ -335,7 +340,7 @@ if (isset($_POST["submit"])) {
       <?php
       $result = mysqli_query($conn, "SELECT * FROM produk");
       while ($row = mysqli_fetch_assoc($result)):
-      ?>
+        ?>
         <div class="produk-item">
           <div class="container">
             <div class="foto-produk">

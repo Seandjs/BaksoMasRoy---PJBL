@@ -1,7 +1,39 @@
 <?php
 include 'functions.php';
 
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+if (isset($_POST["register"])) {
+
+  if (registrasi($_POST) > 0) {
+    echo " <script>
+      alert('user baru berhasil ditambahkan!');
+    </script>";
+  } else {
+    echo mysqli_error($conn);
+  }
+}
+
+if (isset($_POST["login"])) {
+
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  $result = mysqli_query($conn, "SELECT * FROM user WHERE username ='$username'");
+
+  //cek usn
+  if (mysqli_num_rows($result) === 1) {
+
+    //cek pw
+    $row = mysqli_fetch_assoc($result);
+    if (password_verify($password, $row["password"])) {
+      $_SESSION["login"] = true;
+      header("Location: index.php");
+      exit;
+    }
+  }
+  $error = true;
+}
+
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 $query = mysqli_query($conn, "SELECT * FROM produk WHERE id = $id");
 $produk = mysqli_fetch_assoc($query);
@@ -12,6 +44,7 @@ if (!$produk) {
 }
 
 $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT 3");
+
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +55,8 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?= $produk['nama'] ?> - Bakso Mas Roy</title>
   <link rel="stylesheet" href="css/stylemenu.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 
 <body>
@@ -46,23 +75,24 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
     </div>
 
     <div class="navbar-extra">
-      <a href="#" id="cart" class="cart">
+      <a href="cart.php" id="cart" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
-      </a>
-      <a href="#" id="user" class="user">
-        <i class="fa-solid fa-user"></i>
+        <span id="cartCount">0</span>
       </a>
 
-      <div class="user-dropdown" id="userDropdown">
-        <a href="#login">
-          <i class="fa-solid fa-right-to-bracket"></i> Log In
+      <?php if (isset($_SESSION['login'])): ?>
+        <a href="logout.php" id="logout" class="logout" style="display: inline;">
+          <i class="fa-solid fa-right-from-bracket"></i>
         </a>
-        <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
-      </div>
-
-      <a href="#" id="logout" class="logout">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
+      <?php else: ?>
+        <a href="#" id="user" class="user">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+          <a href="#signup"><i class="fa-solid fa-user-plus"></i> Daftar</a>
+        </div>
+      <?php endif; ?>
 
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
@@ -93,7 +123,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
           <a href="checkout.php?id=<?= $produk['id'] ?>">Pesan Sekarang</a>
         </div>
         <div class="cta-tambah-ke-keranjang">
-          <a href="add_to_cart.php?id=<?= $produk['id'] ?>">Tambah ke Keranjang</a>
+          <button id="addToCart" data-id="<?= $produk['id'] ?>">Tambah ke Keranjang</button>
         </div>
       </div>
     </div>
@@ -213,13 +243,13 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -228,7 +258,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }
@@ -238,7 +268,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const navbarNav = document.getElementById("navbarNav");
 
   if (hamburgerMenu && navbarNav) {
-    hamburgerMenu.addEventListener("click", function(e) {
+    hamburgerMenu.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       navbarNav.classList.toggle("active");
@@ -250,7 +280,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !hamburgerMenu.contains(e.target) &&
         !navbarNav.contains(e.target)
@@ -260,7 +290,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    navbarNav.addEventListener("click", function(e) {
+    navbarNav.addEventListener("click", function (e) {
       const rect = navbarNav.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
@@ -278,11 +308,39 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
 
     const navLinks = navbarNav.querySelectorAll("a");
     navLinks.forEach((link) => {
-      link.addEventListener("click", function() {
+      link.addEventListener("click", function () {
         navbarNav.classList.remove("active");
         document.body.style.overflow = "auto";
       });
     });
+  }
+
+  document.getElementById('addToCart').addEventListener('click', function () {
+    const productId = this.dataset.id;
+
+    fetch('add_cart.php', {
+      method: 'POST',
+      body: new URLSearchParams({ product_id: productId })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'not_login') {
+          alert("Anda belum login, silakan login terlebih dahulu.");
+          window.location.href = 'menubaksomasroy.php?id=<?= $produk['id'] ?>';
+        } else if (data.status === 'success') {
+          updateCartAnimation(data.total);
+        }
+      });
+  });
+
+  function updateCartAnimation(total) {
+    const badge = document.getElementById('cartCount');
+    badge.innerText = total;
+    badge.classList.add('bounce');
+
+    setTimeout(() => {
+      badge.classList.remove('bounce');
+    }, 500);
   }
 </script>
 

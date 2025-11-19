@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2025 at 03:11 PM
+-- Generation Time: Nov 19, 2025 at 10:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,7 +38,7 @@ CREATE TABLE `amin` (
 --
 
 INSERT INTO `amin` (`id`, `username`, `password`) VALUES
-(1, '@admin', '$2y$10$pRhVoZXgLeZ4.NCGlzDeruNEtb1JqsvYRRtnYtu0U42emvvG8ebGO');
+(1, 'kara', '$2y$10$pRhVoZXgLeZ4.NCGlzDeruNEtb1JqsvYRRtnYtu0U42emvvG8ebGO');
 
 -- --------------------------------------------------------
 
@@ -60,9 +60,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `nama`, `kategori`, `harga`, `deskripsi`, `image`) VALUES
-(27, 'Karaa', 'Makanan', 4699999, 'Lorem', 'uploads/1325b1b5c438ee3523114da5ca8f1d5a.jpg'),
-(28, 'Waru', 'Minuman', 1, 'asdasdasd', 'uploads/Screenshot 2025-10-08 090034.png'),
-(30, 'bakso', 'Makanan', 12000, 'bakso', 'uploads/Screenshot 2025-05-23 090410.png');
+(32, 'Bakso Campur', 'Makanan', 25000, 'Ready bakso campur 1 kasar 1 tahu bakso 2 bakso kotak 2 bakso halus', 'uploads/gorengan.jpg'),
+(33, 'Gorengan', 'Makanan', 15000, 'Seporsi Gorengan isi 5 dengan ukuran yang besar dan rasa yang enak', 'uploads/bakeso.jpg'),
+(34, 'Es Teh', 'Minuman', 5000, 'Teh manis segar dengan es batu', 'uploads/essteh.jpeg'),
+(35, 'Lontong', 'Makanan', 5000, '1 Lontong panjang besar dan lezat', 'uploads/lontong.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,11 @@ CREATE TABLE `ulasan` (
 
 INSERT INTO `ulasan` (`id`, `username`, `email`, `ulasan`, `status`) VALUES
 (8, 'the rock', 'therockband@gmail.com', 'hancur hatiku, mengenang dikau', 'read'),
-(10, 'echo', 'echo@gmail.com', 'aku cinta kau dan dia', 'unread'),
+(10, 'echo', 'echo@gmail.com', 'aku cinta kau dan dia', 'read'),
 (11, 'paramore', 'paramore@gmail.com', 'ain&#039;t it fun?', 'unread'),
-(12, 'sean_ddd', 'adasd@gmail.com', '!@#$%^*()', 'unread');
+(12, 'sean_ddd', 'adasd@gmail.com', '!@#$%^*()', 'unread'),
+(16, 'azkaasukaara', 'noaa277@gmail.com', 'azka sayang ara', 'unread'),
+(17, 'Kara', 'noaa277@gmail.com', '2edd', 'unread');
 
 -- --------------------------------------------------------
 
@@ -106,10 +109,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
-(5, 'kara', 'noaa277@gmail.com', '$2y$10$n32bGWeHpmJCqq1wbUE8suH2nMwHc/fCFFvlBuqJ5bhfrZS5ddN4O'),
-(6, 'azka', 'azka123@gmail.com', '$2y$10$Shgv8XKRaYTCbW5XulgmeeN1r.FfiNdsSe6YliLHY7ToPGsXr29Gu'),
-(10, 'dhefano', 'fano01h@gmail.com', '$2y$10$Nj3pGHsjOAFpS7HwVKckbOzisjPGrs8xt8HaieWqXRqTMHrhciOYS'),
-(11, 'sean', 'sean@gmail.com', '$2y$10$HflwbyBsW0LSnr0s7EV5au2Jt0VzFdSoWGOP3TqdWsX3k1FG1nQE.');
+(14, 'kara', 'noaa277@gmail.com', '$2y$10$SyUU4KWEJC2Jzxo6lx9dgOhi.U5cheAUW7/55PFRXlNIz42gBSB66');
 
 --
 -- Indexes for dumped tables
@@ -153,19 +153,19 @@ ALTER TABLE `amin`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `ulasan`
 --
 ALTER TABLE `ulasan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
