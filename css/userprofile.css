@@ -461,6 +461,24 @@ footer {
   transform: translateY(-2px);
 }
 
+.log-out-btn {
+  grid-column: span 2;
+  padding: 14px 20px;
+  background: #EA2425;
+  border-radius: 12px;
+  color: var(--light);
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.log-out-btn:hover {
+  background: #c41b1b;
+  transform: translateY(-2px);
+}
+
 /* Order History Table */
 .order-table {
   width: 100%;

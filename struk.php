@@ -1,3 +1,47 @@
+<?php
+session_start();
+include 'functions.php';
+date_default_timezone_set('Asia/Jakarta');
+
+if (isset($_GET['order'])) {
+
+    $oid = $_GET['order'];
+    $q = mysqli_query($conn, "SELECT * FROM orders WHERE id = $oid");
+    $order = mysqli_fetch_assoc($q);
+
+    if (!$order) {
+        die("Order tidak ditemukan.");
+    }
+
+    $orderid = $order['order_code'];
+    $tanggal = $order['tanggal'];
+    $total = $order['total_harga'];
+    $outlet = $order['outlet'];
+    $method = $order['metode'];
+
+    $produk = [];
+
+} else {
+
+    if (!isset($_SESSION['checkout_orderid'])) {
+        header("Location: cart.php");
+        exit;
+    }
+
+    $orderid = $_SESSION['checkout_orderid'];
+    $tanggal = $_SESSION['checkout_date'];
+    $total = $_SESSION['checkout_total'];
+    $outlet = $_SESSION['checkout_outlet'];
+    $method = $_SESSION['checkout_method'];
+    $produk = $_SESSION['checkout_produk'];
+
+    $total = 0;
+    foreach ($produk as $p) {
+        $total += $p['harga'] * $p['qty'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +50,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bakso Campur - Receipt</title>
     <link rel="stylesheet" href="css/summary.css" />
+    <link rel="icon" type="image/png" href="css/properties/logo.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -62,64 +107,46 @@
                     <h1>Bakso Mas Roy</h1>
                 </div>
                 <div class="outlet">
-                    <h2>Cabang Merr</h2>
-                </div>
-                <div class="lokasi-outlet">
-                    <p>
-                        Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
-                        Jawa Timur 60117
-                    </p>
+                    <h2><?= $outlet ?></h2>
                 </div>
             </div>
 
             <div class="receipt-info">
                 <div class="info-item">
-                    <span class="info-label">ORD-003</span>
+                    <span class="info-label"><?= $orderid ?></span>
                 </div>
                 <div class="info-item">
-                    <span class="info-value">14-11-2025</span>
+                    <span class="info-value"><?= $tanggal ?></span>
                 </div>
             </div>
 
             <div class="receipt-body">
-                <div class="receipt-item">
-                    <span class="item-name">Bakso Campur</span>
-                    <span class="item-qty">3x</span>
-                    <span class="item-price">Rp 75.000</span>
-                </div>
-                <div class="receipt-item">
-                    <span class="item-name">Es Teh Anget</span>
-                    <span class="item-qty">1x</span>
-                    <span class="item-price">Rp 5.000</span>
-                </div>
-                <div class="receipt-item">
-                    <span class="item-name">Es Teh Anget</span>
-                    <span class="item-qty">1x</span>
-                    <span class="item-price">Rp 5.000</span>
-                </div>
-                <div class="receipt-item">
-                    <span class="item-name">Es Teh Anget</span>
-                    <span class="item-qty">1x</span>
-                    <span class="item-price">Rp 5.000</span>
-                </div>
+                <?php foreach ($produk as $p): ?>
+                    <div class="receipt-item">
+                        <span class="item-name"><?= $p['nama'] ?></span>
+                        <span class="item-qty"><?= $p['qty'] ?>x</span>
+                        <span class="item-price">Rp <?= number_format($p['harga'], 0, ',', '.') ?></span>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
             <div class="receipt-footer">
                 <div class="footer-info">
-                    <p>Total QTY : 6</p>
-                    <p>Metode Pembayaran : QRIS</p>
+                    <p>Total QTY : <?= array_sum(array_column($produk, 'qty')); ?></p>
+                    <p>Metode Pembayaran : <?= strtoupper($method) ?></p>
                 </div>
                 <div class="total-section">
                     <div class="subtotal">
                         <span>Sub Total</span>
-                        <span>Rp 90.000</span>
+                        <span>Rp <?= number_format($total, 0, ',', '.') ?></span>
                     </div>
                     <div class="total">
                         <span>Total</span>
-                        <span>Rp 90.000</span>
+                        <span>Rp <?= number_format($total, 0, ',', '.') ?></span>
                     </div>
                 </div>
-                <button class="btn-back">Kembali ke Halaman utama</button>
+                <a href="index.php" class="btn-back">Kembali ke Halaman Utama</a>
+                <!-- <button class="btn-back">Kembali ke Halaman utama</button> -->
             </div>
         </div>
     </section>

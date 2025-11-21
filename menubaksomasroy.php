@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'functions.php';
 
 if (isset($_POST["register"])) {
@@ -55,6 +56,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?= $produk['nama'] ?> - Bakso Mas Roy</title>
   <link rel="stylesheet" href="css/stylemenu.css" />
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -212,7 +214,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       </div>
       <div class="cta">
         <div class="cta-pesan-sekarang">
-          <a href="checkout.php?id=<?= $produk['id'] ?>">Pesan Sekarang</a>
+          <a href="buy.php?id=<?= $produk['id'] ?>">Pesan Sekarang</a>
         </div>
         <div class="cta-tambah-ke-keranjang">
           <button id="addToCart" data-id="<?= $produk['id'] ?>">Tambah ke Keranjang</button>
@@ -335,13 +337,13 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -350,7 +352,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }
@@ -360,7 +362,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const navbarNav = document.getElementById("navbarNav");
 
   if (hamburgerMenu && navbarNav) {
-    hamburgerMenu.addEventListener("click", function(e) {
+    hamburgerMenu.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       navbarNav.classList.toggle("active");
@@ -372,7 +374,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !hamburgerMenu.contains(e.target) &&
         !navbarNav.contains(e.target)
@@ -382,7 +384,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    navbarNav.addEventListener("click", function(e) {
+    navbarNav.addEventListener("click", function (e) {
       const rect = navbarNav.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
@@ -400,22 +402,22 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
 
     const navLinks = navbarNav.querySelectorAll("a");
     navLinks.forEach((link) => {
-      link.addEventListener("click", function() {
+      link.addEventListener("click", function () {
         navbarNav.classList.remove("active");
         document.body.style.overflow = "auto";
       });
     });
   }
 
-  document.getElementById('addToCart').addEventListener('click', function() {
+  document.getElementById('addToCart').addEventListener('click', function () {
     const productId = this.dataset.id;
 
     fetch('add_cart.php', {
-        method: 'POST',
-        body: new URLSearchParams({
-          product_id: productId
-        })
+      method: 'POST',
+      body: new URLSearchParams({
+        product_id: productId
       })
+    })
       .then(res => res.json())
       .then(data => {
         if (data.status === 'not_login') {

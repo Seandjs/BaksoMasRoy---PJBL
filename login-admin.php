@@ -40,7 +40,8 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - Admin</title>
+    <link rel="icon" type="image/png" href="css/properties/logo.png" />
 </head>
 
 <style>
@@ -413,7 +414,7 @@ if (isset($_POST["login"])) {
             <form action="" method="post">
                 <div class="kepala">
                     <h2>ADMIN - LOGIN</h2>
-                    <?php if (isset($error)) : ?>
+                    <?php if (isset($error)): ?>
                         <p class="error">Email atau password salah</p>
                     <?php endif; ?>
                     <div class="kolom">

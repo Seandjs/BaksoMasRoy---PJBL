@@ -597,7 +597,20 @@ nav .logo img {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(251, 210, 68, 0.3);
 }
-
+#checkoutForm {
+  position: relative;
+  z-index: 99999 !important;
+}
+#btnCheckout {
+  position: relative;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+.cta-buy-now {
+  position: relative;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
 .total-header {
   font-size: 18px;
   font-weight: 700;

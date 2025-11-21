@@ -46,6 +46,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bakso Masroy - Admin Panel</title>
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     * {
@@ -1672,7 +1673,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
         <?php
         while ($row = mysqli_fetch_assoc($result)):
           $hargaFormatted = "Rp " . number_format($row["harga"], 0, ',', '.');
-        ?>
+          ?>
           <div class="produk-item">
             <div class="container">
               <div class="foto-produk">
@@ -1819,7 +1820,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
       </div>
       <div class="pesan-container">
 
-        <?php while ($row = mysqli_fetch_assoc($ulasan)) : ?>
+        <?php while ($row = mysqli_fetch_assoc($ulasan)): ?>
           <div class="pesan-card <?= $row['status'] == 'unread' ? 'unread' : '' ?>">
             <div class="pesan-header-card">
               <div class="pesan-sender">
@@ -1929,7 +1930,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
   }
 
   // Format harga saat user mengetik
-  hargaInput.addEventListener("input", function(e) {
+  hargaInput.addEventListener("input", function (e) {
     const cursorPos = this.selectionStart;
     const oldLength = this.value.length;
 
@@ -2044,7 +2045,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
   };
 
   navItems.forEach((item) => {
-    item.addEventListener("click", function() {
+    item.addEventListener("click", function () {
       const pageName = this.getAttribute("data-page");
 
       // Update active state
@@ -2077,7 +2078,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
   const sidebar = document.getElementById("sidebar");
 
   if (hamburgerMenu) {
-    hamburgerMenu.addEventListener("click", function(e) {
+    hamburgerMenu.addEventListener("click", function (e) {
       e.stopPropagation();
       sidebar.classList.toggle("active");
 
@@ -2124,7 +2125,7 @@ $ulasan = mysqli_query($conn, "SELECT * FROM ulasan
   }
 
   /* ---------- Fungsi Global untuk Edit (dipanggil dari onclick) ---------- */
-  window.openEditPopup = function(id, nama, kategori, deskripsi, image, harga) {
+  window.openEditPopup = function (id, nama, kategori, deskripsi, image, harga) {
     openPopup("edit", {
       id: id,
       nama: nama,

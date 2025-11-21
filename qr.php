@@ -1,0 +1,180 @@
+<?php
+session_start();
+date_default_timezone_set('Asia/Jakarta');
+
+if (!isset($_SESSION['checkout_orderid'])) {
+  header("Location: cart.php");
+  exit;
+}
+
+$orderid = $_SESSION['checkout_orderid'];
+$tanggal = $_SESSION['checkout_date'];
+$total = $_SESSION['checkout_total'];
+$outlet = $_SESSION['checkout_outlet'];
+$last_order_id = $_SESSION['last_order_id'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakso Campur - Payment</title>
+  <link rel="stylesheet" href="css/summary.css" />
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="">
+        <img src="css/properties/logo.png" alt="Logo Bakso MasRoy" />
+      </a>
+    </div>
+
+    <div class="navbar-nav" id="navbarNav">
+      <a href="index.php#beranda">Beranda</a>
+      <a href="index.php#tentang">Tentang</a>
+      <a href="index.php#produk">Produk</a>
+      <a href="index.php#ulasan">Ulasan</a>
+    </div>
+
+    <div class="navbar-extra">
+      <a href="#" id="cart" class="cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+      <a href="#" id="user" class="user">
+        <i class="fa-solid fa-user"></i>
+      </a>
+
+      <div class="user-dropdown" id="userDropdown">
+        <a href="#login">
+          <i class="fa-solid fa-right-to-bracket"></i> Log In
+        </a>
+        <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+      </div>
+
+      <a href="#" id="logout" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+
+      <a href="#" id="menu" class="menu">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+  </nav>
+
+  <section id="receipt" class="receipt">
+    <div class="main-header">
+      <div class="main-title">
+        <h1>Ringkasan Belanja</h1>
+      </div>
+    </div>
+    <div class="receipt-container qr-container">
+      <div class="qr-header">
+        <h1>Bakso Mas Roy</h1>
+        <h2><?= $outlet ?></h2>
+      </div>
+
+      <div class="qr-info">
+        <div class="qr-row">
+          <span>ID Pesanan</span>
+          <span class="qr-value"><?= $orderid ?></span>
+        </div>
+        <div class="qr-row">
+          <span>Tanggal</span>
+          <span class="qr-value"><?= $tanggal ?></span>
+        </div>
+        <div class="qr-row total">
+          <span>Total Pembayaran</span>
+          <span class="qr-value">Rp <?= number_format($total, 0, ',', '.') ?></span>
+        </div>
+      </div>
+
+      <div class="qr-box">
+        <img src="css/properties/qrdummy.png" alt="QR Pembayaran" class="qr-img" />
+        <p class="qr-text">
+          Tunjukkan QR ini ke kasir untuk konfirmasi pesanan
+        </p>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn-back" href="index.php" style="text-decoration: none; color: black">Kembali ke Halaman Utama</a>
+        <a class="btn-struk" href="struk.php?order=<?= $last_order_id ?>" style="text-decoration: none; color: white">
+          Lihat Struk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="navigasi-info-dan-medsos">
+      <div class="navigasi">
+        <h3>Bakso Mas Roy</h3>
+        <div class="navigasi-link">
+          <a href="index.php#beranda">Beranda</a>
+          <a href="index.php#tentang">Tentang</a>
+          <a href="index.php#produk">Produk</a>
+          <a href="index.php#ulasan">Ulasan</a>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Cabang</h3>
+        <div class="info-link">
+          <a href="#">Merr - Surabaya</a>
+          <a href="#">Dukuh Kupang - Surabaya</a>
+          <a href="#">Sawotratap Aloha - Sidoarjo</a>
+        </div>
+      </div>
+      <div class="medsos">
+        <h3>Media Sosial :</h3>
+        <div class="medsos-link">
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/baksomasroy/"><i class="fab fa-instagram icon"></i></a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@baksomasroy?lang=en"><i class="fa-brands fa-tiktok icon"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="betmut" />
+    <div class="copyright">
+      <p>Â© 2025 Bakso Mas Roy. All rights reserved.</p>
+      <p>Privacy Policy</p>
+      <p>Terms Of Services</p>
+    </div>
+  </footer>
+</body>
+<script>
+  const userButton = document.getElementById("user");
+  const userDropdown = document.getElementById("userDropdown");
+
+  if (userButton && userDropdown) {
+    userButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      userDropdown.classList.toggle("active");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        !userButton.contains(e.target) &&
+        !userDropdown.contains(e.target)
+      ) {
+        userDropdown.classList.remove("active");
+      }
+    });
+
+    userDropdown.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+  }
+</script>
+
+</html>

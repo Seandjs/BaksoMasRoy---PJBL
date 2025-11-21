@@ -34,6 +34,7 @@ foreach ($produk_list as $p) {
   <title>Bakso Campur</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="css/cart.css" />
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 
@@ -91,21 +92,23 @@ foreach ($produk_list as $p) {
       <div class="cart-content">
         <div class="left-section">
           <div class="left-content">
-            <div class="user-address">
-              <label for="outlet-select">Pilih Cabang Outlet:</label>
-              <select id="outlet-select" name="outlet">
-                <option value="">-- Pilih Cabang --</option>
-                <option value="cabang1">
-                  Cabang Merr - Sukolilo, Surabaya
-                </option>
-                <option value="cabang2">
-                  Cabang Dukuh Kupang - Sawahan, Surabaya
-                </option>
-                <option value="cabang3">
-                  Cabang Sawotratap Aloha - Gedangan, Sidoarjo
-                </option>
-              </select>
-            </div>
+            <?php if (!empty($produk_list)): ?>
+              <div class="user-address">
+                <label for="outlet-select">Pilih Cabang Outlet:</label>
+                <select id="outlet-select" name="outlet">
+                  <option value="">-- Pilih Cabang --</option>
+                  <option value="Cabang Merr - Sukolilo, Surabaya">
+                    Cabang Merr - Sukolilo, Surabaya
+                  </option>
+                  <option value="Cabang Dukuh Kupang - Sawahan, Surabaya">
+                    Cabang Dukuh Kupang - Sawahan, Surabaya
+                  </option>
+                  <option value="Cabang Sawotratap Aloha - Gedangan, Sidoarjo">
+                    Cabang Sawotratap Aloha - Gedangan, Sidoarjo
+                  </option>
+                </select>
+              </div>
+            <?php endif; ?>
 
             <div class="cart-items-container">
               <?php if (empty($produk_list)): ?>
@@ -167,21 +170,22 @@ foreach ($produk_list as $p) {
               </div>
               <div class="metode-pembayaran-content">
                 <div class="metode-pembayaran-item">
-                  <input type="radio" name="metode-pembayaran" id="cod" />
+                  <input type="radio" name="metode-pembayaran" id="cod" value="cod" />
                   <label for="cod">Bayar Ditempat</label>
                 </div>
                 <div class="metode-pembayaran-item">
-                  <input type="radio" name="metode-pembayaran" id="transfer" />
+                  <input type="radio" name="metode-pembayaran" id="qris" value="qris" />
                   <label for="transfer">Qris</label>
                 </div>
               </div>
 
-              <div class="cta-buy-now">
-                <button>Bayar Sekarang</button>
-              </div>
             </div>
           </div>
         </div>
+        <div class="cta-buy-now">
+          <a id="btnCheckout" style="cursor:pointer;">Bayar Sekarang</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -228,81 +232,121 @@ foreach ($produk_list as $p) {
   </footer>
 </body>
 <script>
-  const userButton = document.getElementById("user");
-  const userDropdown = document.getElementById("userDropdown");
+  document.addEventListener("DOMContentLoaded", () => {
 
-  if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      userDropdown.classList.toggle("active");
-    });
+    // ==========================
+    // USER DROPDOWN
+    // ==========================
+    const userButton = document.getElementById("user");
+    const userDropdown = document.getElementById("userDropdown");
 
-    document.addEventListener("click", function (e) {
-      if (
-        !userButton.contains(e.target) &&
-        !userDropdown.contains(e.target)
-      ) {
-        userDropdown.classList.remove("active");
-      }
-    });
+    if (userButton && userDropdown) {
+      userButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        userDropdown.classList.toggle("active");
+      });
 
-    userDropdown.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
-  }
-  document.querySelectorAll(".item-count").forEach((box) => {
-    const productId = box.dataset.id;
-    const display = box.querySelector(".quantity-display");
-    const decreaseBtn = box.querySelector(".decrease");
-    const increaseBtn = box.querySelector(".increase");
+      document.addEventListener("click", function (e) {
+        if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
+          userDropdown.classList.remove("active");
+        }
+      });
 
-    function updateQty(action) {
-      fetch("update_qty.php", {
-        method: "POST",
-        body: new URLSearchParams({
-          product_id: productId,
-          action: action,
-        }),
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.status === "success") {
+      userDropdown.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }
+
+
+    // ==========================
+    // QUANTITY (+ / -)
+    // ==========================
+    document.querySelectorAll(".item-count").forEach((box) => {
+      const productId = box.dataset.id;
+      const display = box.querySelector(".quantity-display");
+      const decreaseBtn = box.querySelector(".decrease");
+      const increaseBtn = box.querySelector(".increase");
+
+      function updateQty(action) {
+        fetch("update_qty.php", {
+          method: "POST",
+          body: new URLSearchParams({
+            product_id: productId,
+            action: action,
+          }),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.status !== "success") return;
 
             let newQty = action === "increase"
               ? parseInt(display.textContent) + 1
               : parseInt(display.textContent) - 1;
 
-            // Update kiri
+            // update kiri
             if (newQty <= 0) {
-              box.parentElement.style.display = "none";
+              box.closest('.cart-item').style.display = "none";
             } else {
               display.textContent = newQty;
             }
 
-            // Update ringkasan belanja kanan
+            // update ringkasan kanan
             const summaryItem = document.querySelector(`.items[data-id="${productId}"] .summary-count`);
-
             if (summaryItem) {
               if (newQty <= 0) {
-                summaryItem.parentElement.style.display = "none";
+                summaryItem.closest('.items').style.display = "none";
               } else {
                 summaryItem.textContent = newQty + "x";
               }
             }
 
-            // Update total harga
-            document.querySelector(".total-price").textContent =
-              "Rp " + data.total_harga.toLocaleString("id-ID");
-          }
-        });
+            // update total harga
+            const totalBox = document.querySelector(".total-price");
+            if (totalBox) {
+              totalBox.textContent = "Rp. " + data.total_harga.toLocaleString("id-ID");
+            }
+
+            // reload kalau keranjang kosong
+            if (data.total_harga === 0) {
+              location.reload();
+            }
+          });
+      }
+
+      if (increaseBtn) increaseBtn.addEventListener("click", () => updateQty("increase"));
+      if (decreaseBtn) decreaseBtn.addEventListener("click", () => updateQty("decrease"));
+    });
+
+
+    // ==========================
+    // CHECKOUT (PAKE REDIRECT)
+    // ==========================
+    const outletSelect = document.getElementById("outlet-select");
+    const metodeRadio = document.querySelectorAll('input[name="metode-pembayaran"]');
+    const btnCheckout = document.getElementById("btnCheckout");
+
+    if (btnCheckout) {
+      btnCheckout.addEventListener("click", () => {
+        const outlet = outletSelect.value;
+        const metode = [...metodeRadio].find(r => r.checked);
+
+        if (!outlet) {
+          alert("Pilih outlet dahulu.");
+          return;
+        }
+        if (!metode) {
+          alert("Pilih metode pembayaran dahulu.");
+          return;
+        }
+
+        // redirect
+        window.location.href = `checkout.php?outlet=${encodeURIComponent(outlet)}&method=${encodeURIComponent(metode.id)}`;
+      });
     }
 
-    increaseBtn.addEventListener("click", () => updateQty("increase"));
-    decreaseBtn.addEventListener("click", () => updateQty("decrease"));
   });
-
-
 </script>
+
 
 </html>

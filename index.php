@@ -27,6 +27,9 @@ if (isset($_POST["login"])) {
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row["password"])) {
       $_SESSION["login"] = true;
+      $_SESSION["id"] = $row["id"];
+      $_SESSION["username"] = $row["username"];
+      $_SESSION["email"] = $row["email"];
       header("Location: index.php");
       exit;
     }
@@ -72,6 +75,7 @@ if (isset($_POST["submit"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakso Masroy</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -92,7 +96,7 @@ if (isset($_POST["submit"])) {
     </div>
 
     <div class="navbar-extra">
-      <a href="#" id="cart" class="cart">
+      <a href="cart.php" id="cart" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
 
@@ -106,8 +110,8 @@ if (isset($_POST["submit"])) {
       </div>
 
       <?php if (isset($_SESSION['login'])): ?>
-        <a href="logout.php" id="logout" class="logout" style="display: inline;">
-          <i class="fa-solid fa-right-from-bracket"></i>
+        <a href="userprofile.php" id="logout" class="logout" style="display: inline;">
+          <i class="fa-solid fa-user"></i>
         </a>
       <?php else: ?>
         <a href="#" id="user" class="user">
