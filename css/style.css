@@ -1882,9 +1882,11 @@ footer a {
   padding: 0 40px;
 }
 .line-item .image img {
-  width: 100%;
+  width: 450px;
+  height: 350px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
 }
 .line-item .cobox {
   width: 50%;

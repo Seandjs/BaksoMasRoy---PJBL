@@ -115,7 +115,7 @@ if (isset($_POST["submit"])) {
         </a>
       <?php else: ?>
         <a href="#" id="user" class="user">
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user-plus"></i>
         </a>
         <div class="user-dropdown" id="userDropdown">
           <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
@@ -281,7 +281,7 @@ if (isset($_POST["submit"])) {
 
       <div class="line-item right">
         <div class="image">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
+          <img src="css/properties/outletmer.png" alt="Bakso">
         </div>
         <div class="cobox right">
           <div class="tittle">Awal Popularitas </div>
@@ -296,7 +296,7 @@ if (isset($_POST["submit"])) {
 
       <div class="line-item left">
         <div class="image">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
+          <img src="css/properties/outletaloha.webp" alt="Bakso">
         </div>
         <div class="cobox left">
           <div class="tittle">Ekspansi & Digitalisasi </div>
@@ -311,7 +311,7 @@ if (isset($_POST["submit"])) {
       </div>
       <div class="line-item right">
         <div class="image">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=500&fit=crop" alt="Bakso">
+          <img src="css/properties/outletdupang.png" alt="Bakso">
         </div>
         <div class="cobox right">
           <div class="tittle">Puncak Kepopuleran </div>
@@ -344,7 +344,7 @@ if (isset($_POST["submit"])) {
       <?php
       $result = mysqli_query($conn, "SELECT * FROM produk");
       while ($row = mysqli_fetch_assoc($result)):
-        ?>
+      ?>
         <div class="produk-item">
           <div class="container">
             <div class="foto-produk">

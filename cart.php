@@ -80,8 +80,10 @@ foreach ($produk_list as $p) {
 
   <section id="cart-page" class="cart-page">
     <div class="cart-header">
-      <div class="cta-back-to-menu">
-        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Menu</a>
+      <div class="breadcrumb">
+        <a href="index.php">Beranda</a>
+        <span>›</span>
+        <span>User Profile</span>
       </div>
       <div class="cart-title">
         <h1>Keranjang</h1>
@@ -180,10 +182,10 @@ foreach ($produk_list as $p) {
               </div>
 
             </div>
+            <div class="cta-buy-now">
+              <a id="btnCheckout" style="cursor:pointer;">Bayar Sekarang</a>
+            </div>
           </div>
-        </div>
-        <div class="cta-buy-now">
-          <a id="btnCheckout" style="cursor:pointer;">Bayar Sekarang</a>
         </div>
 
       </div>
@@ -241,19 +243,19 @@ foreach ($produk_list as $p) {
     const userDropdown = document.getElementById("userDropdown");
 
     if (userButton && userDropdown) {
-      userButton.addEventListener("click", function (e) {
+      userButton.addEventListener("click", function(e) {
         e.preventDefault();
         e.stopPropagation();
         userDropdown.classList.toggle("active");
       });
 
-      document.addEventListener("click", function (e) {
+      document.addEventListener("click", function(e) {
         if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
           userDropdown.classList.remove("active");
         }
       });
 
-      userDropdown.addEventListener("click", function (e) {
+      userDropdown.addEventListener("click", function(e) {
         e.stopPropagation();
       });
     }
@@ -270,19 +272,19 @@ foreach ($produk_list as $p) {
 
       function updateQty(action) {
         fetch("update_qty.php", {
-          method: "POST",
-          body: new URLSearchParams({
-            product_id: productId,
-            action: action,
-          }),
-        })
+            method: "POST",
+            body: new URLSearchParams({
+              product_id: productId,
+              action: action,
+            }),
+          })
           .then(res => res.json())
           .then(data => {
             if (data.status !== "success") return;
 
-            let newQty = action === "increase"
-              ? parseInt(display.textContent) + 1
-              : parseInt(display.textContent) - 1;
+            let newQty = action === "increase" ?
+              parseInt(display.textContent) + 1 :
+              parseInt(display.textContent) - 1;
 
             // update kiri
             if (newQty <= 0) {

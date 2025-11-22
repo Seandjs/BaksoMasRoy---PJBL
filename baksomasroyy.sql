@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2025 at 10:43 AM
+-- Generation Time: Nov 22, 2025 at 06:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,6 +39,44 @@ CREATE TABLE `amin` (
 
 INSERT INTO `amin` (`id`, `username`, `password`) VALUES
 (1, 'kara', '$2y$10$pRhVoZXgLeZ4.NCGlzDeruNEtb1JqsvYRRtnYtu0U42emvvG8ebGO');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `order_code` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `outlet` varchar(255) NOT NULL,
+  `metode` varchar(30) NOT NULL,
+  `total_harga` int(11) NOT NULL,
+  `tanggal` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_code`, `user_id`, `outlet`, `metode`, `total_harga`, `tanggal`) VALUES
+(8, 'ORD-500', 14, 'Cabang Merr - Sukolilo, Surabaya', 'qris', 25000, '2025-11-21 18:13:11'),
+(9, 'ORD-1976', 14, 'Cabang Merr - Sukolilo, Surabaya', 'cod', 20000, '2025-11-21 18:13:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -86,7 +124,7 @@ CREATE TABLE `ulasan` (
 INSERT INTO `ulasan` (`id`, `username`, `email`, `ulasan`, `status`) VALUES
 (8, 'the rock', 'therockband@gmail.com', 'hancur hatiku, mengenang dikau', 'read'),
 (10, 'echo', 'echo@gmail.com', 'aku cinta kau dan dia', 'read'),
-(11, 'paramore', 'paramore@gmail.com', 'ain&#039;t it fun?', 'unread'),
+(11, 'paramore', 'paramore@gmail.com', 'ain&#039;t it fun?', 'read'),
 (12, 'sean_ddd', 'adasd@gmail.com', '!@#$%^*()', 'unread'),
 (16, 'azkaasukaara', 'noaa277@gmail.com', 'azka sayang ara', 'unread'),
 (17, 'Kara', 'noaa277@gmail.com', '2edd', 'unread');
@@ -109,7 +147,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
-(14, 'kara', 'noaa277@gmail.com', '$2y$10$SyUU4KWEJC2Jzxo6lx9dgOhi.U5cheAUW7/55PFRXlNIz42gBSB66');
+(14, 'Kara', 'ezuuna@gmail.com', '$2y$10$ZZhEmWBz4U1BH.2ezOIv8ObKzMaKN0ovIWbMSb6ezhu6BvqflJlw6'),
+(15, 'sasa', 'abraham.azka217@smk.belajar.id', '$2y$10$SLOjxuf8DKmix6GirF1y3uOxSOmSJ1JBCl0Lr4bTkccqK6ijOMdE.');
 
 --
 -- Indexes for dumped tables
@@ -120,6 +159,21 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
 --
 ALTER TABLE `amin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `produk`
@@ -150,6 +204,18 @@ ALTER TABLE `amin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
@@ -165,7 +231,24 @@ ALTER TABLE `ulasan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `produk` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

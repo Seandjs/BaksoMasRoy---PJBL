@@ -34,7 +34,7 @@ $orders = mysqli_query($conn, "
       </a>
     </div>
 
-    <div class="navbar-nav" id="navbarNav">
+    <!-- <div class="navbar-nav" id="navbarNav">
       <a href="index.php#beranda">Beranda</a>
       <a href="index.php#tentang">Tentang</a>
       <a href="index.php#produk">Produk</a>
@@ -63,14 +63,22 @@ $orders = mysqli_query($conn, "
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
       </a>
-    </div>
+    </div> -->
   </nav>
 
-  <section id="profile" class="profile">
+  <section id="header" class="header">
     <div class="profile-header">
       <h1>My Profile</h1>
       <p>Manage your profile information and view your order history.</p>
     </div>
+    <div class="breadcrumb">
+      <a href="index.php">Beranda</a>
+      <span>›</span>
+      <span>User Profile</span>
+    </div>
+  </section>
+
+  <section id="profile" class="profile">
 
     <div class="profile-container">
       <!-- Edit Profile -->
@@ -203,13 +211,13 @@ $orders = mysqli_query($conn, "
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
+    userButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -218,7 +226,7 @@ $orders = mysqli_query($conn, "
       }
     });
 
-    userDropdown.addEventListener("click", function (e) {
+    userDropdown.addEventListener("click", function(e) {
       e.stopPropagation();
     });
   }

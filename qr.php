@@ -35,7 +35,7 @@ $last_order_id = $_SESSION['last_order_id'];
       </a>
     </div>
 
-    <div class="navbar-nav" id="navbarNav">
+    <!-- <div class="navbar-nav" id="navbarNav">
       <a href="index.php#beranda">Beranda</a>
       <a href="index.php#tentang">Tentang</a>
       <a href="index.php#produk">Produk</a>
@@ -64,15 +64,18 @@ $last_order_id = $_SESSION['last_order_id'];
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
       </a>
-    </div>
+    </div> -->
   </nav>
 
-  <section id="receipt" class="receipt">
+  <section id="header" class="header">
     <div class="main-header">
       <div class="main-title">
         <h1>Ringkasan Belanja</h1>
       </div>
     </div>
+  </section>
+
+  <section id="receipt" class="receipt">
     <div class="receipt-container qr-container">
       <div class="qr-header">
         <h1>Bakso Mas Roy</h1>
@@ -156,13 +159,13 @@ $last_order_id = $_SESSION['last_order_id'];
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function (e) {
+    userButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -171,7 +174,7 @@ $last_order_id = $_SESSION['last_order_id'];
       }
     });
 
-    userDropdown.addEventListener("click", function (e) {
+    userDropdown.addEventListener("click", function(e) {
       e.stopPropagation();
     });
   }

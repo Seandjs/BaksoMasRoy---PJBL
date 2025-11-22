@@ -200,11 +200,11 @@ require 'functions.php';
 </body>
 <script>
   const images = [
-    "css/properties/BaksoCampur.png",
-    "css/properties/logo.png",
+    "css/properties/outletdupang.png",
+    "css/properties/baksoamsroy.jpg",
     "css/properties/outletmer.png",
-    "css/properties/BaksoCampur.png",
-    "css/properties/logo.png",
+    "css/properties/baksoamsroy.jpg",
+    "css/properties/outletdupang.png",
   ];
 
   let currentIndex = 0;

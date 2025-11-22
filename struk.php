@@ -3,9 +3,10 @@ session_start();
 include 'functions.php';
 date_default_timezone_set('Asia/Jakarta');
 
-if (isset($_GET['order'])) {
 
-    $oid = $_GET['order'];
+if (isset($_GET['order']) && $_GET['order'] !== '') {
+
+    $oid = intval($_GET['order']);
     $q = mysqli_query($conn, "SELECT * FROM orders WHERE id = $oid");
     $order = mysqli_fetch_assoc($q);
 
@@ -19,8 +20,7 @@ if (isset($_GET['order'])) {
     $outlet = $order['outlet'];
     $method = $order['metode'];
 
-    $produk = [];
-
+    $produk = $_SESSION['checkout_produk'] ?? [];
 } else {
 
     if (!isset($_SESSION['checkout_orderid'])) {
@@ -34,11 +34,6 @@ if (isset($_GET['order'])) {
     $outlet = $_SESSION['checkout_outlet'];
     $method = $_SESSION['checkout_method'];
     $produk = $_SESSION['checkout_produk'];
-
-    $total = 0;
-    foreach ($produk as $p) {
-        $total += $p['harga'] * $p['qty'];
-    }
 }
 ?>
 
@@ -63,7 +58,7 @@ if (isset($_GET['order'])) {
             </a>
         </div>
 
-        <div class="navbar-nav" id="navbarNav">
+        <!-- <div class="navbar-nav" id="navbarNav">
             <a href="index.php#beranda">Beranda</a>
             <a href="index.php#tentang">Tentang</a>
             <a href="index.php#produk">Produk</a>
@@ -92,15 +87,18 @@ if (isset($_GET['order'])) {
             <a href="#" id="menu" class="menu">
                 <i class="fa-solid fa-bars"></i>
             </a>
-        </div>
+        </div> -->
     </nav>
 
-    <section id="receipt" class="receipt">
+    <section id="header" class="header">
         <div class="main-header">
             <div class="main-title">
                 <h1>Ringkasan Belanja</h1>
             </div>
         </div>
+    </section>
+
+    <section id="receipt" class="receipt">
         <div class="receipt-container">
             <div class="receipt-header">
                 <div class="receipt-title">
@@ -145,8 +143,9 @@ if (isset($_GET['order'])) {
                         <span>Rp <?= number_format($total, 0, ',', '.') ?></span>
                     </div>
                 </div>
-                <a href="index.php" class="btn-back">Kembali ke Halaman Utama</a>
-                <!-- <button class="btn-back">Kembali ke Halaman utama</button> -->
+                <div class="btn-group">
+                    <a class="btn-back" href="index.php" style="text-decoration: none; color: black; text-align: center">Kembali ke Halaman Utama</a>
+                </div>
             </div>
         </div>
     </section>
@@ -198,13 +197,13 @@ if (isset($_GET['order'])) {
     const userDropdown = document.getElementById("userDropdown");
 
     if (userButton && userDropdown) {
-        userButton.addEventListener("click", function (e) {
+        userButton.addEventListener("click", function(e) {
             e.preventDefault();
             e.stopPropagation();
             userDropdown.classList.toggle("active");
         });
 
-        document.addEventListener("click", function (e) {
+        document.addEventListener("click", function(e) {
             if (
                 !userButton.contains(e.target) &&
                 !userDropdown.contains(e.target)
@@ -213,7 +212,7 @@ if (isset($_GET['order'])) {
             }
         });
 
-        userDropdown.addEventListener("click", function (e) {
+        userDropdown.addEventListener("click", function(e) {
             e.stopPropagation();
         });
     }

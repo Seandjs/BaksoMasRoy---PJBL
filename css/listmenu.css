@@ -259,6 +259,7 @@ nav .logo img {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
   border: solid 0.5px var(--dark);
+  object-fit: cover;
 }
 
 .slide-photos-item {

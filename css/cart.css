@@ -252,13 +252,13 @@ nav .logo img {
   position: relative;
 }
 
-.cta-back-to-menu {
+.breadcrumb {
   position: absolute;
-  left: 20px;
   margin-bottom: 0;
+  left: 0;
 }
 
-.cta-back-to-menu a {
+.breadcrumb a {
   color: var(--dark);
   text-decoration: none;
   font-weight: 500;
@@ -269,7 +269,7 @@ nav .logo img {
   transition: all 0.3s ease;
 }
 
-.cta-back-to-menu a:hover {
+.breadcrumb a:hover {
   color: var(--secondary);
 }
 
@@ -367,7 +367,6 @@ nav .logo img {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 
 .cart-items-container {
   margin-top: 25px;
@@ -681,10 +680,13 @@ nav .logo img {
 
 .cta-buy-now {
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
 }
 
-.cta-buy-now button {
+.cta-buy-now a {
   width: 100%;
+  text-align: center;
   padding: 16px 30px;
   background: var(--secondary);
   color: white;
@@ -697,13 +699,13 @@ nav .logo img {
   box-shadow: 0 4px 12px rgba(123, 52, 29, 0.3);
 }
 
-.cta-buy-now button:hover {
+.cta-buy-now a:hover {
   background: #5c2716;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(123, 52, 29, 0.4);
 }
 
-.cta-buy-now button:active {
+.cta-buy-now a:active {
   transform: translateY(0);
 }
 

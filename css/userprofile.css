@@ -352,14 +352,21 @@ footer {
   overflow-x: hidden;
 }
 
-/* Profile Page (FINAL FIXED – SIMETRIS & CENTERED) */
-.profile {
+.header {
   background-image: url(properties/navbg.png);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
-  min-height: 100vh;
   padding-top: 120px;
+  padding-bottom: 60px;
+  height: 100px;
+}
+
+/* Profile Page (FINAL FIXED – SIMETRIS & CENTERED) */
+.profile {
+  background-position: top center;
+  min-height: 100vh;
+  padding-top: 90px;
   padding-bottom: 60px;
   display: flex;
   flex-direction: column;
@@ -368,11 +375,14 @@ footer {
 }
 
 .profile-header {
-  margin-top: 57px;
-  text-align: left;
+  margin-top: -100px;   
+  margin-bottom: 20px;    
   max-width: 1200px;
-  margin-bottom: 40px;
   width: 100%;
+  margin-left: auto;        
+  margin-right: auto;       
+  text-align: center;
+  position: relative;
 }
 
 .profile-header h1 {
@@ -385,6 +395,25 @@ footer {
   margin-top: 10px;
   font-size: 16px;
   color: #555;
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: flex-start; /* posisi item ke kiri */
+  align-items: center; /* rata secara vertikal */
+  font-size: 16px;
+  color: var(--dark);
+  margin-left: 50px;
+  padding-left: 2rem;
+  padding-top: 5rem;
+  gap: 5px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+  text-align: left;
 }
 
 /* Container wajib rata tengah */
@@ -464,7 +493,7 @@ footer {
 .log-out-btn {
   grid-column: span 2;
   padding: 14px 20px;
-  background: #EA2425;
+  background: #d62828;
   border-radius: 12px;
   color: var(--light);
   font-size: 16px;
@@ -472,6 +501,8 @@ footer {
   border: none;
   cursor: pointer;
   transition: 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
 .log-out-btn:hover {
