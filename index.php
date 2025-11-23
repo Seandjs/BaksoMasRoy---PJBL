@@ -425,76 +425,123 @@ if (isset($_POST["submit"])) {
   <section class="lokasi-outlet" id="lokasi-outlet">
     <h2>Lokasi Outlet</h2>
     <div class="container">
-      <div class="map" style="width:850px; height:450px; overflow:hidden;">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1MhFemuzFrjyVtKJKO8R3VcViOnZDxaI&ehbc=2E312F&noprof=1"
-          style="width:1000px; height:700px; margin-top:-60px; border:0;"></iframe>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3787.502465352623!2d112.78137085319358!3d-7.291521342044663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb6db7aaf5df%3A0x65005ee55b1e33e0!2sBakso%20Mas%20Roy!5e1!3m2!1sid!2sid!4v1763279278933!5m2!1sid!2sid"
+          id="mapFrame"></iframe>
       </div>
+
       <div class="container-info-lokasi">
-        <div class="info-lokasi active"
-          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.241!2d112.7509!3d-7.2574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTUnMjYuNiJTIDExMsKwNDUnMDMuMiJF!5e0!3m2!1sen!2sid!4v1234567890">
-          <h3>BAKSO MAS ROY -<br> Cabang Merr</h3>
-          <div class="ALAMAT">
-            <h5>Alamat</h5>
-            <h4>
-              Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
-              Jawa Timur 60117
-          </div>
+        <div
+          class="info-lokasi active"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3787.502465352623!2d112.78137085319358!3d-7.291521342044663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb6db7aaf5df%3A0x65005ee55b1e33e0!2sBakso%20Mas%20Roy!5e1!3m2!1sid!2sid!4v1763279278933!5m2!1sid!2sid">
+          <h3>
+            BAKSO MAS ROY -<br />
+            Cabang Merr
+          </h3>
+
+          <h5>Alamat</h5>
+          <h4>
+            Jl. Dr. Ir. H. Soekarno, Klampis Ngasem, Kec. Sukolilo, Surabaya,
+            Jawa Timur 60117
           </h4>
+
           <h5>Jam Operasional</h5>
-          <h4>Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
+          <h4>Senin - Minggu | 11:00 - 23:00</h4>
+
           <h5>No Telp</h5>
           <h4>+62 856-0489-7822</h4>
+
           <div class="cta-open-google-map">
             <button class="btn-goonel">
-              <a href="https://maps.app.goo.gl/x6wf3K8zpSjZVBRu8" target="_blank"> <i
-                  class="fa-solid fa-location-pin"></i> Open In Google Maps</a>
+              <a
+                href="https://maps.app.goo.gl/44DXdJidRrp6VvPJ8"
+                target="_blank">
+                <i class="fa-solid fa-location-pin"></i>
+                <span>Open In Google Maps</span>
+              </a>
             </button>
           </div>
         </div>
-        <div class="info-lokasi"
-          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6!2d112.7194!3d-7.2478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTQnNTIuMSJTIDExMsKwNDMnMDkuOCJF!5e0!3m2!1sen!2sid!4v1234567891">
-          <h3>BAKSO MAS ROY -<br> Cabang Dukuh Kupang</h3>
+
+        <div
+          class="info-lokasi"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3787.5354304852335!2d112.7145374!3d-7.287622899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fd0f81537521%3A0xfd71c78687137361!2sBAKSO%20MASROY%20DUKUH%20KUPANG!5e1!3m2!1sid!2sid!4v1763279413040!5m2!1sid!2sid">
+          <h3>
+            BAKSO MAS ROY -<br />
+            Cabang Dukuh Kupang
+          </h3>
+
+          <h5>Alamat</h5>
           <h4>
             Jl. Raya Dukuh Kupang No.149, RT.6/RW.8, Pakis, Kec. Sawahan,
             Surabaya, Jawa Timur 60189
           </h4>
-          <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
-          <h4>No.Telp : +62 878-4114-6205</h4>
-          <div class="cta-open-in-google-map">
+
+          <h5>Jam Operasional</h5>
+          <h4>Senin - Minggu | 11:00 - 23:00</h4>
+
+          <h5>No Telp</h5>
+          <h4>+62 878-4114-6205</h4>
+
+          <div class="cta-open-google-map">
             <button class="btn-goonel">
-              <a href="https://maps.app.goo.gl/6Whd1UxzRAMgRCUM9" target="_blank"><i
-                  class="fa-solid fa-location-pin"></i> Open In Google Maps</a>
+              <a
+                href="https://maps.app.goo.gl/rE11MKdEAMTYug278"
+                target="_blank">
+                <i class="fa-solid fa-location-pin"></i>
+                <span>Open In Google Maps</span>
+              </a>
             </button>
           </div>
         </div>
-        <div class="info-lokasi"
-          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.8!2d112.7285!3d-7.3421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjAnMzEuNiJTIDExMsKwNDMnNDIuNiJF!5e0!3m2!1sen!2sid!4v1234567892">
-          <h3>BAKSO MAS ROY -<br> Cabang Aloha</h3>
+
+        <div
+          class="info-lokasi"
+          data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3786.835467903926!2d112.7294311!3d-7.369959599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e50011e9107f%3A0x1f37fbbb2cb7aadb!2sBakso%20Mas%20Roy%20Cabang%20Sawotratap%20Sidoarjo!5e1!3m2!1sid!2sid!4v1763279478724!5m2!1sid!2sid">
+          <h3>
+            BAKSO MAS ROY -<br />
+            Cabang Aloha
+          </h3>
+
+          <h5>Alamat</h5>
           <h4>
             Dusun Pager, Sawotratap, Kec. Gedangan, Kabupaten Sidoarjo, Jawa
             Timur
           </h4>
-          <h4>Jam Operasional : Senin - Minggu | 11 : 00 AM - 23 : 00 PM</h4>
-          <h4>No.Telp : +62 895-2491-3184</h4>
-          <div class="cta-open-in-google-map">
+
+          <h5>Jam Operasional</h5>
+          <h4>Senin - Minggu | 11:00 - 23:00</h4>
+
+          <h5>No Telp</h5>
+          <h4>+62 895-2491-3184</h4>
+
+          <div class="cta-open-google-map">
             <button class="btn-goonel">
-              <a href="https://maps.app.goo.gl/WLgunXKdJyxB1mdw9" target="_blank"><i
-                  class="fa-solid fa-location-pin"></i> Open In Google Maps</a>
+              <a
+                href="https://maps.app.goo.gl/wB569YeqFiCj9ZuSA"
+                target="_blank">
+                <i class="fa-solid fa-location-pin"></i>
+                <span>Open In Google Maps</span>
+              </a>
             </button>
           </div>
         </div>
+
         <div class="button-container">
           <div class="prev-button">
             <button id="prevOutlet">
               <i class="fa-solid fa-arrow-left"></i>
             </button>
           </div>
+
           <div class="outlet-indicator">
             <span class="indicator-dot active" data-index="0"></span>
             <span class="indicator-dot" data-index="1"></span>
             <span class="indicator-dot" data-index="2"></span>
           </div>
-          <div class="next-button ">
+
+          <div class="next-button">
             <button id="nextOutlet">
               <i class="fa-solid fa-arrow-right"></i>
             </button>

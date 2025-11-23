@@ -6,34 +6,41 @@ const prevButton = document.getElementById("prevOutlet");
 const mapFrame = document.getElementById("mapFrame");
 
 function updateButtons() {
+  // Disable/enable buttons based on current position
   if (currentOutlet === 0) {
-    prevButton.style.display = "none";
-    nextButton.style.display = "block";
+    prevButton.disabled = true;
+    nextButton.disabled = false;
   } else if (currentOutlet === outlets.length - 1) {
-    prevButton.style.display = "block";
-    nextButton.style.display = "none";
+    prevButton.disabled = false;
+    nextButton.disabled = true;
   } else {
-    prevButton.style.display = "block";
-    nextButton.style.display = "block";
+    prevButton.disabled = false;
+    nextButton.disabled = false;
   }
 }
 
 function showOutlet(index) {
+  // Remove active class from all outlets and indicators
   outlets.forEach((outlet, i) => {
     outlet.classList.remove("active");
     indicators[i].classList.remove("active");
   });
 
+  // Add active class to current outlet and indicator
   outlets[index].classList.add("active");
   indicators[index].classList.add("active");
 
+  // Update map
   const mapSrc = outlets[index].getAttribute("data-map");
-  if (mapSrc) {
+  if (mapSrc && mapFrame) {
     mapFrame.src = mapSrc;
   }
+
+  // Update button states
   updateButtons();
 }
 
+// Next button click handler
 nextButton.addEventListener("click", () => {
   if (currentOutlet < outlets.length - 1) {
     currentOutlet++;
@@ -41,6 +48,7 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+// Previous button click handler
 prevButton.addEventListener("click", () => {
   if (currentOutlet > 0) {
     currentOutlet--;
@@ -48,6 +56,7 @@ prevButton.addEventListener("click", () => {
   }
 });
 
+// Indicator dots click handler
 indicators.forEach((indicator, index) => {
   indicator.addEventListener("click", () => {
     currentOutlet = index;
@@ -55,6 +64,7 @@ indicators.forEach((indicator, index) => {
   });
 });
 
+// Initialize button states
 updateButtons();
 
 // 3D PRODUCT EFFECT
