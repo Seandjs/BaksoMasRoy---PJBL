@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2025 at 06:08 AM
+-- Generation Time: Nov 23, 2025 at 07:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,8 +61,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_code`, `user_id`, `outlet`, `metode`, `total_harga`, `tanggal`) VALUES
-(8, 'ORD-500', 14, 'Cabang Merr - Sukolilo, Surabaya', 'qris', 25000, '2025-11-21 18:13:11'),
-(9, 'ORD-1976', 14, 'Cabang Merr - Sukolilo, Surabaya', 'cod', 20000, '2025-11-21 18:13:49');
+(20, 'ORD-1790', 14, 'Cabang Sawotratap Aloha - Gedangan, Sidoarjo', 'cod', 50000, '2025-11-23 11:41:56'),
+(21, 'ORD-1310', 14, 'Cabang Sawotratap Aloha - Gedangan, Sidoarjo', 'cod', 35000, '2025-11-23 11:42:31'),
+(22, 'ORD-1982', 15, 'Cabang Merr - Sukolilo, Surabaya', 'qris', 5000, '2025-11-23 11:43:58'),
+(23, 'ORD-1626', 15, 'Cabang Merr - Sukolilo, Surabaya', 'qris', 5000, '2025-11-23 11:46:47'),
+(24, 'ORD-1663', 15, 'Cabang Dukuh Kupang - Sawahan, Surabaya', 'qris', 5000, '2025-11-23 11:47:13'),
+(31, 'ORD-1067', 14, 'Cabang Dukuh Kupang - Sawahan, Surabaya', 'qris', 45000, '2025-11-23 11:56:15'),
+(32, 'ORD-965', 14, 'Cabang Merr - Sukolilo, Surabaya', 'qris', 15000, '2025-11-23 12:30:58');
 
 -- --------------------------------------------------------
 
@@ -74,9 +79,29 @@ CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `nama`, `qty`, `harga`) VALUES
+(5, 20, 32, 'Bakso Campur', 2, 25000),
+(6, 21, 33, 'Gorengan', 1, 15000),
+(7, 21, 34, 'Es Teh', 2, 5000),
+(8, 21, 35, 'Lontong', 2, 5000),
+(9, 22, 34, 'Es Teh', 1, 5000),
+(10, 23, 34, 'Es Teh', 1, 5000),
+(11, 24, 34, 'Es Teh', 1, 5000),
+(14, 28, 32, 'Bakso Campur', 1, 25000),
+(15, 30, 32, 'Bakso Campur', 1, 25000),
+(16, 31, 32, 'Bakso Campur', 1, 25000),
+(17, 31, 33, 'Gorengan', 1, 15000),
+(18, 31, 34, 'Es Teh', 1, 5000),
+(19, 32, 33, 'Gorengan', 1, 15000);
 
 -- --------------------------------------------------------
 
@@ -207,13 +232,13 @@ ALTER TABLE `amin`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `produk`
