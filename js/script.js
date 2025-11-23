@@ -1,5 +1,4 @@
-
-let currentOutlet = 0;s
+let currentOutlet = 0;
 const outlets = document.querySelectorAll(".info-lokasi");
 const indicators = document.querySelectorAll(".indicator-dot");
 const nextButton = document.getElementById("nextOutlet");
