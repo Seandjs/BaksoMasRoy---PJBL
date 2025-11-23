@@ -358,6 +358,7 @@ footer {
   background-size: 100% auto;
   background-position: top center;
   padding-top: 120px;
+  z-index: 1000;
   padding-bottom: 60px;
   height: 100px;
 }
@@ -371,6 +372,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1000;
   justify-content: flex-start;
 }
 
@@ -379,7 +381,8 @@ footer {
   margin-bottom: 20px;    
   max-width: 1200px;
   width: 100%;
-  margin-left: auto;        
+  margin-left: auto;    
+  z-index: 1000;    
   margin-right: auto;       
   text-align: center;
   position: relative;

@@ -2,6 +2,27 @@
 session_start();
 include 'functions.php';
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 if (isset($_POST["register"])) {
 
   if (registrasi($_POST) > 0) {
@@ -339,13 +360,13 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -354,7 +375,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }
@@ -364,7 +385,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
   const navbarNav = document.getElementById("navbarNav");
 
   if (hamburgerMenu && navbarNav) {
-    hamburgerMenu.addEventListener("click", function(e) {
+    hamburgerMenu.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       navbarNav.classList.toggle("active");
@@ -376,7 +397,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !hamburgerMenu.contains(e.target) &&
         !navbarNav.contains(e.target)
@@ -386,7 +407,7 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
       }
     });
 
-    navbarNav.addEventListener("click", function(e) {
+    navbarNav.addEventListener("click", function (e) {
       const rect = navbarNav.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
@@ -404,22 +425,22 @@ $query_lainnya = mysqli_query($conn, "SELECT * FROM produk WHERE id != $id LIMIT
 
     const navLinks = navbarNav.querySelectorAll("a");
     navLinks.forEach((link) => {
-      link.addEventListener("click", function() {
+      link.addEventListener("click", function () {
         navbarNav.classList.remove("active");
         document.body.style.overflow = "auto";
       });
     });
   }
 
-  document.getElementById('addToCart').addEventListener('click', function() {
+  document.getElementById('addToCart').addEventListener('click', function () {
     const productId = this.dataset.id;
 
     fetch('add_cart.php', {
-        method: 'POST',
-        body: new URLSearchParams({
-          product_id: productId
-        })
+      method: 'POST',
+      body: new URLSearchParams({
+        product_id: productId
       })
+    })
       .then(res => res.json())
       .then(data => {
         if (data.status === 'not_login') {

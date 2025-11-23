@@ -1,5 +1,28 @@
 <?php
+session_start();
 require 'functions.php';
+
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 ?>
 
 <!DOCTYPE html>
@@ -8,8 +31,9 @@ require 'functions.php';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bakso Campur</title>
+  <title>Menu - Bakso Masroy</title>
   <link rel="stylesheet" href="css/listmenu.css" />
+  <link rel="icon" type="image/png" href="css/properties/logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -62,7 +86,8 @@ require 'functions.php';
         </div>
         <div class="hero-p">
           <p>
-            Saat ini, pemesanan hanya dapat dilakukan di outlet yang terdaftar. Kami belum menyediakan layanan pemesanan jarak jauh. </p>
+            Saat ini, pemesanan hanya dapat dilakukan di outlet yang terdaftar. Kami belum menyediakan layanan pemesanan
+            jarak jauh. </p>
         </div>
       </div>
       <div class="container-slide-photos">
@@ -75,10 +100,12 @@ require 'functions.php';
 
   <section id="menu-wrapper" class="menu-wrapper">
     <div class="search-bar">
-      <input type="text" placeholder="Cari Makanan..." />
-      <button type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+      <input type="text" id="searchInput" placeholder="Cari Makanan..." autocomplete="off">
+      <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div id="searchResults" class="pembungkusluar">
+      <!-- produk tampil disini dongs -->
     </div>
     <div class="makanan">
       <h2>Makanan</h2>
@@ -86,7 +113,7 @@ require 'functions.php';
         <?php
         $makanan = mysqli_query($conn, "SELECT * FROM produk WHERE kategori='makanan'");
         while ($row = mysqli_fetch_array($makanan)):
-        ?>
+          ?>
           <div class="produk-item">
             <div class="container">
               <div class="foto-produk">
@@ -109,7 +136,7 @@ require 'functions.php';
                   <h3>Rp <?= number_format($row['harga'], 0, ',', '.') ?></h3>
                 </div>
                 <div class="cta-produk">
-                  <a href="#pesan">Pesan Sekarang</a>
+                  <a href="menubaksomasroy.php?id=<?= $row['id'] ?>">Pesan Sekarang</a>
                 </div>
               </div>
             </div>
@@ -124,7 +151,7 @@ require 'functions.php';
         <?php
         $minuman = mysqli_query($conn, "SELECT * FROM produk WHERE kategori='minuman'");
         while ($row = mysqli_fetch_array($minuman)):
-        ?>
+          ?>
 
           <div class="produk-item">
             <div class="container">
@@ -148,12 +175,12 @@ require 'functions.php';
                   <h3>Rp <?= number_format($row['harga'], 0, ',', '.') ?></h3>
                 </div>
                 <div class="cta-produk">
-                  <a href="#pesan">Pesan Sekarang</a>
+                  <a href="menubaksomasroy.php?id=<?= $row['id'] ?>">Pesan Sekarang</a>
                 </div>
               </div>
             <?php endwhile; ?>
-            </div>
           </div>
+        </div>
       </div>
   </section>
 
@@ -206,6 +233,25 @@ require 'functions.php';
     "css/properties/baksoamsroy.jpg",
     "css/properties/outletdupang.png",
   ];
+
+  document.getElementById("searchInput").addEventListener("keyup", function () {
+    let keyword = this.value;
+
+    // Jika input kosong → kosongkan hasil
+    if (keyword.length === 0) {
+      document.getElementById("searchResults").innerHTML = "";
+      return;
+    }
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "search.php?keyword=" + keyword, true);
+
+    xhr.onload = function () {
+      document.getElementById("searchResults").innerHTML = this.responseText;
+    };
+
+    xhr.send();
+  });
 
   let currentIndex = 0;
 
@@ -283,13 +329,13 @@ require 'functions.php';
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -298,7 +344,7 @@ require 'functions.php';
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }

@@ -2,6 +2,27 @@
 session_start();
 require 'functions.php';
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 if (!isset($_SESSION["login"])) {
   header("Location: login-admin.php");
   exit;

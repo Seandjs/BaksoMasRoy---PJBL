@@ -2,6 +2,27 @@
 session_start();
 require 'functions.php';
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 if (isset($_POST["register"])) {
 
   if (registrasi($_POST) > 0) {
@@ -76,6 +97,7 @@ if (isset($_POST["submit"])) {
   <title>Bakso Masroy</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="css/properties/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
@@ -337,6 +359,17 @@ if (isset($_POST["submit"])) {
 
   </section>
 
+  <section class="bakso-banner-section">
+    <div class="scrolling-text">
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+      <span class="text-item">Bakso Masroy TERBAIKK!!!!</span>
+    </div>
+  </section>
+
   <section class="produk-section" id="produk">
     <h2>Produk Bakso Mas Roy</h2>
     <div class="pembungkusluar">
@@ -344,7 +377,7 @@ if (isset($_POST["submit"])) {
       <?php
       $result = mysqli_query($conn, "SELECT * FROM produk");
       while ($row = mysqli_fetch_assoc($result)):
-      ?>
+        ?>
         <div class="produk-item">
           <div class="container">
             <div class="foto-produk">
@@ -525,6 +558,7 @@ if (isset($_POST["submit"])) {
   </footer>
 
   <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </body>
 
 </html>

@@ -2,6 +2,27 @@
 session_start();
 include 'functions.php';
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 $user_id = $_SESSION['id'];
 
 $q = mysqli_query($conn, "SELECT * FROM user WHERE id = $user_id");
@@ -200,7 +221,7 @@ $orders = mysqli_query($conn, "
     </div>
     <hr class="betmut" />
     <div class="copyright">
-      <p>Â© 2025 Bakso Mas Roy. All rights reserved.</p>
+      <p>© 2025 Bakso Mas Roy. All rights reserved.</p>
       <p>Privacy Policy</p>
       <p>Terms Of Services</p>
     </div>
@@ -211,13 +232,13 @@ $orders = mysqli_query($conn, "
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -226,7 +247,7 @@ $orders = mysqli_query($conn, "
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }

@@ -1146,7 +1146,48 @@ footer a {
   transition: all 0.3s ease;
   min-width: 50px;
 }
+.bakso-banner-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    background: var(--primary);
+    position: relative;
+    transition: all 0.3s ease;
+}
 
+        .scrolling-text {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+
+        .text-item {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--secondary);
+            opacity: 0.2;
+            text-transform: uppercase;
+            padding: 0 40px;
+            letter-spacing: 4px;
+            transition: none;
+            text-align: left;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-item {
+                font-size: 40px;
+                padding: 0 20px;
+            }
+        }
 .volume-panel.show {
   opacity: 1;
   visibility: visible;

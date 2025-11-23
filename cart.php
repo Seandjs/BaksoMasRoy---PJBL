@@ -2,6 +2,27 @@
 session_start();
 include 'functions.php';
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
 if (!isset($_SESSION['login'])) {
   header("Location: index.php");
   exit;
@@ -243,19 +264,19 @@ foreach ($produk_list as $p) {
     const userDropdown = document.getElementById("userDropdown");
 
     if (userButton && userDropdown) {
-      userButton.addEventListener("click", function(e) {
+      userButton.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
         userDropdown.classList.toggle("active");
       });
 
-      document.addEventListener("click", function(e) {
+      document.addEventListener("click", function (e) {
         if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
           userDropdown.classList.remove("active");
         }
       });
 
-      userDropdown.addEventListener("click", function(e) {
+      userDropdown.addEventListener("click", function (e) {
         e.stopPropagation();
       });
     }
@@ -272,12 +293,12 @@ foreach ($produk_list as $p) {
 
       function updateQty(action) {
         fetch("update_qty.php", {
-            method: "POST",
-            body: new URLSearchParams({
-              product_id: productId,
-              action: action,
-            }),
-          })
+          method: "POST",
+          body: new URLSearchParams({
+            product_id: productId,
+            action: action,
+          }),
+        })
           .then(res => res.json())
           .then(data => {
             if (data.status !== "success") return;

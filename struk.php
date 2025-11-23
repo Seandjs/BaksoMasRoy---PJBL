@@ -3,6 +3,26 @@ session_start();
 include 'functions.php';
 date_default_timezone_set('Asia/Jakarta');
 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+    include 'error.php';
+    exit;
+});
+
+set_exception_handler(function () {
+    include 'error.php';
+    exit;
+});
+
+register_shutdown_function(function () {
+    $error = error_get_last();
+    if ($error && $error['type'] === E_ERROR) {
+        include 'error.php';
+        exit;
+    }
+});
 
 if (isset($_GET['order']) && $_GET['order'] !== '') {
 
@@ -20,7 +40,16 @@ if (isset($_GET['order']) && $_GET['order'] !== '') {
     $outlet = $order['outlet'];
     $method = $order['metode'];
 
-    $produk = $_SESSION['checkout_produk'] ?? [];
+    $produk = [];
+    $qd = mysqli_query($conn, "SELECT * FROM order_detail WHERE order_id = $oid");
+
+    while ($row = mysqli_fetch_assoc($qd)) {
+        $produk[] = [
+            'nama' => $row['nama'],
+            'qty' => $row['qty'],
+            'harga' => $row['harga']
+        ];
+    }
 } else {
 
     if (!isset($_SESSION['checkout_orderid'])) {
@@ -144,7 +173,8 @@ if (isset($_GET['order']) && $_GET['order'] !== '') {
                     </div>
                 </div>
                 <div class="btn-group">
-                    <a class="btn-back" href="index.php" style="text-decoration: none; color: black; text-align: center">Kembali ke Halaman Utama</a>
+                    <a class="btn-back" href="index.php"
+                        style="text-decoration: none; color: black; text-align: center">Kembali ke Halaman Utama</a>
                 </div>
             </div>
         </div>
@@ -197,13 +227,13 @@ if (isset($_GET['order']) && $_GET['order'] !== '') {
     const userDropdown = document.getElementById("userDropdown");
 
     if (userButton && userDropdown) {
-        userButton.addEventListener("click", function(e) {
+        userButton.addEventListener("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
             userDropdown.classList.toggle("active");
         });
 
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (
                 !userButton.contains(e.target) &&
                 !userDropdown.contains(e.target)
@@ -212,7 +242,7 @@ if (isset($_GET['order']) && $_GET['order'] !== '') {
             }
         });
 
-        userDropdown.addEventListener("click", function(e) {
+        userDropdown.addEventListener("click", function (e) {
             e.stopPropagation();
         });
     }

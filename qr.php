@@ -1,8 +1,29 @@
-<?php
+<!-- <?php
 session_start();
 date_default_timezone_set('Asia/Jakarta');
 
-if (!isset($_SESSION['checkout_orderid'])) {
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+set_error_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+set_exception_handler(function () {
+  include 'error.php';
+  exit;
+});
+
+register_shutdown_function(function () {
+  $error = error_get_last();
+  if ($error && $error['type'] === E_ERROR) {
+    include 'error.php';
+    exit;
+  }
+});
+
+if (!isset($_SESSION['checkout_orderid']) || !isset($_SESSION['last_order_id'])) {
   header("Location: cart.php");
   exit;
 }
@@ -12,7 +33,8 @@ $tanggal = $_SESSION['checkout_date'];
 $total = $_SESSION['checkout_total'];
 $outlet = $_SESSION['checkout_outlet'];
 $last_order_id = $_SESSION['last_order_id'];
-?>
+;
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,13 +181,13 @@ $last_order_id = $_SESSION['last_order_id'];
   const userDropdown = document.getElementById("userDropdown");
 
   if (userButton && userDropdown) {
-    userButton.addEventListener("click", function(e) {
+    userButton.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       userDropdown.classList.toggle("active");
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (
         !userButton.contains(e.target) &&
         !userDropdown.contains(e.target)
@@ -174,7 +196,7 @@ $last_order_id = $_SESSION['last_order_id'];
       }
     });
 
-    userDropdown.addEventListener("click", function(e) {
+    userDropdown.addEventListener("click", function (e) {
       e.stopPropagation();
     });
   }
