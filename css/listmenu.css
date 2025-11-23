@@ -310,6 +310,19 @@ nav .logo img {
   margin-left: 20px;
 }
 
+#searchTitle {
+  margin-bottom: 60px;
+  display: none;
+}
+
+#searchTitle h2 {
+  font-size: 2.5rem;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  position: relative;
+  padding-bottom: 15px;
+}
+
 .search-bar {
   max-width: 600px;
   margin: 0 auto 25px;
@@ -622,4 +635,317 @@ footer {
   background-size: 100% 100%;
   background-position: center;
   overflow-x: hidden;
+}
+
+/* ===========================
+   STYLING PRODUK PADA SEARCH
+   =========================== */
+
+#searchResults {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1120px;
+  margin: 20px auto 40px auto;
+}
+
+/* sama dengan .pembungkusluar .produk-item */
+#searchResults .produk-item {
+  width: 232px;
+  height: 336px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* sama dengan .pembungkusluar .container */
+#searchResults .container {
+  width: 99%;
+  height: 99%;
+  position: relative;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* foto produk */
+#searchResults .foto-produk {
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+#searchResults .foto-produk img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* efek hover */
+#searchResults .produk-item:hover .foto-produk img {
+  transform: scale(1.1);
+}
+
+/* shimmer */
+#searchResults .shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#searchResults .produk-item:hover .shimmer {
+  transform: translateX(100%);
+}
+
+/* kategori */
+#searchResults .judul {
+  padding: 12px 16px 6.4px 16px;
+}
+
+#searchResults .judul h4 {
+  display: inline-block;
+  color: #8b5a00;
+  padding: 4px 9.6px;
+  border-radius: 16px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fbd244 0%, #f5dd86 100%);
+}
+
+/* nama */
+#searchResults .nama {
+  padding: 6.4px 16px 3.2px 16px;
+}
+
+#searchResults .nama h3 {
+  font-size: 15px;
+  color: #000000;
+  margin-top: -3px;
+  font-weight: 700;
+}
+
+/* deskripsi */
+#searchResults .deskripsi {
+  padding: 3.2px 16px 12px 16px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+#searchResults .deskripsi p {
+  font-size: 9px;
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* harga & tombol */
+#searchResults .hargapesan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #e2e8f0;
+  background: linear-gradient(to bottom, transparent, rgba(251, 210, 68, 0.1));
+  margin-top: auto;
+}
+
+#searchResults .harga-produk h3 {
+  font-size: 16px;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+#searchResults .cta-produk a {
+  text-decoration: none;
+  color: white;
+  padding: 6.4px 12.8px;
+  background: var(--secondary);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 9.6px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 1px solid var(--dark);
+}
+
+#searchResults .cta-produk a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(123, 52, 29, 0.4);
+  background: #5a2716;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.popup-content {
+  background: var(--primary);
+  border: solid 0.5px var(--dark);
+  padding: 30px 40px 30px 40px;
+  border-radius: 16px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.popup-content label {
+  text-align: left;
+  display: block;
+  position: relative;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.popup-content form input {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--light);
+  border: solid 0.5px var(--dark);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.popup-content form input:focus {
+  background-color: var(--light);
+  border: solid 0.5px var(--dark);
+  outline: none;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+}
+
+.toggle-password i {
+  pointer-events: none;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.toggle-password i:hover {
+  opacity: 1;
+}
+
+.btn-daftar,
+.btn-google {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: var(--light);
+  border: solid 0.5px var(--dark);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  margin: 10px 0 10px 0;
+}
+
+.atau {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+  position: relative;
+  font-size: 14px;
+}
+
+.atau::before,
+.atau::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: #000;
+  opacity: 0.6;
+}
+
+.btn-daftar:hover,
+.btn-google:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ketentuan {
+  font-size: 12px;
+  color: var(--dark);
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.ketentuan a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 800;
 }

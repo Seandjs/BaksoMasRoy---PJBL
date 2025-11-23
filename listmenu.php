@@ -57,26 +57,117 @@ register_shutdown_function(function () {
       <a href="#" id="cart" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
-      <a href="#" id="user" class="user">
-        <i class="fa-solid fa-user"></i>
-      </a>
 
-      <div class="user-dropdown" id="userDropdown">
-        <a href="#login">
-          <i class="fa-solid fa-right-to-bracket"></i> Log In
+      <?php if (isset($_SESSION['login'])): ?>
+        <a href="userprofile.php" id="logout" class="logout" style="display: inline;">
+          <i class="fa-solid fa-user"></i>
         </a>
-        <a href="#signup"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
-      </div>
-
-      <a href="#" id="logout" class="logout">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
+      <?php else: ?>
+        <a href="#" id="user" class="user">
+          <i class="fa-solid fa-user-plus"></i>
+        </a>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+          <a href="#signup"><i class="fa-solid fa-user-plus"></i> Daftar</a>
+        </div>
+      <?php endif; ?>
 
       <a href="#" id="menu" class="menu">
         <i class="fa-solid fa-bars"></i>
       </a>
     </div>
   </nav>
+
+  <div class="popup-overlay" id="popupSignup">
+    <div class="popup-content">
+      <span class="close-popup" id="closeSignup">&times;</span>
+      <h2>Daftar</h2>
+
+      <form action="index.php" method="post">
+        <div class="username-wrapper">
+          <label for="username-daftar">Nama</label>
+          <input type="text" name="username" id="username" placeholder="Contoh: Tedjo" required />
+        </div>
+
+        <div class="email-wrapper">
+          <label for="email-daftar">Email</label>
+          <input type="email" name="email" id="email" placeholder="admin123@gmail.com" required />
+        </div>
+
+        <label for="sandi-daftar">Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="******" required />
+          <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <label for="sandi-daftar">Konfirmasi Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password2" id="password2" placeholder="******" required />
+          <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="register" class="btn-daftar">Daftar</button>
+        <div class="atau">
+          <p>Atau Daftar Dengan</p>
+        </div>
+        <button type="button" class="btn-google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <div class="ketentuan">
+          <p>
+            Dengan mendaftar, saya menyetujui
+            <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a href="#">Kebijakan Privasi</a>
+            Bakso MasRoy.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popupLogin">
+    <div class="popup-content">
+      <span class="close-popup" id="closeLogin">&times;</span>
+      <h2>Masuk</h2>
+      <?php if (isset($error)): ?>
+        <p>username / password salah!</p>
+      <?php endif; ?>
+
+      <form action="" method="post">
+        <div class="username-wrapper">
+          <label for="username">Nama</label>
+          <input type="text" name="username" id="username" placeholder="Contoh: Paijo" required />
+        </div>
+
+        <label for="sandi-daftar">Kata Sandi</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="******" required
+            autocomplete="new-password" />
+          <button type="button" id="toggle-sandi" class="toggle-password" aria-pressed="false">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="login" class="btn-daftar">Masuk</button>
+        <div class="atau">
+          <p>Atau Masuk Dengan</p>
+        </div>
+        <button type="button" class="btn-google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <div class="ketentuan">
+          <p>
+            Dengan mendaftar, saya menyetujui
+            <a href="term-of-services.html">Syarat & Ketentuan</a> serta <a href="#">Kebijakan Privasi</a>
+            Bakso MasRoy.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <section id="hero" class="hero">
     <div class="hero-content">
@@ -103,6 +194,8 @@ register_shutdown_function(function () {
       <input type="text" id="searchInput" placeholder="Cari Makanan..." autocomplete="off">
       <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
+
+    <h2 id="searchTitle">Hasil Pencarian</h2>
 
     <div id="searchResults" class="pembungkusluar">
       <!-- produk tampil disini dongs -->
@@ -226,6 +319,9 @@ register_shutdown_function(function () {
   </footer>
 </body>
 <script>
+  /* ===============================
+   SLIDESHOW GAMBAR
+================================ */
   const images = [
     "css/properties/outletdupang.png",
     "css/properties/baksoamsroy.jpg",
@@ -234,12 +330,95 @@ register_shutdown_function(function () {
     "css/properties/outletdupang.png",
   ];
 
-  document.getElementById("searchInput").addEventListener("keyup", function () {
-    let keyword = this.value;
+  let currentIndex = 0;
 
-    // Jika input kosong → kosongkan hasil
-    if (keyword.length === 0) {
-      document.getElementById("searchResults").innerHTML = "";
+  function changeSlideImage() {
+    const slideItems = document.querySelectorAll(".slide-photos-item img");
+
+    slideItems.forEach((img, index) => {
+      img.style.opacity = "0";
+      setTimeout(() => {
+        const nextIndex = (currentIndex + index) % images.length;
+        img.src = images[nextIndex];
+        img.style.opacity = "1";
+      }, 300);
+    });
+
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  function initializeSlideshow() {
+    const slideItems = document.querySelectorAll(".slide-photos-item img");
+    slideItems.forEach((img) => {
+      img.style.transition = "opacity 0.5s ease-in-out";
+    });
+    setInterval(changeSlideImage, 3000);
+  }
+
+  window.addEventListener("DOMContentLoaded", initializeSlideshow);
+
+
+  /* ===============================
+     EFEK 3D PRODUK CARD
+  ================================ */
+  function apply3DEffect() {
+    const produkItems = document.querySelectorAll(".produk-item");
+
+    produkItems.forEach((item) => {
+      const container = item.querySelector(".container");
+      let isHovering = false;
+
+      item.addEventListener("mouseenter", () => {
+        isHovering = true;
+      });
+
+      item.addEventListener("mousemove", (e) => {
+        if (!isHovering) return;
+
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      item.addEventListener("mouseleave", () => {
+        isHovering = false;
+        container.style.transform = "rotateX(0) rotateY(0)";
+      });
+    });
+  }
+
+  apply3DEffect(); // aktifkan untuk produk awal
+
+
+  /* ===============================
+     SEARCH PRODUK + HIDE SECTIONS
+  ================================ */
+  document.getElementById("searchInput").addEventListener("keyup", function () {
+    let keyword = this.value.trim();
+
+    const makanan = document.querySelector(".makanan");
+    const minuman = document.querySelector(".minuman");
+    const searchTitle = document.getElementById("searchTitle");
+    const searchResults = document.getElementById("searchResults");
+
+    if (keyword !== "") {
+      makanan.style.display = "none";
+      minuman.style.display = "none";
+      searchTitle.style.display = "block";
+      searchTitle.textContent = "Hasil Pencarian: " + keyword;
+    } else {
+      makanan.style.display = "block";
+      minuman.style.display = "block";
+      searchTitle.style.display = "none";
+      searchResults.innerHTML = "";
       return;
     }
 
@@ -247,84 +426,17 @@ register_shutdown_function(function () {
     xhr.open("GET", "search.php?keyword=" + keyword, true);
 
     xhr.onload = function () {
-      document.getElementById("searchResults").innerHTML = this.responseText;
+      searchResults.innerHTML = this.responseText;
+      apply3DEffect(); // aktifkan 3D untuk hasil search
     };
 
     xhr.send();
   });
 
-  let currentIndex = 0;
 
-  // Fungsi untuk mengganti gambar
-  function changeSlideImage() {
-    const slideItems = document.querySelectorAll(".slide-photos-item img");
-
-    slideItems.forEach((img, index) => {
-      // Tambahkan efek fade out
-      img.style.opacity = "0";
-
-      setTimeout(() => {
-        // Hitung index gambar berikutnya
-        const nextIndex = (currentIndex + index) % images.length;
-        img.src = images[nextIndex];
-
-        // Tambahkan efek fade in
-        img.style.opacity = "1";
-      }, 300);
-    });
-
-    // Update index untuk gambar berikutnya
-    currentIndex = (currentIndex + 1) % images.length;
-  }
-
-  // Inisialisasi transisi CSS untuk efek smooth
-  function initializeSlideshow() {
-    const slideItems = document.querySelectorAll(".slide-photos-item img");
-
-    slideItems.forEach((img) => {
-      img.style.transition = "opacity 0.5s ease-in-out";
-    });
-
-    // Ganti gambar setiap 3 detik (3000ms)
-    // Ubah angka ini untuk mengatur kecepatan pergantian
-    setInterval(changeSlideImage, 3000);
-  }
-
-  // Jalankan slideshow ketika halaman sudah dimuat
-  window.addEventListener("DOMContentLoaded", initializeSlideshow);
-
-  const produkItems = document.querySelectorAll(".produk-item");
-
-  produkItems.forEach((item) => {
-    const container = item.querySelector(".container");
-    let isHovering = false;
-
-    item.addEventListener("mouseenter", () => {
-      isHovering = true;
-    });
-
-    item.addEventListener("mousemove", (e) => {
-      if (!isHovering) return;
-
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-
-      container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    item.addEventListener("mouseleave", () => {
-      isHovering = false;
-      container.style.transform = "rotateX(0) rotateY(0)";
-    });
-  });
-
+  /* ===============================
+     USER DROPDOWN MENU
+  ================================ */
   const userButton = document.getElementById("user");
   const userDropdown = document.getElementById("userDropdown");
 
@@ -336,10 +448,7 @@ register_shutdown_function(function () {
     });
 
     document.addEventListener("click", function (e) {
-      if (
-        !userButton.contains(e.target) &&
-        !userDropdown.contains(e.target)
-      ) {
+      if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
         userDropdown.classList.remove("active");
       }
     });
@@ -348,6 +457,74 @@ register_shutdown_function(function () {
       e.stopPropagation();
     });
   }
+
+
+  /* ===============================
+     POPUP SIGNUP / LOGIN
+  ================================ */
+  function handlePopup(openBtn, popup, closeBtn) {
+    if (openBtn && popup && closeBtn) {
+      openBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popup.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === popup) {
+          popup.style.display = "none";
+        }
+      });
+    }
+  }
+
+  handlePopup(
+    document.querySelector('a[href="#signup"]'),
+    document.getElementById("popupSignup"),
+    document.getElementById("closeSignup")
+  );
+
+  handlePopup(
+    document.querySelector('a[href="#login"]'),
+    document.getElementById("popupLogin"),
+    document.getElementById("closeLogin")
+  );
+
+
+  /* ===============================
+     TOGGLE PASSWORD
+  ================================ */
+  function togglePassword(btn, input) {
+    if (btn && input) {
+      btn.addEventListener("click", () => {
+        const isHidden = input.type === "password";
+        input.type = isHidden ? "text" : "password";
+
+        btn.setAttribute("aria-pressed", isHidden);
+        btn.innerHTML = isHidden ?
+          '<i class="fa-regular fa-eye-slash"></i>' :
+          '<i class="fa-regular fa-eye"></i>';
+      });
+    }
+  }
+
+  togglePassword(
+    document.getElementById("toggle-sandi"),
+    document.getElementById("password")
+  );
+
+  togglePassword(
+    document.getElementById("toggle-sandi-2"),
+    document.getElementById("password2")
+  );
+
+  togglePassword(
+    document.getElementById("toggle-sandi-login"),
+    document.getElementById("password-login")
+  );
 </script>
 
 </html>

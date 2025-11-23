@@ -24,21 +24,35 @@ while ($p = mysqli_fetch_assoc($result)) {
     echo "
     <div class='produk-item'>
       <div class='container'>
+
         <div class='foto-produk'>
+          <div class='shimmer'></div>
           <img src='{$p['image']}' alt='{$p['nama']}'>
         </div>
 
-        <h4>{$p['kategori']}</h4>
-        <h3>{$p['nama']}</h3>
-        <p>{$p['deskripsi']}</p>
-
-        <div class='harga'>
-          Rp " . number_format($p['harga'], 0, ',', '.') . "
+        <div class='judul'>
+          <h4>" . ucfirst($p['kategori']) . "</h4>
         </div>
 
-        <a href='menubaksomasroy.php?id={$p['id']}'>Pesan Sekarang</a>
+        <div class='nama'>
+          <h3>{$p['nama']}</h3>
+        </div>
+
+        <div class='deskripsi'>
+          <p>{$p['deskripsi']}</p>
+        </div>
+
+        <div class='hargapesan'>
+          <div class='harga-produk'>
+            <h3>Rp " . number_format($p['harga'], 0, ',', '.') . "</h3>
+          </div>
+
+          <div class='cta-produk'>
+            <a href='menubaksomasroy.php?id={$p['id']}'>Pesan Sekarang</a>
+          </div>
+        </div>
+
       </div>
     </div>
-  ";
+    ";
 }
-?>
